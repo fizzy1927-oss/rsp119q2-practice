@@ -2,546 +2,942 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Practice quiz for Intro to Respiratory Therapy: bedside assessment, ABGs, lab values and breath sounds.">
-<title>RT Assessment Quiz Bank</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RSP 119 Practice Test</title>
+<meta name="description" content="Practice test for RSP 119: patient assessment, vital signs, breathing patterns, chest exam, breath sounds, labs and charting.">
 <style>
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0}
-/* Layout: one study column — bedside-monitor scoreboard on top, round settings, then the question card. */
-:root{
-  --bg:#F3F6F7; --surface:#FFFFFF; --ink:#13222C; --muted:#56687A; --line:#D3DDE3;
-  --accent:#2D6A9F; --accent-soft:#E2EDF6; --accent-ink:#FFFFFF;
-  --good:#1D7448; --good-bg:#E2F3E9; --bad:#B03636; --bad-bg:#F9E4E2;
-  --mon-bg:#0A1216; --mon-line:#1B2A31; --mon-green:#3BE07C; --mon-cyan:#4FD6EE; --mon-yellow:#F0CF4A; --mon-dim:#6F8791;
-  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
-  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-  --r:10px;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E161C; --surface:#152029; --ink:#E2EAF0; --muted:#94A6B4; --line:#263541;
-  --accent:#7DB3E2; --accent-soft:#1B2E3E; --accent-ink:#0E161C;
-  --good:#5FCB92; --good-bg:#14301F; --bad:#EE8686; --bad-bg:#3A1C1E;
-  --mon-bg:#070D10; --mon-line:#18262C; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E161C; --surface:#152029; --ink:#E2EAF0; --muted:#94A6B4; --line:#263541;
-  --accent:#7DB3E2; --accent-soft:#1B2E3E; --accent-ink:#0E161C;
-  --good:#5FCB92; --good-bg:#14301F; --bad:#EE8686; --bad-bg:#3A1C1E;
-  --mon-bg:#070D10; --mon-line:#18262C; color-scheme:dark}
-
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
-.wrap{max-width:760px;margin:0 auto;padding-block:28px 56px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:flex;flex-direction:column;gap:20px}
-h1{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.sub{color:var(--muted);margin:6px 0 0;font-size:15px}
-
-/* Monitor */
-.monitor{background:var(--mon-bg);border-radius:var(--r);padding:14px 16px 10px;color:#fff;display:flex;flex-direction:column;gap:6px;overflow:hidden}
-.readouts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.ro{display:flex;flex-direction:column;gap:2px;min-width:0}
-.ro .lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--mon-dim);text-transform:uppercase}
-.ro .val{font-family:var(--f-mono);font-weight:600;font-size:clamp(22px,5vw,30px);line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
-.ro .val small{font-size:.5em;color:var(--mon-dim);font-weight:500;margin-left:2px}
-.ro.g .val{color:var(--mon-green)} .ro.c .val{color:var(--mon-cyan)} .ro.y .val{color:var(--mon-yellow)}
-.pleth{display:block;width:100%;height:34px}
-.pleth path{fill:none;stroke:var(--mon-green);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:0;animation:sweep 6s linear infinite}
-.pleth .base{stroke:var(--mon-line);stroke-width:1;animation:none}
-@keyframes sweep{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
-@media (prefers-reduced-motion: reduce){.pleth path{animation:none}}
-
-/* Settings */
-.settings{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:14px}
-summary{cursor:pointer;font-weight:700;font-size:15px;list-style-position:inside}
-.settings:not([open]){gap:0}
-.row{display:flex;flex-direction:column;gap:8px}
-.row-lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
-.chip .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
-.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
-.chip[aria-pressed="true"] .n{color:var(--accent)}
-.inline{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg button{font:inherit;font-size:14px;border:0;background:var(--bg);color:var(--ink);padding:6px 12px;cursor:pointer;font-variant-numeric:tabular-nums}
-.seg button+button{border-left:1px solid var(--line)}
-.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
-.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;cursor:pointer}
-.toggle input{width:18px;height:18px;accent-color:var(--accent)}
-.btn{font:inherit;font-weight:600;font-size:15px;border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
-.btn.ghost{background:transparent;color:var(--accent)}
-.btn:disabled{opacity:.45;cursor:default}
-button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-/* Question card */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:16px}
-.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.qnum{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:3px 8px}
-.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
-.stem{font-size:18px;font-weight:600;line-height:1.45;margin:0;text-wrap:pretty}
-.items{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:2px}
-.opts{display:flex;flex-direction:column;gap:8px}
-.opt{font:inherit;text-align:left;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;
-  border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:11px 12px;cursor:pointer;min-height:48px}
-.opt:hover:not(:disabled){border-color:var(--accent)}
-.opt .k{font-family:var(--f-mono);font-weight:600;font-size:13px;width:26px;height:26px;border-radius:6px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
-.opt .mk{font-weight:700;font-size:13px}
-.opt:disabled{cursor:default}
-.opt.right{border-color:var(--good);background:var(--good-bg)}
-.opt.right .k{border-color:var(--good);color:var(--good)}
-.opt.right .mk{color:var(--good)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
-.opt.wrong .k{border-color:var(--bad);color:var(--bad)}
-.opt.wrong .mk{color:var(--bad)}
-.opt.fade{opacity:.6}
-.why{border-radius:8px;padding:12px 14px;border:1px solid var(--line);background:var(--bg)}
-.why b{display:block;margin-bottom:2px}
-.why.ok b{color:var(--good)} .why.no b{color:var(--bad)}
-.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.hint{font-size:13px;color:var(--muted)}
-
-/* Results */
-.big{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:clamp(44px,12vw,64px);line-height:1;margin:0;font-variant-numeric:tabular-nums}
-.res-table{display:flex;flex-direction:column;gap:10px}
-.res-row{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:4px 12px;align-items:center}
-.res-row .nm{font-size:14px;font-weight:600}
-.res-row .sc{font-family:var(--f-mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
-.res-row .track{grid-column:1/-1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
-.res-row .track i{display:block;height:100%}
-.missed-list{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:15px}
-.missed-list span{color:var(--good);font-weight:600}
-
-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
-.linkish{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
-.confirm{display:inline-flex;gap:8px;align-items:center}
-.confirm button{font:inherit;font-size:13px;border-radius:6px;padding:4px 10px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.confirm .danger{border-color:var(--bad);color:var(--bad)}
-@media (max-width:480px){.card{padding:16px}.stem{font-size:17px}.hint{display:none}}
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1d2330;
+    --muted: #5d6677;
+    --line: #dfe3ea;
+    --accent: #1f6feb;
+    --accent-soft: #e8f0fe;
+    --good: #1a7f37;
+    --good-soft: #e6f4ea;
+    --bad: #c62828;
+    --bad-soft: #fdecea;
+    --warn-soft: #fff6e0;
+    --shadow: 0 1px 3px rgba(20, 30, 50, .08), 0 4px 16px rgba(20, 30, 50, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11141a;
+      --card: #1a1f27;
+      --text: #e6e9ef;
+      --muted: #9aa3b2;
+      --line: #2c333f;
+      --accent: #5b9dff;
+      --accent-soft: #1d2c45;
+      --good: #4cc274;
+      --good-soft: #17301f;
+      --bad: #ff6b6b;
+      --bad-soft: #3a1c1c;
+      --warn-soft: #3a3118;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11141a; --card: #1a1f27; --text: #e6e9ef; --muted: #9aa3b2; --line: #2c333f;
+    --accent: #5b9dff; --accent-soft: #1d2c45; --good: #4cc274; --good-soft: #17301f;
+    --bad: #ff6b6b; --bad-soft: #3a1c1c; --warn-soft: #3a3118; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { margin-bottom: 20px; }
+  header h1 { margin: 0; font-size: 1.6rem; letter-spacing: -.01em; }
+  header p { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px; box-shadow: var(--shadow);
+  }
+  h2 { font-size: 1.1rem; margin: 0 0 12px; }
+  .field { margin-bottom: 20px; }
+  .label { font-weight: 600; font-size: .9rem; margin-bottom: 8px; display: block; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .chip span {
+    display: inline-block; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line);
+    cursor: pointer; font-size: .9rem; user-select: none; background: var(--card);
+  }
+  .chip input:checked + span { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  select {
+    font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--card); color: var(--text);
+  }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .avail { color: var(--muted); font-size: .9rem; }
+  button.btn {
+    font: inherit; font-weight: 600; border: 1px solid var(--accent); background: var(--accent); color: #fff;
+    padding: 10px 18px; border-radius: 10px; cursor: pointer;
+  }
+  button.btn.ghost { background: transparent; color: var(--accent); }
+  button.btn:disabled { opacity: .45; cursor: not-allowed; }
+  button.link { background: none; border: none; color: var(--muted); font: inherit; cursor: pointer; padding: 0; text-decoration: underline; }
+  .bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; margin-bottom: 18px; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; transition: width .25s; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; font-size: .85rem; color: var(--muted); }
+  .tag { padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .tag.src { background: var(--warn-soft); color: var(--text); }
+  .qtext { font-size: 1.12rem; font-weight: 600; margin: 4px 0 18px; white-space: pre-line; }
+  .opts { display: grid; gap: 10px; }
+  .opt {
+    display: flex; gap: 12px; align-items: flex-start; text-align: left; width: 100%;
+    font: inherit; color: var(--text); background: var(--card); border: 1.5px solid var(--line);
+    border-radius: 10px; padding: 12px 14px; cursor: pointer;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); }
+  .opt .key {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+    font-size: .8rem; font-weight: 700; border: 1.5px solid var(--line); color: var(--muted);
+  }
+  .opt.picked { border-color: var(--accent); background: var(--accent-soft); }
+  .opt.picked .key { border-color: var(--accent); color: var(--accent); }
+  .opt.right { border-color: var(--good); background: var(--good-soft); }
+  .opt.right .key { border-color: var(--good); color: var(--good); }
+  .opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .opt.wrong .key { border-color: var(--bad); color: var(--bad); }
+  .opt:disabled { cursor: default; }
+  .fb { margin-top: 16px; padding: 14px 16px; border-radius: 10px; border-left: 4px solid; }
+  .fb.good { background: var(--good-soft); border-color: var(--good); }
+  .fb.bad { background: var(--bad-soft); border-color: var(--bad); }
+  .fb strong { display: block; margin-bottom: 4px; }
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; gap: 10px; }
+  .hint { color: var(--muted); font-size: .8rem; margin-top: 14px; }
+  .score { font-size: 3rem; font-weight: 800; line-height: 1; margin: 6px 0; }
+  .sub { color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 4px; font-size: .92rem; }
+  td, th { padding: 7px 4px; border-bottom: 1px solid var(--line); text-align: left; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .miss { border-top: 1px solid var(--line); padding: 14px 0; }
+  .miss .q { font-weight: 600; margin-bottom: 6px; }
+  .miss .yours { color: var(--bad); }
+  .miss .ans { color: var(--good); font-weight: 600; }
+  .miss .ex { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+  .section { margin-top: 24px; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 24px; text-align: center; }
+  [hidden] { display: none !important; }
+  @media (max-width: 480px) {
+    .card { padding: 16px; }
+    .score { font-size: 2.4rem; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>RT Assessment Quiz Bank</h1>
-    <p class="sub" id="sub">Bedside assessment and clinical lab data · Intro to Respiratory Therapy</p>
+    <h1>RSP 119 Practice Test</h1>
+    <p>Patient assessment · vital signs · breathing patterns · chest exam · breath sounds · labs · charting</p>
   </header>
 
-  <section class="monitor" aria-label="Score">
-    <div class="readouts">
-      <div class="ro g"><span class="lab">Score</span><span class="val" id="m-score">--<small>%</small></span></div>
-      <div class="ro c"><span class="lab">Answered</span><span class="val" id="m-ans">0<small>/0</small></span></div>
-      <div class="ro y"><span class="lab">Streak</span><span class="val" id="m-streak">0</span></div>
+  <!-- ===== SETUP SCREEN ===== -->
+  <section id="setup" class="card">
+    <h2>Set up your test</h2>
+
+    <div class="field">
+      <span class="label">Question set</span>
+      <div class="chips" id="setChips">
+        <label class="chip"><input type="radio" name="set" value="all" checked><span>Everything</span></label>
+        <label class="chip"><input type="radio" name="set" value="quiz"><span>Original quiz only</span></label>
+        <label class="chip"><input type="radio" name="set" value="bonus"><span>Bonus questions only</span></label>
+      </div>
     </div>
-    <svg class="pleth" viewBox="0 0 700 34" preserveAspectRatio="none" aria-hidden="true">
-      <line class="base" x1="0" y1="28" x2="700" y2="28" stroke="currentColor"/>
-      <path id="pleth-path" d=""/>
-    </svg>
+
+    <div class="field">
+      <span class="label">Topics</span>
+      <div class="chips" id="catChips"></div>
+      <div style="margin-top:8px"><button class="link" id="toggleCats" type="button">Select none</button></div>
+    </div>
+
+    <div class="field">
+      <span class="label">Mode</span>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="mode" value="practice" checked><span>Practice — see answers as you go</span></label>
+        <label class="chip"><input type="radio" name="mode" value="exam"><span>Exam — score at the end</span></label>
+      </div>
+    </div>
+
+    <div class="field row">
+      <label class="label" for="count" style="margin:0">Questions</label>
+      <select id="count">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="40">40</option>
+        <option value="all" selected>All available</option>
+      </select>
+      <label class="chip"><input type="checkbox" id="shuffle" checked><span>Shuffle questions &amp; answers</span></label>
+    </div>
+
+    <div class="row" style="justify-content:space-between">
+      <span class="avail" id="avail"></span>
+      <button class="btn" id="startBtn" type="button">Start</button>
+    </div>
+    <p class="hint" id="bestLine" hidden></p>
   </section>
 
-  <details class="settings" id="settings"><summary id="set-sum">Round settings</summary>
-    <div class="row">
-      <span class="row-lab">Topics</span>
-      <div class="chips" id="topics"></div>
+  <!-- ===== QUIZ SCREEN ===== -->
+  <section id="quiz" class="card" hidden>
+    <div class="bar"><div id="bar"></div></div>
+    <div class="meta">
+      <span id="qnum"></span>
+      <span class="tag" id="qcat"></span>
+      <span class="tag src" id="qsrc">From the graded quiz</span>
     </div>
-    <div class="inline">
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div id="fb" class="fb" hidden></div>
+    <div class="nav">
       <div class="row">
-        <span class="row-lab">Questions per round</span>
-        <div class="seg" id="size"></div>
+        <button class="btn ghost" id="prevBtn" type="button">Back</button>
+        <button class="link" id="quitBtn" type="button">Quit</button>
       </div>
-      <label class="toggle" for="missed-only"><input type="checkbox" id="missed-only"> <span id="missed-label">Only questions I've missed</span></label>
+      <button class="btn" id="nextBtn" type="button">Next</button>
     </div>
-    <div><button class="btn" id="start">Start new round</button></div>
-  </details>
+    <p class="hint">Keyboard: 1–4 or A–D to answer · Enter for next</p>
+  </section>
 
-  <main class="card" id="card" aria-live="polite"></main>
+  <!-- ===== RESULTS SCREEN ===== -->
+  <section id="results" class="card" hidden>
+    <div class="sub">Your score</div>
+    <div class="score" id="scorePct"></div>
+    <div class="sub" id="scoreLine"></div>
 
-  <footer>
-    <span id="bank-count"></span>
-    <span id="reset-wrap"><button class="linkish" id="reset">Reset saved progress</button></span>
-  </footer>
+    <div class="section">
+      <h2>By topic</h2>
+      <table id="catTable"></table>
+    </div>
+
+    <div class="section" id="missWrap">
+      <h2>Review what you missed</h2>
+      <div id="missList"></div>
+    </div>
+
+    <div class="row" style="margin-top:20px">
+      <button class="btn" id="retryMissed" type="button">Retry missed questions</button>
+      <button class="btn ghost" id="newTest" type="button">New test</button>
+    </div>
+  </section>
+
+  <footer>Study aid only — always check against your course materials. Lab reference ranges vary slightly between labs and textbooks.</footer>
 </div>
 
 <script>
-const TOPICS = {
-  abg:"ABGs", labs:"Lab values", sounds:"Breath sounds", exam:"Chest exam & inspection",
-  vitals:"Vitals & pulse ox", patterns:"Breathing patterns & LOC", history:"History & charting", care:"Patient care & emergencies"
-};
-/* Each entry: [topic, question, options, explanation, extra]
-   The correct option is listed FIRST unless extra.a gives its index (those keep a fixed order). */
-const RAW = [
-/* ---------- ABGs ---------- */
-["abg","What is the normal arterial pH range?",["7.35–7.45","7.25–7.35","7.45–7.55","7.00–7.35"],"Below 7.35 is acidosis; above 7.45 is alkalosis."],
-["abg","What is the normal PaCO₂?",["35–45 mm Hg","80–100 mm Hg","22–26 mm Hg","45–55 mm Hg"],"PaCO₂ is 35–45 mm Hg, with 40 as the ideal middle value."],
-["abg","What is the normal PaO₂ on room air?",["80–100 mm Hg","35–45 mm Hg","60–70 mm Hg","100–150 mm Hg"],"A PaO₂ below 80 mm Hg on room air means hypoxemia."],
-["abg","According to the lecture slides, the normal HCO₃⁻ is:",["22–24 mEq/L","3.5–5.0 mEq/L","35–45 mEq/L","95–105 mEq/L"],"The slides list 22–24 mEq/L. Many textbooks use 22–26."],
-["abg","What is the normal base excess (BE)?",["±2 mEq/L","±10 mEq/L","+5 to +10 mEq/L","Always exactly 0"],"Normal base excess is ±2."],
-["abg","Which ABG value tells you most directly how well the patient is ventilating?",["PaCO₂","PaO₂","HCO₃⁻","SaO₂"],"Breathing removes CO₂, so PaCO₂ reflects ventilation. PaO₂ reflects oxygenation."],
-["abg","Which ABG value is controlled mainly by the kidneys (the metabolic side)?",["HCO₃⁻","PaCO₂","PaO₂","SaO₂"],"The kidneys regulate bicarbonate; the lungs regulate CO₂."],
-["abg","ABG: pH 7.25, PaCO₂ 60 mm Hg, HCO₃⁻ 24 mEq/L. This is:",["Respiratory acidosis","Metabolic acidosis","Respiratory alkalosis","Metabolic alkalosis"],"pH is low and PaCO₂ is high (moving opposite ways), so the problem is respiratory. HCO₃⁻ is normal."],
-["abg","ABG: pH 7.52, PaCO₂ 28 mm Hg, HCO₃⁻ 23 mEq/L. This is:",["Respiratory alkalosis","Metabolic alkalosis","Respiratory acidosis","Metabolic acidosis"],"pH is high and PaCO₂ is low (opposite directions), so it is respiratory alkalosis."],
-["abg","ABG: pH 7.29, PaCO₂ 38 mm Hg, HCO₃⁻ 16 mEq/L. This is:",["Metabolic acidosis","Respiratory acidosis","Metabolic alkalosis","Respiratory alkalosis"],"pH and HCO₃⁻ are both low (moving the same way), so it is metabolic acidosis. PaCO₂ is normal."],
-["abg","ABG: pH 7.51, PaCO₂ 43 mm Hg, HCO₃⁻ 33 mEq/L. This is:",["Metabolic alkalosis","Respiratory alkalosis","Metabolic acidosis","Respiratory acidosis"],"pH and HCO₃⁻ are both high (same direction), so it is metabolic alkalosis."],
-["abg","After a drug overdose, a patient breathes 6 times a minute with shallow breaths. What would you expect on the ABG?",["PaCO₂ rises → respiratory acidosis","PaCO₂ falls → respiratory alkalosis","HCO₃⁻ falls → metabolic acidosis","No change from normal"],"Hypoventilation lets CO₂ build up, which lowers the pH."],
-["abg","An anxious patient breathes 32 times a minute after hearing bad news. The ABG most likely shows:",["Low PaCO₂ — respiratory alkalosis","High PaCO₂ — respiratory acidosis","Low HCO₃⁻ — metabolic acidosis","High HCO₃⁻ — metabolic alkalosis"],"Hyperventilation blows off CO₂, which raises the pH."],
-["abg","A patient has been vomiting for three days. Which acid–base problem is most likely?",["Metabolic alkalosis","Metabolic acidosis","Respiratory acidosis","Respiratory alkalosis"],"Vomiting loses stomach acid (along with K⁺ and Cl⁻), leaving extra base."],
-["abg","A patient has had severe diarrhea for several days. Which acid–base problem is most likely?",["Metabolic acidosis","Metabolic alkalosis","Respiratory alkalosis","Respiratory acidosis"],"Diarrhea loses bicarbonate from the gut, so the blood becomes acidic."],
-["abg","A patient in diabetic ketoacidosis has deep, rapid Kussmaul breathing. Which ABG fits?",["Low pH, low HCO₃⁻, low PaCO₂","High pH, high HCO₃⁻, normal PaCO₂","Low pH, high PaCO₂, normal HCO₃⁻","All values normal"],"Metabolic acidosis (low pH and HCO₃⁻), with the lungs blowing off CO₂ to compensate."],
-["abg","Using ROME, in a metabolic acid–base problem the pH and HCO₃⁻:",["Move in the same direction","Move in opposite directions","Do not change","Both always fall"],"ROME: Respiratory = Opposite (pH vs. PaCO₂); Metabolic = Equal (pH and HCO₃⁻ move together)."],
-["abg","Which device measures the actual SaO₂ and carboxyhemoglobin level?",["A co-oximeter run on an arterial sample","A pulse oximeter","A spirometer","A capnograph"],"Pulse oximetry only estimates saturation. A co-oximeter on an ABG sample gives the true SaO₂ and HbCO."],
-["abg","A patient's PaO₂ is 65 mm Hg on room air. This indicates:",["Hypoxemia","Normal oxygenation","Hypercapnia","Respiratory alkalosis"],"Normal PaO₂ is 80–100 mm Hg; below 80 is hypoxemia. Hypercapnia refers to high CO₂."],
-["abg","What is the normal SaO₂ on an ABG?",["98–100%","90–92%","85–90%","75–80%"],"The slides list SaO₂ at 98–100%. Normal SpO₂ by pulse oximetry is 95–100%."],
+// =====================================================================
+//  QUESTIONS
+//  Each question:
+//    cat   : topic name (shows as a filter chip)
+//    src   : "quiz" = from the graded quiz, "bonus" = extra practice
+//    q     : question text
+//    o     : answer options (2–4)
+//    a     : index of the correct option (0 = first option)
+//    e     : explanation shown after answering
+//    fixed : true = don't shuffle the options (for "1, 3 and 4" style answers)
+// =====================================================================
+const QUESTIONS = [
+  // ---------- From the graded quiz ----------
+  { cat: "History & charting", src: "quiz",
+    q: "Where in the medical record would you go to find information on a patient's understanding of the drugs they are taking and their methods of administration?",
+    o: ["Medication record", "Progress notes", "Doctor's orders", "Admission/demographics"], a: 0,
+    e: "The medication record documents what drugs the patient takes, how they're administered, and the patient's understanding of them. Doctor's orders only show what was prescribed." },
 
-/* ---------- Lab values ---------- */
-["labs","What is the normal hemoglobin (Hb)?",["12–16 g/dL","4–6 g/dL","20–25 g/dL","8–10 g/dL"],"Below this range is anemia; above it is polycythemia."],
-["labs","What is the normal hematocrit (Hct)?",["40–50%","20–30%","60–70%","12–16%"],"Hct is the percent of blood volume made up of red cells."],
-["labs","What is the normal WBC count?",["5,000–10,000 /mm³","1,000–4,000 /mm³","15,000–20,000 /mm³","150,000–400,000 /mm³"],"Above 10,000 is leukocytosis; below 5,000 is leukopenia."],
-["labs","What is the normal RBC count?",["4–6 million /mm³","12–16 million /mm³","1–2 million /mm³","40–50 million /mm³"],"Low = anemia; high = polycythemia."],
-["labs","A patient's WBC is 3,200 /mm³. This is:",["Leukopenia, often seen with viral infection","Leukocytosis, often seen with bacterial infection","Polycythemia","Within normal limits"],"Below 5,000 is leukopenia. The slides link it to viral infection."],
-["labs","A patient has a fever, yellow-green purulent sputum and a WBC of 16,000 /mm³. This suggests:",["Leukocytosis from a bacterial infection","Leukopenia from a viral infection","Anemia","Polycythemia"],"WBC above 10,000 is leukocytosis, typical of bacterial infection."],
-["labs","A long-term COPD patient has an Hb of 19 g/dL and an Hct of 58%. The best explanation is:",["Polycythemia from chronic hypoxemia","Anemia from blood loss","Leukocytosis","These are normal adult values"],"Chronic hypoxemia drives the body to make extra red cells."],
-["labs","What is the normal sodium (Na⁺)?",["135–145 mEq/L","3.5–5.0 mEq/L","95–105 mEq/L","22–26 mEq/L"],"Sodium is the major extracellular ion, controlled by the kidneys."],
-["labs","A dehydrated patient has a sodium of 151 mEq/L. This is:",["Hypernatremia","Hyponatremia","Hyperkalemia","Within normal limits"],"Above 145 is hypernatremia, usually from dehydration."],
-["labs","A CHF patient receiving IV fluids has a sodium of 128 mEq/L. This is:",["Hyponatremia from fluid gain","Hypernatremia from dehydration","Hyperkalemia","Within normal limits"],"Below 135 is hyponatremia. Extra fluid from CHF or IV fluids dilutes the sodium."],
-["labs","What is the normal potassium (K⁺) level?",["3.5–5.0 mEq/L","135–145 mEq/L","95–105 mEq/L","22–26 mEq/L"],"Your practice quiz accepted 3.5–5.0 mEq/L. The slides say 3.5–4.5."],
-["labs","A patient in kidney failure has a K⁺ of 6.1 mEq/L. This is:",["Hyperkalemia","Hypokalemia","Hypernatremia","Within normal limits"],"The kidneys excrete potassium, so kidney failure lets it build up."],
-["labs","A patient who is having trouble weaning from the ventilator has a K⁺ of 2.8 mEq/L. Why does this matter?",["Low K⁺ weakens the respiratory muscles","Low K⁺ increases lung compliance","Low K⁺ causes polycythemia","It does not affect breathing"],"Severe electrolyte problems weaken the respiratory muscles and make spontaneous breathing hard to sustain."],
-["labs","What is the normal chloride (Cl⁻)?",["95–105 mEq/L","135–145 mEq/L","3.5–5.0 mEq/L","70–105 mEq/L"],"Chloride is a major extracellular ion."],
-["labs","Prolonged vomiting most often causes which chloride change?",["Hypochloremia (low Cl⁻)","Hyperchloremia (high Cl⁻)","No change","Hypernatremia"],"Per the slides: vomiting → low chloride; diarrhea → high chloride."],
-["labs","What is the normal BUN?",["8–25 mg/dL","0.7–1.3 mg/dL","70–105 mg/dL","135–145 mg/dL"],"BUN and creatinine are both kidney-function tests."],
-["labs","What is the normal blood glucose?",["70–105 mg/dL","8–25 mg/dL","135–145 mg/dL","150–200 mg/dL"],"The slides list 70–105 mg/dL."],
-["labs","What is the normal creatinine?",["0.7–1.3 mg/dL","8–25 mg/dL","3.5–5.0 mg/dL","12–16 mg/dL"],"Creatinine is excreted by the kidneys."],
-["labs","Which lab value is most specific for kidney failure?",["Creatinine","BUN","Glucose","Chloride"],"The slides call creatinine more specific than BUN for kidney failure."],
-["labs","How is hematocrit measured?",["By spinning blood to see what percent is red cells","By counting white cells","With a pulse oximeter","By measuring plasma sodium"],"Spinning separates the cells, and the red-cell layer is read as a percentage."],
-["labs","How much O₂ does 1 gram of fully saturated hemoglobin carry?",["1.34 mL","13.4 mL","0.003 mL","4 mL"],"Each gram of Hb carries 1.34 mL of O₂ when fully saturated."],
-["labs","An anemic patient has an SpO₂ of 99%, but her tissues may still be short of oxygen. Why?",["There is too little Hb to carry enough O₂, even when it's fully saturated","The pulse oximeter must be broken","Her CO₂ is too high","Her WBC count is high"],"Saturation is a percentage of the Hb present. Low Hb means low O₂ content."],
-["labs","When reviewing the chart of a patient with an acute pulmonary infection, which study helps choose the right antibiotic?",["Sputum culture and sensitivity","Electrolyte tests","Hb and Hct","Sputum acid-fast stain"],"C&S identifies the organism and which antibiotics it is sensitive to."],
-["labs","A patient has night sweats, weight loss and a chronic cough, and tuberculosis is suspected. Which lab study is most useful?",["Sputum acid-fast stain","Electrolyte tests","Hb and Hct","WBC count"],"Acid-fast testing identifies acid-fast bacteria such as TB."],
-["labs","A Gram stain of sputum tells you:",["Whether the organism is gram-positive or gram-negative, and its shape","Exactly which antibiotic will work","Whether the patient has anemia","The patient's clotting time"],"Choosing an antibiotic takes a culture and sensitivity, not a Gram stain."],
-["labs","After a sputum sample is stained and acid-washed, the organism resists decolorization. It is classified as:",["An acid-fast bacterium","A gram-negative bacterium","Normal mouth flora","A virus"],"Resisting decolorization after an acid wash defines acid-fast bacteria such as TB."],
-["labs","A sputum sample shows many epithelial cells and few pus cells. You should:",["Collect a new sample — this one is mostly saliva","Send it for culture and sensitivity","Chart it as purulent sputum","Order an acid-fast stain"],"A real sputum sample has many pus cells and few epithelial cells."],
-["labs","Before drawing an ABG, you see that the platelet count is very low and the INR is high. You should:",["Draw it only if necessary and hold pressure on the site longer","Skip holding pressure afterward","Use a larger needle","Use the femoral artery instead"],"Poor clotting raises the risk of bleeding and a hematoma at the site."],
-["labs","Which procedures call for checking clotting values (platelets, PT/INR) first?",["ABG puncture and nasotracheal suctioning","Pulse oximetry and blood pressure","Auscultation and percussion","Temperature and pulse"],"Both procedures can cause bleeding in a patient who clots poorly."],
+  { cat: "Labs", src: "quiz",
+    q: "When reviewing the chart of a patient who presents with evidence of acute pulmonary infection, which laboratory study would provide the most useful information?",
+    o: ["Sputum culture and sensitivity", "Electrolyte tests", "Sputum acid-fast stain", "Hb and HCT"], a: 0,
+    e: "Culture identifies the organism; sensitivity shows which antibiotics will kill it. An acid-fast stain is specifically for tuberculosis/mycobacteria, not general infection." },
 
-/* ---------- Breath sounds ---------- */
-["sounds","Which breath sound is normal over most of the lung periphery?",["Vesicular","Bronchial","Rhonchi","Crackles"],"Vesicular sounds are soft and low-pitched, heard mostly on inspiration over normal lung."],
-["sounds","Which breath sound is normal over the trachea and manubrium?",["Bronchial","Vesicular","Wheezes","Crackles"],"Bronchial sounds are loud and high-pitched. They are normal only over the large airways."],
-["sounds","According to the slides, bronchovesicular sounds are normally heard:",["Over the right apex and near the sternum","At the lung bases","Over the lateral chest wall","Only in children"],"They are a mix of bronchial and vesicular sounds, heard near the large airways."],
-["sounds","You hear bronchial breath sounds out over the right lower lobe instead of vesicular sounds. This suggests:",["Consolidation, such as pneumonia","Normal lung tissue","Pneumothorax","Emphysema"],"Solid (consolidated) lung carries tracheal sounds out to the chest wall."],
-["sounds","A patient having an asthma attack has high-pitched, musical, continuous sounds on exhalation in both lungs. Which term would you record?",["Wheezes","Crackles","Stridor","Rhonchi"],"Wheezes come from narrowed, constricted airways."],
-["sounds","Wheezes indicate:",["Narrowed, constricted airways","Fluid in the alveoli","Normal airflow","Upper-airway obstruction"],"Bronchospasm, as in asthma and COPD, causes wheezing."],
-["sounds","A patient is wheezing during an asthma exacerbation. What should the RT recommend?",["A bronchodilator such as albuterol","A diuretic such as furosemide","Racemic epinephrine for stridor","An antibiotic"],"Bronchodilators open constricted airways."],
-["sounds","Following airway clearance therapy, you hear coarse, low-pitched, continuous sounds around the upper chest. Which term would you record?",["Rhonchi","Wheezes","Crackles","Stridor"],"Rhonchi are continuous, wet or rumbling sounds from secretions in the larger airways."],
-["sounds","Rhonchi that clear after the patient coughs tell you:",["Secretions are in the larger airways","There is fluid in the alveoli","There is bronchospasm","The upper airway is blocked"],"A cough moves the secretions, which changes or clears the sound."],
-["sounds","A CHF patient has fine crackling sounds, like Rice Krispies in milk, at both lung bases. The most likely cause is:",["Fluid in the lungs (pulmonary edema)","Air trapping","Pneumothorax","Upper-airway obstruction"],"Crackles mean fluid: pulmonary edema, pneumonia or CHF."],
-["sounds","During auscultation you hear intermittent bubbling sounds at the lung bases. Which chart entry fits best?",["Crackles heard at the lung bases","Bronchial breath sounds at the lung bases","Wheezes heard at the lung bases","Rhonchi heard at the lung bases"],"Intermittent (discontinuous) bubbling or popping is crackles."],
-["sounds","Which adventitious sound is discontinuous (popping) rather than continuous?",["Crackles","Wheezes","Rhonchi","Stridor"],"Crackles pop. Wheezes, rhonchi and stridor are continuous."],
-["sounds","Which of these adventitious sounds are continuous?",["1 and 2","2 and 3","2, 3 and 4","1, 2, 3 and 4"],"Wheezes, rhonchi and stridor are continuous. Crackles are discontinuous.",{a:2,items:["Crackles","Wheezes","Rhonchi","Stridor"]}],
-["sounds","Crackles are usually heard mainly during:",["Inspiration","Expiration only","Coughing only","Breath-holding"],"Fluid-filled or collapsed small airways pop open as the patient breathes in."],
-["sounds","Stridor is heard mainly during:",["Inspiration","Expiration","Neither phase","Only while asleep"],"Stridor is an inspiratory sound from the upper airway. Wheezes are usually on expiration."],
-["sounds","A recently extubated patient has a loud, high-pitched sound on inspiration, heard best over the neck. This indicates:",["Upper-airway obstruction — an emergency","Fluid in the alveoli","Normal tracheal breath sounds","Small-airway bronchospasm"],"Stridor means severe upper-airway obstruction."],
-["sounds","A child with croup has a barking cough and a high-pitched sound on every inspiration. This sound is:",["Stridor","Wheezes","Crackles","Rhonchi"],"Croup swells the upper airway, which causes inspiratory stridor."],
-["sounds","A patient develops stridor after extubation. What treatment would you expect?",["Racemic epinephrine, with reintubation if it is severe","Furosemide","Chest physiotherapy","Lowering the oxygen"],"The slides list racemic epinephrine (Vaponefrin) or intubation for stridor."],
-["sounds","Breath sounds are diminished throughout the chest of an emphysema patient. Why?",["Air trapping means little air is moving","Pulmonary edema","Consolidation","This is normal for any adult"],"Hyperinflated lungs move little air, so the sounds are faint and distant."],
-["sounds","After chest trauma, there are no breath sounds at all over the left chest. The most likely cause is:",["Pneumothorax","Asthma","Pulmonary edema","Bronchitis"],"Absent breath sounds point to pneumothorax."],
-["sounds","Which patient is most likely to have crackles?",["A patient with pneumonia","A patient with an anxiety attack","A patient with pectus carinatum","A patient hyperventilating at rest"],"Pneumonia fills the alveoli with fluid and pus."],
+  { cat: "Breathing patterns", src: "quiz",
+    q: "A patient states that he has trouble sleeping unless he uses two pillows. This comment indicates which condition?",
+    o: ["Dysphagia", "Platypnea", "Orthopnea", "Tachypnea"], a: 2,
+    e: "Orthopnea is shortness of breath when lying flat, relieved by sitting up — often charted by pillow count (\u201ctwo-pillow orthopnea\u201d). Classic in left heart failure. Platypnea is the opposite: dyspnea when upright." },
 
-/* ---------- Chest exam & inspection ---------- */
-["exam","A patient's sternum is sunken in. This is called:",["Pectus excavatum","Pectus carinatum","Kyphosis","Barrel chest"],"Pectus excavatum is also called funnel chest. It decreases lung volumes."],
-["exam","A patient's sternum sticks out, giving a pigeon-chest appearance. This is called:",["Pectus carinatum","Pectus excavatum","Scoliosis","Barrel chest"],"Carinatum means pigeon chest."],
-["exam","Which chest deformity decreases lung volumes?",["Pectus excavatum","Pectus carinatum","A normal A-P diameter","A midline trachea"],"Per the slides, excavatum (funnel chest) decreases lung volumes."],
-["exam","How does pectus carinatum usually affect breathing?",["It usually causes no respiratory problems","It causes severe restrictive disease","It causes air trapping","It causes a pneumothorax"],"Per the slides, pigeon chest has no respiratory complications."],
-["exam","A sideways (lateral) curve of the spine is called:",["Scoliosis","Kyphosis","Pectus carinatum","Barrel chest"],"Scoliosis bends sideways in an S or C shape."],
-["exam","A forward hunch of the upper spine (hunchback) is called:",["Kyphosis","Scoliosis","Pectus excavatum","Barrel chest"],"Kyphosis curves forward, rounding the upper back."],
-["exam","A spine that curves both forward and sideways is called:",["Kyphoscoliosis","Kyphosis","Scoliosis","Pectus carinatum"],"Kyphoscoliosis combines the two curves."],
-["exam","Severe kyphoscoliosis can lead to:",["A restrictive lung defect and respiratory failure","Larger lung volumes","Barrel chest","Digital clubbing within days"],"The deformed chest wall can't expand fully, which restricts the lungs."],
-["exam","An increased A-P chest diameter (barrel chest) is most often seen with:",["COPD / emphysema","Pectus carinatum","Pneumonia","Pulmonary edema"],"Air trapping enlarges the front-to-back diameter."],
-["exam","What causes barrel chest?",["Air trapping and hyperinflation","Fluid overload","A sideways spinal curve","A sunken sternum"],"Trapped air keeps the chest in a partly inhaled, rounded shape."],
-["exam","In a normal adult, the A-P diameter compared with the side-to-side diameter is about:",["1:2","1:1","2:1","1:4"],"Normally the chest is about half as deep as it is wide. In barrel chest it nears 1:1."],
-["exam","Percussion over the chest of a COPD patient sounds like a hollow drum. This is called:",["Hyperresonance, from air trapping","Dullness, from consolidation","Flatness, from effusion","Normal resonance"],"Hyperresonance is loud, low-pitched and long, from trapped air."],
-["exam","Percussing over an area of pneumonia (consolidation) produces:",["Dullness","Resonance","Hyperresonance","A hollow, drum-like sound"],"Dullness means consolidation or atelectasis."],
-["exam","According to the slides, percussion over a pleural effusion produces:",["Flatness","Hyperresonance","Resonance","A hollow, drum-like sound"],"The slides describe flatness as low-pitched and usually heard over pleural effusions."],
-["exam","A trauma patient has absent breath sounds and hyperresonance on the left, and the trachea is shifted to the right. The most likely problem is:",["Left pneumothorax","Left lower lobe atelectasis","Right pleural effusion","Left lower lobe pneumonia"],"The trachea shifts away from a pneumothorax."],
-["exam","The trachea is shifted toward the right, and percussion over the right lower chest is dull. The most likely problem is:",["Right lower lobe atelectasis","Right pneumothorax","Left pleural effusion","Emphysema"],"The trachea shifts toward atelectasis or fibrosis."],
-["exam","On examination of a normal patient's neck, the trachea should be:",["Midline, centered at the suprasternal notch","Shifted to the right","Shifted to the left","Under the left clavicle"],"A normal trachea is midline."],
-["exam","In a tension pneumothorax, the trachea shifts:",["Away from the affected side","Toward the affected side","Nowhere","Upward"],"Air pressure pushes the trachea away from a pneumothorax or pleural effusion."],
-["exam","To check vocal fremitus, you ask the patient to say:",["\"99\"","\"Ahh\"","Their full name","Nothing, just breathe"],"Saying \"99\" sends vibration through the airways to your hand."],
-["exam","Palpating the neck and upper chest, you feel a crackling sensation under the skin. This is:",["Subcutaneous emphysema","Tactile fremitus","Pitting edema","Digital clubbing"],"Subcutaneous emphysema is air trapped under the skin."],
-["exam","Which of these is NOT an accessory muscle of ventilation?",["Diaphragm","Sternocleidomastoid","Scalenes","Trapezius"],"The diaphragm is the main muscle of breathing. Accessory muscles are the scalenes, sternocleidomastoid, trapezius and pectoralis."],
-["exam","Activity of the accessory muscles of ventilation at rest suggests:",["Increased work of breathing","Increased pulmonary compliance","Decreased airway resistance","Increased physiologic deadspace"],"The patient needs extra muscles just to move air."],
-["exam","An infant shows nasal flaring and retractions at rest. This suggests:",["Increased work of breathing","Increased lung compliance","Normal infant breathing","Decreased airway resistance"],"Nasal flaring is the infant's sign of respiratory distress."],
-["exam","Jugular venous distention (JVD) indicates:",["Increased venous pressure","Low blood volume","Dehydration","Normal circulation"],"Blood backs up into the neck veins when venous pressure rises."],
-["exam","Inspection reveals jugular venous distention. The most likely cause is:",["Right heart failure","Hypovolemia","Pulmonary hypotension","Dehydration"],"A failing right heart can't move blood forward, so it backs up into the veins."],
-["exam","JVD is best assessed with the head of the bed at about:",["45°","0° (flat)","90° (fully upright)","Head down (Trendelenburg)"],"At 45° the neck veins of a healthy patient should not look distended."],
-["exam","A COPD patient has JVD and 2+ pitting edema in both ankles. The most likely cause is:",["Right heart failure (cor pulmonale)","Hypovolemia","Dehydration","Pulmonary hypotension"],"JVD plus peripheral edema in lung disease points to cor pulmonale."],
-["exam","Cor pulmonale is:",["Right heart failure caused by lung disease","Left heart failure caused by a heart attack","A type of lung infection","A collapsed lung"],"Chronic hypoxemia strains the right ventricle until it fails."],
-["exam","You press on a patient's ankle and the dent stays. This finding is:",["Pitting edema","Digital clubbing","Cyanosis","JVD"],"Pitting edema is graded 1+, 2+ and so on. Check the feet and hands."],
-["exam","On entering a patient's room, you notice that his lips and nail beds are blue-gray. This is a sign of:",["Hypoxemia","Advanced age","Hypercapnia","Peripheral edema"],"Cyanosis is a sign of low oxygen."],
-["exam","Cyanosis appears when the blood holds about how much reduced (unoxygenated) hemoglobin?",["5 g/dL","1 g/dL","15 g/dL","Any amount when SpO₂ is below 99%"],"The slides use 5 g of reduced Hb per 100 mL of blood."],
-["exam","A severely anemic patient is hypoxemic but does not look cyanotic. Why?",["Too little Hb to reach 5 g/dL of reduced Hb","Anemia makes the skin pink","The pulse oximeter is wrong","Cyanosis requires a high CO₂"],"With little Hb, there isn't enough unoxygenated Hb to turn the skin blue."],
-["exam","Compared with a normal patient, cyanosis in a polycythemic COPD patient appears:",["Sooner, at milder hypoxemia","Never","Later, only at severe hypoxemia","Only in the feet"],"Extra Hb means the 5 g/dL of reduced Hb is reached sooner."],
-["exam","Digital clubbing looks like:",["Loss of the normal nail-base angle, with a rounded, widened fingertip","Yellow, brittle nails","Swollen knuckles","Pale nail beds that refill quickly"],"In clubbing, the fingertip (DPD) becomes wider than the last joint (IPD)."],
-["exam","Digital clubbing is most associated with:",["Cystic fibrosis or bronchiectasis (chronic hypoxemia)","An acute asthma attack","A sprained finger","Acute anxiety"],"Clubbing develops over time with chronic lung or heart disease."],
-["exam","When measuring a clubbed finger, you find:",["DPD greater than IPD","IPD greater than DPD","DPD equal to IPD","No measurable change"],"DPD is the depth at the nail base; IPD is the depth at the last finger joint."],
-["exam","It is noted in the chart that a patient has a six-second capillary refill time. This indicates the patient:",["Has inadequate perfusion to the extremities","Has pulmonary edema","Has adequate pulmonary perfusion","Has increased cardiac output"],"Normal capillary refill is 2–3 seconds."],
-["exam","A patient's capillary refill is 2 seconds. This indicates:",["Normal peripheral perfusion","Poor perfusion to the extremities","Pulmonary edema","Decreased cardiac output"],"Normal is 2–3 seconds."],
-["exam","A patient becomes restless and anxious, and his heart rate is climbing. What should you suspect first?",["Hypoxemia","Hypothermia","CO₂ retention","Hyponatremia"],"Restlessness is an early sign of hypoxemia."],
-["exam","A COPD patient becomes increasingly sleepy and hard to wake. What should you suspect?",["CO₂ retention (hypercapnia)","Hypoxemia alone","Hyperthermia","Anemia"],"Sleepiness suggests CO₂ retention."],
-["exam","When does inspection of the patient begin?",["The moment you walk into the room","After taking vital signs","After auscultation","At discharge"],"Your first look at the patient's color, posture and breathing is part of inspection."],
+  { cat: "History & charting", src: "quiz",
+    q: "During an interview, a patient complains about coughing. What further information would you seek regarding this symptom?",
+    o: ["Characteristics (productive?) and course only", "Onset and characteristics only", "Onset (what brings it on?), characteristics (productive?), and course (progress over time)", "Onset and course only"], a: 2,
+    e: "Fully describe every symptom: onset (when it started, what triggers it), characteristics (productive? sputum color/amount), and course (getting better or worse over time)." },
 
-/* ---------- Vitals & pulse ox ---------- */
-["vitals","What is the normal respiratory rate for an adult?",["12–20 /min","20–26 /min","24–34 /min","8–10 /min"],"Child 20–26; infant 24–34."],
-["vitals","What is the normal respiratory rate for an infant, per the slides?",["24–34 /min","12–20 /min","20–26 /min","8–12 /min"],"Adult 12–20; child 20–26; infant 24–34."],
-["vitals","Which temperature site is most accurate?",["Rectal","Oral","Axillary","Ear"],"Rectal is the most accurate site."],
-["vitals","A patient's temperature rises from 37 °C to 39 °C. About how much does his O₂ consumption increase?",["20%","5%","10%","40%"],"O₂ consumption and CO₂ production rise about 10% for every 1 °C."],
-["vitals","How does a fever affect heart rate and breathing?",["Both increase","Both decrease","Heart rate rises, breathing slows","Neither changes"],"Higher metabolism means more O₂ use and more CO₂ to remove."],
-["vitals","Which term best describes an adult pulse rate of 125 per minute?",["Tachycardia","Bradycardia","Pulsus paradoxus","Pulsus alternans"],"Tachycardia is above 100/min."],
-["vitals","Which term best describes an adult pulse of 52/min?",["Bradycardia","Tachycardia","Pulsus alternans","Normal sinus rate"],"Bradycardia is below 60/min."],
-["vitals","A COPD patient's pulse gets noticeably weaker each time he inhales. You would chart:",["Pulsus paradoxus","Pulsus alternans","Bounding pulse","Thready pulse"],"Pulsus paradoxus is a weaker pulse on inhalation, common in COPD."],
-["vitals","A pulse that alternates strong and weak beats is called:",["Pulsus alternans","Pulsus paradoxus","Bounding pulse","Bradycardia"],"Pulsus alternans is a regular alternation of strong and weak beats."],
-["vitals","A patient's pulse is irregular. How long should you count it?",["A full 60 seconds","15 seconds × 4","30 seconds × 2","10 seconds × 6"],"Shorter counts miss the irregular beats."],
-["vitals","Why take a pulse with your index and middle fingers instead of your thumb?",["Your thumb has its own pulse, which can confuse the count","The thumb is too weak to feel a pulse","It's an infection-control rule","Only for patient comfort"],"The slides say never to use the thumb."],
-["vitals","Blood pressure above which value is hypertension?",["140/90 mm Hg","120/80 mm Hg","100/60 mm Hg","160/110 mm Hg"],"Normal adult BP is 120/80. Per the slides, hypotension is below 95/60."],
-["vitals","The systolic pressure mainly reflects:",["Cardiac contractility","Blood vessel resistance","Respiratory rate","Body temperature"],"Systolic is the first number and reflects how hard the heart contracts."],
-["vitals","The diastolic pressure mainly reflects:",["Blood vessel resistance","Cardiac contractility","Oxygen saturation","Lung compliance"],"Diastolic is the second number and reflects resistance in the vessels."],
-["vitals","A patient's blood pressure is 110/70. What is the mean arterial pressure?",["83 mm Hg","90 mm Hg","70 mm Hg","97 mm Hg"],"(2 × 70 + 110) ÷ 3 = 250 ÷ 3 ≈ 83 mm Hg."],
-["vitals","A patient's blood pressure is 130/85. What is the mean arterial pressure?",["100 mm Hg","108 mm Hg","85 mm Hg","115 mm Hg"],"(2 × 85 + 130) ÷ 3 = 300 ÷ 3 = 100 mm Hg."],
-["vitals","What is the normal SpO₂ by pulse oximetry?",["95–100%","85–90%","80–85%","100% only"],"Pulse oximetry estimates SaO₂ with light; normal is 95–100%."],
-["vitals","Which abnormal hemoglobins make a pulse oximeter overestimate saturation?",["Carboxyhemoglobin and methemoglobin","Fetal and adult hemoglobin","Oxyhemoglobin only","None of these"],"The oximeter reads these as if they were carrying oxygen."],
-["vitals","A house-fire victim has an SpO₂ of 99%, a headache and confusion. You should:",["Give 100% O₂ and get an ABG with co-oximetry","Accept the reading — no oxygen is needed","Place him on a 2 L/min nasal cannula","Move the probe to another finger and recheck"],"CO makes pulse oximetry read falsely high."],
-["vitals","Carbon monoxide binds to hemoglobin about how much more strongly than oxygen does?",["About 200 times","About 2 times","About 20 times","About 2,000 times"],"CO forms HbCO and pushes oxygen off the hemoglobin."],
-["vitals","Carbon monoxide shifts the oxyhemoglobin curve:",["To the left, so less O₂ is released to the tissues","To the right, so more O₂ is released","Not at all","Only during exercise"],"Hb holds on to the oxygen it does carry."],
-["vitals","How is carbon monoxide poisoning treated?",["100% FiO₂ or hyperbaric oxygen","A 2 L/min nasal cannula","A diuretic","A bronchodilator"],"High-concentration O₂ speeds the removal of CO from the hemoglobin."],
-["vitals","Which of the following can make a pulse oximeter reading unreliable?",["1 and 3","2 and 4","1, 2 and 3","1, 2, 3 and 4"],"Nail polish, poor perfusion, HbCO and movement all affect readings.",{a:3,items:["Dark nail polish","Shock or poor perfusion","Carbon monoxide poisoning","Patient movement"]}],
-["vitals","Which are indications for pulse oximetry?",["1 and 2","1, 2 and 3","3 and 4","1, 2, 3 and 4"],"Pulse oximetry estimates oxygen saturation. It cannot measure PaCO₂.",{a:1,items:["Continuous monitoring","Spot checks","Weaning from oxygen and measuring response to O₂ therapy","Measuring PaCO₂"]}],
-["vitals","The best quick check that a pulse oximeter reading is believable is to:",["Compare the oximeter's pulse rate with the patient's actual pulse","Turn up the oxygen","Take a blood pressure","Ask the patient how they feel"],"If the pulse rates don't match, the reading is suspect. Also ask whether the numbers make sense."],
-["vitals","Spectrophotometry in a pulse oximeter measures:",["How much light the hemoglobin absorbs","Arterial blood pressure","CO₂ levels","Body temperature"],"Oxygenated and unoxygenated Hb absorb different wavelengths of light."],
+  { cat: "Chest inspection & exam", src: "quiz",
+    q: "On entering a patient's room, you notice that his lips and nailbeds are blue-gray. This finding is a sign of:",
+    o: ["Hypoxemia", "Advanced age", "Hypercapnia", "Peripheral edema"], a: 0,
+    e: "Blue-gray color is cyanosis — it appears when about 5 g/dL of hemoglobin is desaturated, a sign of hypoxemia. Anemic patients can be hypoxemic without visible cyanosis." },
 
-/* ---------- Breathing patterns & LOC ---------- */
-["patterns","A patient says he has trouble sleeping unless he uses two pillows. This indicates:",["Orthopnea","Dysphagia","Platypnea","Tachypnea"],"Orthopnea is dyspnea lying flat, relieved by sitting up."],
-["patterns","A patient says he can only breathe comfortably sitting upright and now sleeps in a recliner. Which term should you chart?",["Orthopnea","Platypnea","Dysphagia","Tachypnea"],"Orthopnea is dyspnea lying flat."],
-["patterns","A patient gets short of breath when she sits up, and it eases when she lies flat. This is:",["Platypnea","Orthopnea","Paroxysmal nocturnal dyspnea","Hyperpnea"],"Platypnea is the reverse of orthopnea."],
-["patterns","Paroxysmal nocturnal dyspnea is most associated with:",["CHF, COPD and asthma","Pectus carinatum","Scoliosis","Anemia"],"The patient wakes suddenly at night short of breath."],
-["patterns","Kussmaul's breathing is a pattern seen in which type of patient?",["Diabetic ketoacidosis patients","Congestive heart failure patients","Pulmonary edema patients","Emphysema patients"],"Kussmaul breathing is deep and rapid, to blow off CO₂ in metabolic acidosis."],
-["patterns","Deep, rapid Kussmaul breathing is the body's attempt to:",["Blow off CO₂ to make up for metabolic acidosis","Retain CO₂","Increase oxygen stores","Make up for metabolic alkalosis"],"Lowering PaCO₂ pushes the pH back up."],
-["patterns","Breathing gradually gets faster and deeper, then shallower, followed by a period of apnea. This pattern is:",["Cheyne-Stokes","Kussmaul's","Biot's","Eupnea"],"Cheyne-Stokes is a cyclic rise and fall with apnea."],
-["patterns","Biot's breathing is best described as:",["Irregular breaths with sudden periods of apnea","Deep, rapid and regular breathing","A smooth crescendo–decrescendo cycle","Normal breathing"],"Biot's breathing is irregular, unlike the smooth cycles of Cheyne-Stokes."],
-["patterns","Which of these commonly causes tachypnea?",["Hypoxemia, pain, anxiety or fever","An opioid overdose","Hypothermia","Deep sleep"],"Each of these raises the drive to breathe."],
-["patterns","Which of these commonly causes bradypnea?",["CNS depression, such as a drug overdose","Fever","Anxiety","Exercise"],"Hypothermia also slows breathing."],
-["patterns","Hypopnea means:",["Shallow breathing","Deep breathing","No breathing","Fast breathing"],"Hyperpnea is deep breathing; apnea is no breathing."],
-["patterns","Hyperpnea means:",["Deep breathing","Shallow breathing","Absent breathing","Slow breathing"],"Hypopnea is shallow breathing; apnea is no breathing."],
-["patterns","Pursed-lip breathing is most often seen in:",["COPD","Pneumothorax","Pectus carinatum","Anemia"],"Breathing out against pursed lips helps keep the airways open."],
-["patterns","A patient is sleepy but wakes easily when you say his name. His level of consciousness is:",["Lethargic","Obtunded","Stuporous","Comatose"],"Lethargic means sleepy but arouses easily."],
-["patterns","A patient wakes only with difficulty. His level of consciousness is:",["Obtunded","Lethargic","Delirious","Confused"],"Obtunded means awakens with difficulty."],
-["patterns","A patient does not wake up but does respond to painful stimuli. His level of consciousness is:",["Stuporous","Lethargic","Obtunded","Comatose"],"Comatose patients don't respond to any stimulus."],
-["patterns","An agitated patient is having hallucinations. His level of consciousness is:",["Delirious","Lethargic","Obtunded","Stuporous"],"Confused means incoherent thoughts; delirious adds agitation and hallucinations."],
-["patterns","A patient who is unconscious and does not respond to any stimulus is:",["Comatose","Stuporous","Obtunded","Lethargic"],"Comatose is the deepest level."],
-["patterns","It is written in the chart that the patient is awake, alert and oriented × 3. This means that:",["You asked the patient their name, place and what date it is","You asked the same question three times","The patient said their name three times","The patient answered three of five questions"],"Oriented × 3 means oriented to person, place and time."],
-["patterns","A patient knows her name and that she is in the hospital, but not today's date. You would chart her as:",["Oriented × 2","Oriented × 1","Oriented × 3","Delirious"],"She is oriented to person and place, but not time."],
+  { cat: "Vital signs", src: "quiz",
+    q: "Which term best describes an adult pulse rate of 125 per minute?",
+    o: ["Bradycardia", "Tachycardia", "Pulsus paradoxus", "Pulsus alternans"], a: 1,
+    e: "Normal adult HR is 60–100/min. Above 100 is tachycardia; below 60 is bradycardia." },
 
-/* ---------- History & charting ---------- */
-["history","Where in the medical record would you find a patient's understanding of the drugs they take and how they're given?",["Medication record","Progress notes","Doctor's orders","Admission/demographics"],"The medication record tracks a patient's drugs and how they are given."],
-["history","Where in the medical record would you find the physician's prescription for a patient's oxygen therapy?",["Doctor's orders","Progress notes","Medication record","Admission/demographics"],"Every prescribed therapy, including O₂, is in the doctor's orders."],
-["history","Where in the medical record would you find a patient's date of birth, address and insurance?",["Admission/demographics","Doctor's orders","Progress notes","Medication record"],"Demographic data covers name, age, date of birth, height, weight and similar details."],
-["history","The progress notes contain:",["Ongoing notes on the patient's condition and response to treatment","Insurance information","Only the drug list","Only the physician's prescriptions"],"Progress notes show how the patient is doing over time."],
-["history","A patient's chief complaint is:",["The main reason the patient is seeking care, usually one sentence","The doctor's final diagnosis","The patient's past surgeries","The most abnormal lab value"],"For example: \"I came because I'm having trouble breathing.\""],
-["history","In a patient history, HPI stands for:",["History of present illness","Hospital patient index","Hypoxemia, pain, infection","Health and physical inspection"],"PMH is past medical history."],
-["history","Which part of a patient's social history matters most when assessing lung disease?",["Smoking history","Marital status","Cultural background","Education"],"Smoking is the top risk factor for lung disease."],
-["history","Which part of a patient's history is most important in diagnosing work-related lung disease?",["Occupational history","Marital status","Cultural background","Education"],"Dusts, fumes and chemicals at work can cause lung disease."],
-["history","Which of the following is a sign rather than a symptom?",["Cyanosis","Nausea","Chest pain","Shortness of breath"],"A sign is objective and observable; a symptom is reported by the patient."],
-["history","Dyspnea is:",["Subjective — what the patient reports","An objective sign","Measured by pulse oximetry","Always visible from the doorway"],"Dyspnea is a symptom, so you evaluate whether it is present and how bad it is."],
-["history","Which four qualities of sputum must you always chart?",["Amount, odor, viscosity, color","Amount, pH, temperature, color","Odor, taste, volume, smell","Color, weight, culture, stain"],"Always include all four in your charting."],
-["history","A patient coughs up pink, frothy sputum. This suggests:",["Pulmonary edema","Normal sputum","An asthma attack","Chronic bronchitis"],"Pink, frothy sputum is a classic sign of pulmonary edema."],
-["history","A patient coughs up blood-tinged sputum. What should you do?",["Notify the nurse and the physician","Chart it only","Ignore it if the amount is small","Give a bronchodilator"],"Report hemoptysis or any blood."],
-["history","When analyzing a symptom, asking \"On a scale of 1 to 10, how bad is it?\" measures:",["Severity","Onset","Location","Timing"],"The full list is onset, characteristics, location, severity, timing and aggravating or relieving factors."],
-["history","A patient complains of chest pain. Which would you ask about?",["1 and 2","1, 2 and 3","2, 3 and 4","1, 2, 3 and 4"],"Analyze a symptom by onset, characteristics, location, severity, timing and aggravating or relieving factors.",{a:3,items:["Onset","Location","Severity on a 1–10 scale","What makes it better or worse"]}],
-["history","During an interview, a patient complains about coughing. What further information would you seek?",["1 and 2","2 and 3","1, 2 and 3","1 and 3"],"Ask about onset, the cough's characteristics (productive or not) and how it has changed over time.",{a:2,items:["Onset (what brings it on?)","Characteristics (is it productive?)","Course (how has it progressed over time?)"]}],
+  { cat: "Breath sounds", src: "quiz",
+    q: "Following airway clearance therapy, you auscultate a patient's chest and hear coarse, low-pitched, continuous sounds bilaterally around the upper chest. Which term would you record?",
+    o: ["Rhonchi", "Wheezes", "Rales (crackles)", "Stridor"], a: 0,
+    e: "Rhonchi are low-pitched, continuous, coarse sounds from secretions moving in the larger airways. They often change or clear after coughing." },
 
-/* ---------- Patient care & emergencies ---------- */
-["care","RR, tidal volume, chest movement, breath sounds and PaCO₂ are used to assess which critical life function?",["Ventilation","Oxygenation","Circulation","Perfusion"],"Ventilation is moving air into and out of the lungs."],
-["care","Heart rate, skin color, sensorium and PaO₂ are used to assess which critical life function?",["Oxygenation","Ventilation","Circulation","Perfusion"],"Oxygenation is getting O₂ into the blood."],
-["care","Blood pressure, temperature, urine output and sensorium are used to assess which critical life function?",["Perfusion","Ventilation","Oxygenation","Circulation"],"Perfusion is getting blood and O₂ into the tissues."],
-["care","Pulse rate, pulse strength and cardiac output are used to assess which critical life function?",["Circulation","Perfusion","Oxygenation","Ventilation"],"Circulation is moving the blood through the body."],
-["care","The RT has an order for a bronchodilator by SVN. The patient is lethargic, with an RR of 6/min and a heart rate of 160/min with a weak pulse. What should the therapist do FIRST?",["Activate the emergency medical team","Obtain an arterial blood gas","Increase the O₂ to 5 L/min and monitor with pulse oximetry","Recommend a chest radiograph"],"A failing critical life function is treated stat."],
-["care","You find a patient gray, gasping and not responding to your voice. What should you do FIRST?",["Call for help and support ventilation","Draw an ABG","Order a chest X-ray","Finish charting"],"Problems with ventilation or oxygenation come before any diagnostic test."],
-["care","You arrive to give a scheduled treatment and find the patient unresponsive, not breathing, with no pulse. You should FIRST:",["Call a code and start CPR","Give the ordered treatment","Obtain an arterial blood gas","Increase the O₂ and recheck in 5 minutes"],"No pulse and no breathing means a code: call it and start CPR."],
-["care","A patient in cardiogenic shock has a blood pressure of 72/40. Which medication should the RT recommend?",["Dopamine (Intropin)","Lidocaine (Xylocaine)","Nitroprusside (Nipride)","Furosemide (Lasix)"],"Dopamine raises blood pressure. Nitroprusside and furosemide would lower it."],
-["care","A patient in cardiogenic pulmonary edema has bilateral crackles and a BP of 150/90. Which medication should the RT recommend to remove the excess fluid?",["Furosemide (Lasix)","Dopamine (Intropin)","Lidocaine (Xylocaine)","Albuterol"],"Furosemide is a diuretic. Dopamine is for low blood pressure."],
-["care","To assess what a patient learned after an education session, you would:",["Have the patient explain the information back to you","Ask the assigned nurse to quiz the patient","Check the progress notes for improvement","Give the patient a pamphlet"],"Teach-back shows what the patient actually understood."],
-["care","After teaching a patient to use a metered-dose inhaler, the best way to confirm what she learned is to:",["Have her demonstrate the technique back to you","Ask whether she has any questions","Give her a pamphlet to read","Ask the nurse to check on her later"],"A return demonstration proves she can actually do it."],
-["care","The RT should recommend which of the following to a patient with COPD to manage his disease?",["1 and 2","3 and 4","1, 3 and 4","2, 3 and 4"],"Flu shots, quitting smoking and β₂ agonists for flare-ups all help. Patients should stay active, not minimize exercise.",{a:2,items:["Annual flu vaccination","Minimizing exercise","A smoking cessation program","β₂ agonists for acute exacerbations"]}],
-["care","Which of these help a patient manage COPD?",["1 and 4","2 and 3","1, 2 and 3","2, 3 and 4"],"Exercise, vaccines and quitting smoking help. Avoiding activity leads to deconditioning.",{a:2,items:["Pulmonary rehab and regular exercise","Flu and pneumococcal vaccines","Quitting smoking","Avoiding all physical activity"]}],
-["care","When taking a patient's pulse, why is it best not to announce that you're counting?",["The patient may change their breathing or heart rate if they know","It is against hospital policy","It wastes time","Patients find it rude"],"Patients who know they're being watched often change their rate without meaning to."],
+  { cat: "History & charting", src: "quiz",
+    q: "Which aspect of a patient's social history is most important in the diagnosis of lung disease?",
+    o: ["Marital status", "Cultural background", "Education", "Occupational history"], a: 3,
+    e: "Occupational exposures (asbestos, silica, coal dust, farming, chemicals) cause many lung diseases, so job history is the key piece of the social history." },
+
+  { cat: "Breath sounds", src: "quiz",
+    q: "During auscultation, you hear intermittent \u201cbubbling\u201d sounds at the lung bases. Which chart entry best describes this finding?",
+    o: ["Bronchial breath sounds heard at the lung bases", "Wheezes heard at the lung bases", "Rhonchi heard at the lung bases", "Crackles heard at the lung bases"], a: 3,
+    e: "Crackles (rales) are discontinuous bubbling/crackling sounds — like Rice Krispies in milk. Common at the bases in pulmonary edema, atelectasis, and fibrosis." },
+
+  { cat: "Chest inspection & exam", src: "quiz",
+    q: "Inspection of a patient reveals jugular venous distention. Which is the most likely cause?",
+    o: ["Right heart failure", "Hypovolemia", "Pulmonary hypotension", "Dehydration"], a: 0,
+    e: "JVD means blood is backing up into the venous system because the right heart can't pump it forward (right heart failure / cor pulmonale). Hypovolemia and dehydration cause flat neck veins." },
+
+  { cat: "Chest inspection & exam", src: "quiz",
+    q: "On examination of a normal patient's neck, the midline of the trachea should be directly below the center of the:",
+    o: ["Suprasternal notch", "Midclavicular line", "Midaxillary line", "Anterior axillary line"], a: 0,
+    e: "A normal trachea is midline, centered above the suprasternal notch. A shift suggests something pushing or pulling it (pneumothorax, atelectasis, large effusion)." },
+
+  { cat: "Chest inspection & exam", src: "quiz",
+    q: "Activity of the accessory muscles of ventilation at rest suggests:",
+    o: ["Increased pulmonary compliance", "Decreased airway resistance", "Increased physiologic deadspace", "Increased work of breathing"], a: 3,
+    e: "At rest, normal breathing uses just the diaphragm. Accessory muscle use means the patient needs extra effort to breathe — increased work of breathing." },
+
+  { cat: "Labs", src: "quiz",
+    q: "The normal potassium (K\u207A) level is:",
+    o: ["3.5–5.0 mEq/L", "1–5 mEq/L", "10–20 mEq/L", "5–10 mEq/L"], a: 0,
+    e: "Normal K\u207A is 3.5–5.0 mEq/L. (The quiz displayed it as \u201c5-5.0\u201d — the \u201c3.\u201d was cut off.) Both low and high potassium can cause dangerous arrhythmias." },
+
+  { cat: "History & charting", src: "quiz",
+    q: "To assess the knowledge gained by a patient after an education intervention you would:",
+    o: ["Ask the assigned nurse to quiz the patient on the material", "Check the progress notes to see if the patient is improving", "Have the patient orally repeat back the information", "Give the patient a written test covering the information"], a: 2,
+    e: "Teach-back: having the patient explain the information in their own words is the standard way to confirm understanding." },
+
+  { cat: "Breathing patterns", src: "quiz",
+    q: "Kussmaul's breathing is a pattern seen in what type of patient?",
+    o: ["Congestive heart failure patients", "Pulmonary edema patients", "Diabetic ketoacidosis patients", "Emphysema patients"], a: 2,
+    e: "Kussmaul breathing is deep and rapid — the body blowing off CO\u2082 to compensate for metabolic acidosis, classically DKA." },
+
+  { cat: "Vital signs", src: "quiz",
+    q: "It is noted in the chart that a patient has a six-second capillary refill time. This indicates the patient:",
+    o: ["Has pulmonary edema", "Has inadequate perfusion to the extremities", "Has adequate pulmonary perfusion", "Has an increased cardiac output"], a: 1,
+    e: "Normal capillary refill is under about 3 seconds. A slow refill means poor blood flow to the extremities (low cardiac output, shock, vasoconstriction)." },
+
+  { cat: "Meds & emergencies", src: "quiz",
+    q: "A patient in cardiogenic shock has a blood pressure of 70/40. The respiratory therapist should recommend which medication?",
+    o: ["Dopamine (Intropin)", "Lidocaine (Xylocaine)", "Nitroprusside (Nipride)", "Furosemide (Lasix)"], a: 0,
+    e: "Dopamine is a vasopressor/inotrope that raises blood pressure and cardiac output. Nitroprusside and furosemide would lower BP further; lidocaine is an antiarrhythmic." },
+
+  { cat: "Meds & emergencies", src: "quiz",
+    q: "The RT has an order to deliver a bronchodilator by SVN. On entering the room, the patient is lethargic with a respiratory rate of 6/min and a heart rate of 160/min with a weak pulse. He is on a nasal cannula at 3 L/min. The therapist should FIRST:",
+    o: ["Obtain an arterial blood gas", "Activate the emergency medical team", "Increase the oxygen flow to 5 L/min and monitor with pulse oximetry", "Recommend obtaining a chest radiograph"], a: 1,
+    e: "Lethargy, RR 6, and HR 160 with a weak pulse mean the patient is deteriorating. Get help immediately; ABGs and X-rays come after the patient is stabilized." },
+
+  { cat: "Meds & emergencies", src: "quiz", fixed: true,
+    q: "The respiratory therapist should recommend which of the following to a patient with COPD to manage his disease?\n\n1. Annual flu vaccination\n2. Minimize exercise\n3. Smoking cessation program\n4. Beta\u2082 agonists for acute exacerbation",
+    o: ["1 and 2", "3 and 4", "1, 3 and 4", "2, 3 and 4"], a: 2,
+    e: "Flu vaccine, quitting smoking, and beta\u2082 agonists (e.g., albuterol) for flare-ups are all core COPD management. Exercise should be encouraged (pulmonary rehab), not minimized." },
+
+  { cat: "History & charting", src: "quiz",
+    q: "The chart says the patient is awake, alert and oriented \u00D7 3. This means:",
+    o: ["You asked the patient the same question three times", "The patient said their name three times", "You asked the patient their name, place, and what date it is", "The nurse asked the RCP three questions about the patient"], a: 2,
+    e: "Oriented \u00D7 3 = oriented to person (who they are), place (where they are), and time (date). Some charts use \u00D7 4, adding situation." },
+
+  // ---------- Vital signs ----------
+  { cat: "Vital signs", src: "bonus",
+    q: "What is the normal adult resting heart rate range?",
+    o: ["60–100/min", "40–60/min", "100–140/min", "12–20/min"], a: 0,
+    e: "60–100 beats/min. 12–20 is the normal respiratory rate — don't mix them up." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "What is the normal adult respiratory rate?",
+    o: ["12–20 breaths/min", "6–10 breaths/min", "20–30 breaths/min", "60–100 breaths/min"], a: 0,
+    e: "12–20 breaths/min. Above 20 is tachypnea; below 12 is bradypnea." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "Which blood pressure is the textbook \u201cnormal\u201d adult value?",
+    o: ["120/80 mm Hg", "160/110 mm Hg", "70/40 mm Hg", "140/100 mm Hg"], a: 0,
+    e: "About 120/80 is the classic normal value (current guidelines call normal less than 120/80). 160/110 is hypertension; 70/40 is hypotension." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "What is normal adult body temperature?",
+    o: ["37 \u00B0C (98.6 \u00B0F)", "35 \u00B0C (95 \u00B0F)", "39 \u00B0C (102.2 \u00B0F)", "40 \u00B0C (104 \u00B0F)"], a: 0,
+    e: "37 \u00B0C / 98.6 \u00B0F. Above about 38 \u00B0C is a fever; below 35 \u00B0C is hypothermia." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "A blood pressure of 160/110 mm Hg is best described as:",
+    o: ["Hypertension", "Normal", "Hypotension", "Pulsus paradoxus"], a: 0,
+    e: "Both numbers are well above normal — this is hypertension." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "An adult's heart rate is 48/min. This is called:",
+    o: ["Bradycardia", "Tachycardia", "Bradypnea", "Normal sinus rhythm"], a: 0,
+    e: "Below 60/min is bradycardia. Bradypnea refers to a slow respiratory rate, not heart rate." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "Hypotension in an adult is generally defined as a systolic pressure below:",
+    o: ["90 mm Hg", "120 mm Hg", "140 mm Hg", "60 mm Hg"], a: 0,
+    e: "Systolic below 90 mm Hg is the usual cutoff for hypotension, which risks poor perfusion of vital organs." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "A patient has a temperature of 39.4 \u00B0C (103 \u00B0F). What effect would you expect on breathing?",
+    o: ["Increased respiratory rate, because fever raises O\u2082 consumption and CO\u2082 production", "Decreased respiratory rate", "No change in breathing", "Periods of apnea"], a: 0,
+    e: "Fever increases metabolic rate — the body uses more O\u2082 and makes more CO\u2082 — so heart rate and respiratory rate go up." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "A patient's BP is 120/80 mm Hg. What is the pulse pressure?",
+    o: ["40 mm Hg", "80 mm Hg", "93 mm Hg", "200 mm Hg"], a: 0,
+    e: "Pulse pressure = systolic \u2212 diastolic = 120 \u2212 80 = 40 mm Hg." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "A patient's BP is 120/60 mm Hg. What is the mean arterial pressure (MAP)?",
+    o: ["80 mm Hg", "90 mm Hg", "60 mm Hg", "100 mm Hg"], a: 0,
+    e: "MAP = diastolic + \u2153(pulse pressure) = 60 + \u2153(60) = 60 + 20 = 80 mm Hg." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "Pulsus paradoxus is defined as:",
+    o: ["A drop in systolic BP of more than 10 mm Hg during inspiration", "Alternating strong and weak beats", "A heart rate over 100/min", "A pulse that is stronger on inspiration"], a: 0,
+    e: "Pulsus paradoxus is an exaggerated inspiratory drop in systolic pressure (>10 mm Hg). Seen in severe asthma/COPD exacerbation and cardiac tamponade." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "Pulsus alternans (alternating strong and weak pulse beats) is most associated with:",
+    o: ["Left ventricular failure", "Severe asthma", "Dehydration", "Normal aging"], a: 0,
+    e: "Pulsus alternans is a sign of a weak, failing left ventricle." },
+
+  { cat: "Vital signs", src: "bonus",
+    q: "What is a normal SpO\u2082 for a healthy adult on room air?",
+    o: ["95–100%", "80–85%", "85–89%", "70–75%"], a: 0,
+    e: "Normal is about 95–100%. Some COPD patients have lower target ranges (often 88–92%), set by the physician." },
+
+  // ---------- Breathing patterns ----------
+  { cat: "Breathing patterns", src: "bonus",
+    q: "A complete lack of breathing, usually lasting longer than 10 seconds, is called:",
+    o: ["Apnea", "Bradypnea", "Hypopnea", "Dyspnea"], a: 0,
+    e: "Apnea is absence of breathing for 10+ seconds. Hypopnea is shallow breathing; dyspnea is the feeling of shortness of breath." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Rapid breathing (respiratory rate above 20/min in an adult) is called:",
+    o: ["Tachypnea", "Hyperpnea", "Bradypnea", "Orthopnea"], a: 0,
+    e: "Tachypnea = fast rate. Hyperpnea = increased depth. Bradypnea = slow rate. Orthopnea = dyspnea lying flat." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "A patient who received a large dose of opioids is breathing 8 times per minute. This is:",
+    o: ["Bradypnea", "Tachypnea", "Apnea", "Kussmaul breathing"], a: 0,
+    e: "A rate below 12/min is bradypnea. Opioids depress the respiratory center — watch these patients closely." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Increased depth of breathing (larger tidal volumes) is called:",
+    o: ["Hyperpnea", "Tachypnea", "Hypopnea", "Eupnea"], a: 0,
+    e: "Hyperpnea refers to depth, not rate. Eupnea is normal, quiet breathing." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Slow breathing that gradually increases in rate and depth, then gradually decreases to a period of apnea, describes:",
+    o: ["Cheyne-Stokes respirations", "Biot's respirations", "Kussmaul respirations", "Paradoxical breathing"], a: 0,
+    e: "Cheyne-Stokes is a crescendo–decrescendo pattern with apnea between cycles. Seen in heart failure, stroke, and brain injury." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Irregular groups of quick, equal-depth breaths separated by periods of apnea (no crescendo pattern) describes:",
+    o: ["Biot's respirations", "Cheyne-Stokes respirations", "Kussmaul respirations", "Eupnea"], a: 0,
+    e: "Biot's (ataxic) breathing is irregular clusters with apnea — associated with increased intracranial pressure and brain injury." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "In a patient with flail chest, the injured section of chest wall moves inward on inspiration and outward on expiration. This is called:",
+    o: ["Paradoxical breathing", "Kussmaul breathing", "Cheyne-Stokes breathing", "Pursed-lip breathing"], a: 0,
+    e: "Paradoxical breathing — the flail segment moves opposite to the rest of the chest because multiple broken ribs can't hold it in place." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Kussmaul breathing in a DKA patient is the body's attempt to:",
+    o: ["Blow off CO\u2082 to compensate for metabolic acidosis", "Retain CO\u2082 to correct alkalosis", "Increase oxygen uptake", "Clear secretions"], a: 0,
+    e: "DKA produces acids. Deep, rapid breathing lowers PaCO\u2082, which pushes the pH back up toward normal (respiratory compensation)." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Which finding actually confirms that a patient is hyperventilating?",
+    o: ["PaCO\u2082 below 35 mm Hg", "Respiratory rate above 20/min", "SpO\u2082 above 95%", "Heart rate above 100/min"], a: 0,
+    e: "Hyperventilation is defined by ventilation in excess of need, shown by a low PaCO\u2082 on an ABG. A fast rate alone is tachypnea — a patient can breathe fast but shallow and still have a normal or high PaCO\u2082." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "A COPD patient breathes out slowly through puckered lips. The main benefit of this pursed-lip breathing is that it:",
+    o: ["Creates back pressure that keeps small airways open during exhalation", "Increases respiratory rate", "Prevents coughing", "Raises PaCO\u2082 on purpose"], a: 0,
+    e: "Pursed-lip breathing adds back pressure that prevents early airway collapse, reduces air trapping, and slows the breathing rate." },
+
+  { cat: "Breathing patterns", src: "bonus",
+    q: "Shortness of breath that occurs when the patient sits or stands upright and is relieved by lying down is called:",
+    o: ["Platypnea", "Orthopnea", "Trepopnea", "Tachypnea"], a: 0,
+    e: "Platypnea is dyspnea when upright — the opposite of orthopnea. Trepopnea is dyspnea when lying on one side." },
+
+  // ---------- Chest inspection & exam ----------
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "An increase in the anterior-posterior (AP) diameter of the chest is called:",
+    o: ["Barrel chest", "Pectus excavatum", "Kyphosis", "Flail chest"], a: 0,
+    e: "Barrel chest is common in emphysema/COPD from chronic air trapping. A normal AP:lateral ratio is about 1:2; in barrel chest it approaches 1:1." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Equal rise and fall of both sides of the chest during breathing is described as:",
+    o: ["Symmetrical chest expansion", "Paradoxical breathing", "Barrel chest", "Retractions"], a: 0,
+    e: "Normal chest expansion is symmetrical. Unequal movement points to a problem on the side that moves less." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "You notice the right side of a patient's chest moves noticeably less than the left during inspiration. This most likely indicates:",
+    o: ["A problem reducing ventilation on the right side (e.g., pneumothorax, atelectasis, pneumonia)", "A normal finding", "A problem on the left side", "Increased lung compliance on the right"], a: 0,
+    e: "The side that moves less is usually the abnormal side — something is limiting expansion there." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Which muscles are accessory muscles of inspiration?",
+    o: ["Scalenes, sternocleidomastoids, and pectoralis major", "Diaphragm only", "Rectus abdominis and internal obliques", "Biceps and triceps"], a: 0,
+    e: "Scalenes, SCMs, and pecs help lift the chest when breathing is hard. The abdominal muscles are accessory muscles of expiration; the diaphragm is the primary muscle of inspiration." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Which finding is NOT a sign of increased work of breathing?",
+    o: ["Relaxed breathing at 14/min using only the diaphragm", "Intercostal retractions", "Nasal flaring", "Use of accessory muscles at rest"], a: 0,
+    e: "Quiet diaphragmatic breathing at a normal rate is normal. Retractions, nasal flaring, accessory muscle use, and a high rate all signal increased WOB." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Digital clubbing is most associated with:",
+    o: ["Chronic lung disease such as bronchiectasis, cystic fibrosis, or lung cancer", "An acute asthma attack", "Hypovolemia", "Normal aging"], a: 0,
+    e: "Clubbing develops over time with chronic conditions (bronchiectasis, CF, lung cancer, interstitial lung disease, some heart disease). It doesn't appear in acute problems." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Bilateral pitting edema of the ankles in a patient with COPD and JVD most likely indicates:",
+    o: ["Right heart failure (cor pulmonale)", "Left heart failure only", "Dehydration", "Pneumothorax"], a: 0,
+    e: "Chronic hypoxemia in COPD raises pulmonary pressures and strains the right ventricle (cor pulmonale). Fluid backs up into the body: JVD, pedal edema, liver enlargement." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Percussion over an area of the chest produces a dull note. This suggests:",
+    o: ["Consolidation, atelectasis, or pleural effusion", "Pneumothorax", "Emphysema", "A normal lung"], a: 0,
+    e: "Dull = more solid or fluid-filled tissue (consolidation, collapse, fluid). Hyperresonance = too much air (pneumothorax, emphysema). Normal lung is resonant." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Percussion over the left chest is hyperresonant and breath sounds are absent on that side. This most likely indicates:",
+    o: ["Left pneumothorax", "Left pleural effusion", "Left lower lobe pneumonia", "Left atelectasis"], a: 0,
+    e: "Hyperresonance (extra air) plus absent breath sounds on one side = pneumothorax until proven otherwise." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Tactile fremitus (vibration felt on the chest while the patient speaks) is increased over:",
+    o: ["Consolidation (e.g., pneumonia)", "Pneumothorax", "Pleural effusion", "Emphysema"], a: 0,
+    e: "Solid tissue transmits vibration better, so fremitus increases over consolidation. Air or fluid in the pleural space, or hyperinflated lungs, decrease it." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "With a large tension pneumothorax on the right, the trachea is expected to shift:",
+    o: ["To the left (away from the affected side)", "To the right (toward the affected side)", "It stays midline", "Upward"], a: 0,
+    e: "Tension pneumothorax and large effusions push the trachea away. Atelectasis and lung removal pull it toward the affected side." },
+
+  { cat: "Chest inspection & exam", src: "bonus",
+    q: "Palpating the neck and chest, you feel a crackling sensation under the skin. This is:",
+    o: ["Subcutaneous emphysema", "Tactile fremitus", "Pleural friction rub", "Pectus carinatum"], a: 0,
+    e: "Subcutaneous emphysema (crepitus) is air trapped under the skin — suggests an air leak such as pneumothorax or airway injury." },
+
+  // ---------- Chest deformities ----------
+  { cat: "Chest deformities", src: "bonus",
+    q: "An abnormal outward (convex) curvature of the thoracic spine giving a hunchback appearance is called:",
+    o: ["Kyphosis", "Scoliosis", "Lordosis", "Pectus excavatum"], a: 0,
+    e: "Kyphosis is a hunchback curve of the upper spine." },
+
+  { cat: "Chest deformities", src: "bonus",
+    q: "A lateral (side-to-side) curvature of the spine that can impair lung expansion is called:",
+    o: ["Scoliosis", "Kyphosis", "Pectus carinatum", "Barrel chest"], a: 0,
+    e: "Scoliosis is a sideways S- or C-shaped curve." },
+
+  { cat: "Chest deformities", src: "bonus",
+    q: "A combination of hunchback and lateral spinal curvature is called:",
+    o: ["Kyphoscoliosis", "Pectus excavatum", "Lordosis", "Flail chest"], a: 0,
+    e: "Kyphoscoliosis = kyphosis + scoliosis. When severe, it causes a restrictive lung defect." },
+
+  { cat: "Chest deformities", src: "bonus",
+    q: "A sternum that protrudes forward (\u201cpigeon breast\u201d) is called:",
+    o: ["Pectus carinatum", "Pectus excavatum", "Barrel chest", "Kyphosis"], a: 0,
+    e: "Carinatum = sticks out (like a keel). Excavatum = caved in." },
+
+  { cat: "Chest deformities", src: "bonus",
+    q: "A sternum depressed inward (\u201cfunnel chest\u201d) is called:",
+    o: ["Pectus excavatum", "Pectus carinatum", "Scoliosis", "Barrel chest"], a: 0,
+    e: "Excavatum — think \u201cexcavate,\u201d dug in." },
+
+  { cat: "Chest deformities", src: "bonus",
+    q: "Severe kyphoscoliosis most often produces which type of lung disease pattern?",
+    o: ["Restrictive", "Obstructive", "Neither — it doesn't affect the lungs", "Purely vascular"], a: 0,
+    e: "The deformed chest wall can't expand fully, which reduces lung volumes — a restrictive defect." },
+
+  // ---------- Breath sounds ----------
+  { cat: "Breath sounds", src: "bonus",
+    q: "Which are the normal breath sounds?",
+    o: ["Vesicular, bronchovesicular, bronchial, and tracheal", "Wheezes, rhonchi, and crackles", "Stridor and wheezes", "Pleural friction rub and crackles"], a: 0,
+    e: "These four are normal when heard in their normal locations. Wheezes, rhonchi, crackles, stridor, and rubs are adventitious (abnormal) sounds." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Soft, low-pitched breath sounds heard over most of the peripheral lung fields, louder on inspiration than expiration, are:",
+    o: ["Vesicular", "Bronchial", "Tracheal", "Bronchovesicular"], a: 0,
+    e: "Vesicular sounds are the normal sound over the periphery. Bronchial sounds are louder and higher pitched, normally heard over the manubrium/large airways." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Bronchial breath sounds heard over the lung periphery (where vesicular sounds belong) suggest:",
+    o: ["Consolidation, such as pneumonia", "A normal finding", "Pneumothorax", "Emphysema"], a: 0,
+    e: "Consolidated lung transmits central airway sounds to the periphery. A normal sound in the wrong place is abnormal." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Continuous, high-pitched, musical sounds heard on inspiration and expiration that indicate narrowed airways are:",
+    o: ["Wheezes", "Rhonchi", "Crackles", "Pleural friction rub"], a: 0,
+    e: "Wheezes come from air moving through narrowed airways — asthma, bronchospasm, COPD. Bronchodilators often help." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "A loud, high-pitched sound heard over the neck on inspiration in a patient in obvious distress is:",
+    o: ["Stridor — upper airway obstruction and an emergency", "Wheezing — give a bronchodilator and recheck in an hour", "Rhonchi — have the patient cough", "Crackles — increase oxygen"], a: 0,
+    e: "Stridor means the upper airway (larynx/trachea) is narrowed — croup, epiglottitis, foreign body, or post-extubation swelling. Treat as an emergency." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Fine crackles at the lung bases that do NOT clear with coughing are most consistent with:",
+    o: ["Pulmonary edema, atelectasis, or fibrosis", "Secretions in the large airways", "Bronchospasm", "Upper airway obstruction"], a: 0,
+    e: "Fine crackles come from small airways/alveoli popping open. Secretions in large airways cause rhonchi, which usually change after a cough." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "A grating, creaking sound heard over the chest that sounds like leather rubbing together is a:",
+    o: ["Pleural friction rub", "Wheeze", "Stridor", "Bronchial breath sound"], a: 0,
+    e: "Inflamed pleural surfaces rubbing together (pleurisy) cause a friction rub, often with sharp pain on breathing." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Which condition is LEAST likely to cause diminished breath sounds?",
+    o: ["Pulmonary consolidation with an open airway", "Pneumothorax", "Pleural effusion", "Severe emphysema"], a: 0,
+    e: "Air, fluid, or hyperinflation block sound transmission, so breath sounds decrease. Consolidation with an open airway usually produces louder bronchial sounds instead." },
+
+  { cat: "Breath sounds", src: "bonus",
+    q: "Before treatment you hear rhonchi; after the patient coughs, the sounds clear. What does this tell you?",
+    o: ["The sounds were from secretions in the larger airways", "The patient has pulmonary edema", "The patient has an upper airway obstruction", "Your stethoscope was malfunctioning"], a: 0,
+    e: "Rhonchi are caused by secretions, so they often clear or change after a cough — a sign that airway clearance worked." },
+
+  // ---------- Labs ----------
+  { cat: "Labs", src: "bonus",
+    q: "What is the normal arterial pH range?",
+    o: ["7.35–7.45", "7.25–7.35", "7.45–7.55", "6.8–7.0"], a: 0,
+    e: "Below 7.35 is acidemia; above 7.45 is alkalemia." },
+
+  { cat: "Labs", src: "bonus",
+    q: "What is the normal PaCO\u2082 range?",
+    o: ["35–45 mm Hg", "22–26 mm Hg", "80–100 mm Hg", "45–55 mm Hg"], a: 0,
+    e: "35–45 mm Hg. 22–26 is the normal HCO\u2083\u207B (mEq/L), and 80–100 is a normal PaO\u2082." },
+
+  { cat: "Labs", src: "bonus",
+    q: "What is the normal PaO\u2082 for a healthy adult breathing room air?",
+    o: ["80–100 mm Hg", "35–45 mm Hg", "40–60 mm Hg", "150–200 mm Hg"], a: 0,
+    e: "Roughly 80–100 mm Hg on room air; it declines somewhat with age." },
+
+  { cat: "Labs", src: "bonus",
+    q: "What is the normal serum bicarbonate (HCO\u2083\u207B)?",
+    o: ["22–26 mEq/L", "3.5–5.0 mEq/L", "35–45 mEq/L", "135–145 mEq/L"], a: 0,
+    e: "22–26 mEq/L. (3.5–5.0 is potassium; 135–145 is sodium.)" },
+
+  { cat: "Labs", src: "bonus",
+    q: "What is the normal serum sodium (Na\u207A) range?",
+    o: ["135–145 mEq/L", "3.5–5.0 mEq/L", "98–106 mEq/L", "22–26 mEq/L"], a: 0,
+    e: "135–145 mEq/L. Chloride is about 98–106 mEq/L (ranges vary slightly by lab)." },
+
+  { cat: "Labs", src: "bonus",
+    q: "A patient's potassium is 2.8 mEq/L. Which is the biggest concern?",
+    o: ["Cardiac arrhythmias and muscle weakness, including respiratory muscles", "Increased risk of bleeding", "Hyperglycemia", "Pulmonary edema"], a: 0,
+    e: "Hypokalemia (below 3.5) can cause dangerous arrhythmias and muscle weakness — which can include the respiratory muscles." },
+
+  { cat: "Labs", src: "bonus",
+    q: "A patient taking furosemide (Lasix) should have which lab watched most closely?",
+    o: ["Potassium", "Hemoglobin", "Platelets", "WBC count"], a: 0,
+    e: "Loop diuretics like furosemide flush potassium out in the urine and can cause hypokalemia." },
+
+  { cat: "Labs", src: "bonus",
+    q: "A patient with a fever and productive cough has a WBC count of 18,000/mm\u00B3. This most likely indicates:",
+    o: ["Infection (leukocytosis)", "Anemia", "Dehydration", "A normal finding"], a: 0,
+    e: "Normal WBC is about 5,000–10,000/mm\u00B3 (some labs use 4,500–11,000). An elevated count suggests infection, often bacterial." },
+
+  { cat: "Labs", src: "bonus",
+    q: "Why do hemoglobin and hematocrit matter to a respiratory therapist?",
+    o: ["They reflect the blood's oxygen-carrying capacity", "They show how well the kidneys work", "They measure airway resistance", "They indicate the patient's blood glucose"], a: 0,
+    e: "Hemoglobin carries most of the oxygen in the blood. A low Hb (anemia) lowers oxygen delivery even if SpO\u2082 looks normal." },
+
+  { cat: "Labs", src: "bonus",
+    q: "A sputum acid-fast stain is ordered mainly to look for:",
+    o: ["Tuberculosis (mycobacteria)", "Pneumococcal pneumonia", "Fungal infection", "Viral infection"], a: 0,
+    e: "Acid-fast bacilli (AFB) testing screens for Mycobacterium tuberculosis. Use airborne precautions while TB is suspected." },
+
+  // ---------- History & charting ----------
+  { cat: "History & charting", src: "bonus",
+    q: "A patient has smoked 1\u00BD packs per day for 20 years. What is the smoking history in pack-years?",
+    o: ["30 pack-years", "20 pack-years", "21.5 pack-years", "15 pack-years"], a: 0,
+    e: "Pack-years = packs per day \u00D7 years smoked = 1.5 \u00D7 20 = 30." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "A patient coughs up pink, frothy sputum. This is most consistent with:",
+    o: ["Pulmonary edema", "Bacterial bronchitis", "Asthma", "Tuberculosis"], a: 0,
+    e: "Pink, frothy sputum is classic for pulmonary edema. Yellow/green suggests infection; rust-colored suggests pneumococcal pneumonia." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "Coughing up blood or blood-streaked sputum from the lungs is called:",
+    o: ["Hemoptysis", "Hematemesis", "Dysphagia", "Epistaxis"], a: 0,
+    e: "Hemoptysis comes from the lungs. Hematemesis is vomiting blood; epistaxis is a nosebleed." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "A patient reports difficulty swallowing. This is charted as:",
+    o: ["Dysphagia", "Dysphonia", "Dyspnea", "Dysuria"], a: 0,
+    e: "Dysphagia = trouble swallowing, which raises aspiration risk. Dysphonia = voice trouble; dyspnea = shortness of breath." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "In a SOAP note, which entry belongs under \u201cS\u201d?",
+    o: ["\u201cI can't catch my breath when I walk to the bathroom.\u201d", "Respiratory rate 28/min", "Crackles heard at both bases", "Plan: albuterol SVN q4h"], a: 0,
+    e: "S = Subjective: what the patient tells you. O = Objective (measured/observed findings), A = Assessment, P = Plan." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "Which of the following is objective data?",
+    o: ["SpO\u2082 of 89% on room air", "The patient says he feels tired", "The patient reports chest tightness", "The patient states he sleeps poorly"], a: 0,
+    e: "Objective data is something you can measure or observe. Everything the patient reports is subjective." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "Which interview question is open-ended?",
+    o: ["\u201cTell me about your breathing problems.\u201d", "\u201cDo you smoke?\u201d", "\u201cIs your cough worse at night?\u201d", "\u201cAre you short of breath right now?\u201d"], a: 0,
+    e: "Open-ended questions invite the patient to describe things in their own words. Yes/no questions are closed." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "The best way to confirm a patient can correctly use a metered-dose inhaler after teaching is to:",
+    o: ["Have the patient demonstrate it while you watch", "Give the patient a handout", "Ask whether they understood", "Check the next day's progress notes"], a: 0,
+    e: "Return demonstration is the gold standard for a skill. \u201cDo you understand?\u201d almost always gets a \u201cyes\u201d whether it's true or not." },
+
+  { cat: "History & charting", src: "bonus",
+    q: "The Glasgow Coma Scale ranges from:",
+    o: ["3 to 15", "0 to 10", "1 to 5", "0 to 15"], a: 0,
+    e: "GCS scores eye, verbal, and motor responses from 3 (deep coma) to 15 (fully alert). A score of 8 or less often means the patient can't protect their airway." },
+
+  // ---------- Meds & emergencies ----------
+  { cat: "Meds & emergencies", src: "bonus",
+    q: "Common side effects of albuterol include:",
+    o: ["Tachycardia and tremor", "Bradycardia and drowsiness", "Hypertension and hypoglycemia", "Constipation and dry mouth only"], a: 0,
+    e: "Albuterol is a beta\u2082 agonist; it also stimulates the heart a bit, causing fast heart rate, palpitations, tremor, and nervousness. Check HR before and after treatment." },
+
+  { cat: "Meds & emergencies", src: "bonus",
+    q: "Which medication would be appropriate for a patient with fluid overload and pulmonary edema?",
+    o: ["Furosemide (Lasix)", "Dopamine (Intropin)", "Lidocaine (Xylocaine)", "Albuterol"], a: 0,
+    e: "Furosemide is a diuretic that removes excess fluid, reducing pulmonary edema." },
+
+  { cat: "Meds & emergencies", src: "bonus",
+    q: "Nitroprusside (Nipride) is a vasodilator used mainly to:",
+    o: ["Rapidly lower blood pressure in a hypertensive crisis", "Raise blood pressure in shock", "Dilate the airways", "Treat ventricular arrhythmias"], a: 0,
+    e: "Nitroprusside rapidly drops blood pressure — which is why it's wrong for a patient in shock." },
+
+  { cat: "Meds & emergencies", src: "bonus",
+    q: "While you set up a treatment, the patient becomes unresponsive and SpO\u2082 drops to 78%. What should you do FIRST?",
+    o: ["Call for help / activate the rapid response team and assess airway, breathing, and circulation", "Finish setting up the treatment", "Document the findings in the chart", "Draw an arterial blood gas"], a: 0,
+    e: "An unresponsive, desaturating patient is an emergency. Call for help and assess ABCs first; documentation and labs come later." },
+
+  { cat: "Meds & emergencies", src: "bonus",
+    q: "Before giving any ordered treatment, which step should the RT always complete first?",
+    o: ["Verify the order and identify the patient with two identifiers", "Start the treatment, then check the order", "Ask the family to confirm the patient's name", "Check only the room number"], a: 0,
+    e: "Verify the order and confirm patient identity (e.g., name and date of birth) before every treatment. Room numbers are not identifiers." },
 ];
+// ===== END QUESTIONS =====
 
-const BANK = RAW.map((r,i)=>{const x=r[4]||{};return {id:i,t:r[0],q:r[1],o:r[2],why:r[3],a:x.a??0,items:x.items||null,fixed:x.a!==undefined}});
-const LET = ["A","B","C","D","E"];
-const KEY = "rt-quiz-v1";
+const $ = (s) => document.querySelector(s);
+const LETTERS = "ABCD";
+const BEST_KEY = "rsp119-best";
+let state = null;
+let lastSettings = null;
 
-/* ---------- storage (per-viewer convenience only) ---------- */
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({hist:S.hist,topics:[...S.topics],size:S.size,missedOnly:S.missedOnly,round:S.round}))}catch(e){}}
-
-const saved = (window.claude?.hot?.data) || load();
-const S = {
-  hist: saved.hist || {},
-  topics: new Set(saved.topics && saved.topics.length ? saved.topics : Object.keys(TOPICS)),
-  size: saved.size ?? 20,
-  missedOnly: !!saved.missedOnly,
-  round: saved.round || null,
-};
-window.claude?.hot?.snapshot?.(()=>({hist:S.hist,topics:[...S.topics],size:S.size,missedOnly:S.missedOnly,round:S.round}));
-
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function pool(){return BANK.filter(q=>S.topics.has(q.t)&&(!S.missedOnly||S.hist[q.id]===0))}
-function newRound(ids){
-  if(!ids){const p=shuffle(pool());ids=(S.size==="all"?p:p.slice(0,S.size)).map(q=>q.id)}
-  const perm={};ids.forEach(id=>{const q=BANK[id];const idx=q.o.map((_,k)=>k);perm[id]=q.fixed?idx:shuffle(idx)});
-  S.round={ids,i:0,picks:{},perm,streak:0,best:0};save();render();
-}
-
-/* ---------- rendering ---------- */
-const $=s=>document.querySelector(s);
-const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==="class")n.className=v;else if(k.startsWith("on"))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v)}kids.flat().forEach(c=>c!=null&&n.append(c.nodeType?c:document.createTextNode(c)));return n};
-
-function renderSettings(){
-  const box=$("#topics");box.textContent="";
-  const allOn=S.topics.size===Object.keys(TOPICS).length;
-  box.append(el("button",{class:"chip","aria-pressed":String(allOn),onclick:()=>{S.topics=new Set(allOn?[]:Object.keys(TOPICS));save();renderSettings()}},"All topics",el("span",{class:"n"},String(BANK.length))));
-  for(const[k,v]of Object.entries(TOPICS)){
-    const n=BANK.filter(q=>q.t===k).length;
-    box.append(el("button",{class:"chip","aria-pressed":String(S.topics.has(k)&&!allOn),onclick:()=>{
-      if(allOn)S.topics=new Set([k]);else{S.topics.has(k)?S.topics.delete(k):S.topics.add(k)}
-      if(!S.topics.size)S.topics=new Set(Object.keys(TOPICS));save();renderSettings()}},v,el("span",{class:"n"},String(n))));
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  const seg=$("#size");seg.textContent="";
-  [10,20,50,"all"].forEach(v=>seg.append(el("button",{"aria-pressed":String(S.size===v),onclick:()=>{S.size=v;save();renderSettings()}},v==="all"?"All":String(v))));
-  const missed=BANK.filter(q=>S.topics.has(q.t)&&S.hist[q.id]===0).length;
-  $("#missed-only").checked=S.missedOnly;
-  $("#missed-label").textContent=`Only questions I've missed (${missed})`;
-  const p=pool().length;
-  $("#start").textContent=p?`Start new round · ${S.size==="all"?p:Math.min(S.size,p)} questions`:"Start new round";
-  $("#start").disabled=!p;
-  $("#set-sum").textContent=`Round settings · ${S.topics.size===Object.keys(TOPICS).length?"All topics":S.topics.size+" topic"+(S.topics.size>1?"s":"")} · ${S.size==="all"?"All":S.size} questions${S.missedOnly?" · missed only":""}`;
-  $("#bank-count").textContent=`${BANK.length} questions in the bank · progress is saved in this browser`;
+  return a;
 }
+function radio(name) { return document.querySelector(`input[name="${name}"]:checked`).value; }
+function show(id) { ["setup", "quiz", "results"].forEach((s) => ($("#" + s).hidden = s !== id)); window.scrollTo(0, 0); }
 
-function renderMonitor(){
-  const r=S.round;let ans=0,ok=0;
-  if(r){for(const id of r.ids){if(id in r.picks){ans++;if(r.picks[id]===BANK[id].a)ok++}}}
-  $("#m-score").innerHTML=(ans?Math.round(ok/ans*100):"--")+"<small>%</small>";
-  $("#m-ans").innerHTML=ans+"<small>/"+(r?r.ids.length:0)+"</small>";
-  $("#m-streak").textContent=r?r.streak:0;
-}
-
-function renderQuestion(){
-  const r=S.round,card=$("#card");card.textContent="";
-  const id=r.ids[r.i],q=BANK[id],picked=r.picks[id],done=picked!==undefined;
-  card.append(
-    el("div",{class:"meta"},el("span",{class:"qnum"},`Question ${r.i+1} of ${r.ids.length}`),el("span",{class:"tag"},TOPICS[q.t])),
-    el("div",{class:"bar"},el("i",{style:`width:${(r.i+(done?1:0))/r.ids.length*100}%`})),
-    el("p",{class:"stem"},q.q)
-  );
-  if(q.items)card.append(el("ol",{class:"items"},q.items.map(t=>el("li",{},t))));
-  const opts=el("div",{class:"opts",role:"group","aria-label":"Answer choices"});
-  r.perm[id].forEach((orig,pos)=>{
-    let cls="opt",mark="";
-    if(done){if(orig===q.a){cls+=" right";mark="Correct"}else if(orig===picked){cls+=" wrong";mark="Your answer"}else cls+=" fade"}
-    const b=el("button",{class:cls,id:`opt-${pos}`,onclick:()=>pick(pos)},el("span",{class:"k"},LET[pos]),el("span",{},q.o[orig]),el("span",{class:"mk"},mark));
-    if(done)b.disabled=true;opts.append(b);
-  });
-  card.append(opts);
-  if(done){
-    const ok=picked===q.a,ansPos=r.perm[id].indexOf(q.a);
-    card.append(el("div",{class:"why "+(ok?"ok":"no")},el("b",{},ok?"Correct.":`Not quite. The answer is ${LET[ansPos]}.`),q.why));
-  }
-  const last=r.i===r.ids.length-1;
-  card.append(el("div",{class:"actions"},
-    el("span",{class:"hint"},done?"Press Enter for the next question":"Press A–D or 1–4 to answer"),
-    el("div",{style:"display:flex;gap:8px"},
-      r.i>0?el("button",{class:"btn ghost",id:"prev",onclick:()=>{r.i--;save();render()}},"Back"):null,
-      el("button",{class:"btn",id:"next",onclick:next,...(done?{}:{disabled:""})},last?"See results":"Next question"))
-  ));
-}
-
-function renderResults(){
-  const r=S.round,card=$("#card");card.textContent="";
-  let ok=0;const by={};const missed=[];
-  r.ids.forEach(id=>{const q=BANK[id],good=r.picks[id]===q.a;if(good)ok++;else missed.push(id);(by[q.t]??={n:0,ok:0});by[q.t].n++;if(good)by[q.t].ok++});
-  const pct=Math.round(ok/r.ids.length*100);
-  card.append(el("div",{class:"meta"},el("span",{class:"qnum"},"Round complete"),el("span",{class:"tag"},`Best streak ${r.best}`)));
-  card.append(el("p",{class:"big"},`${ok}/${r.ids.length}`));
-  card.append(el("p",{style:"margin:0;color:var(--muted)"},`${pct}% correct. ${pct>=90?"Exam-ready on these topics.":pct>=75?"Solid — review the misses below.":"Go back over the Need to know section, then retry your misses."}`));
-  const t=el("div",{class:"res-table"});
-  Object.entries(by).sort((a,b)=>a[1].ok/a[1].n-b[1].ok/b[1].n).forEach(([k,v])=>{
-    const p=v.ok/v.n;
-    t.append(el("div",{class:"res-row"},el("span",{class:"nm"},TOPICS[k]),el("span",{class:"sc"},`${v.ok}/${v.n}`),
-      el("div",{class:"track"},el("i",{style:`width:${p*100}%;background:${p>=.8?"var(--good)":p>=.6?"var(--accent)":"var(--bad)"}`}))));
-  });
-  card.append(t);
-  if(missed.length){
-    card.append(el("div",{class:"row-lab"},"Review your misses"));
-    card.append(el("ol",{class:"missed-list"},missed.map(id=>{const q=BANK[id];return el("li",{},q.q," ",el("span",{},"→ "+q.o[q.a]))})));
-  }
-  card.append(el("div",{class:"actions"},
-    el("span",{class:"hint"},""),
-    el("div",{style:"display:flex;gap:8px;flex-wrap:wrap"},
-      missed.length?el("button",{class:"btn ghost",id:"retry",onclick:()=>newRound(shuffle(missed))},`Retry ${missed.length} missed`):null,
-      el("button",{class:"btn",id:"again",onclick:()=>newRound()},"New round"))));
-}
-
-function renderEmpty(){
-  const card=$("#card");card.textContent="";
-  card.append(el("p",{class:"stem"},"No questions match these settings."),
-    el("p",{style:"margin:0;color:var(--muted)"},S.missedOnly?"You haven't missed anything in these topics yet. Turn off \"Only questions I've missed\" to practice everything.":"Pick at least one topic above."));
-}
-
-function render(){
-  renderSettings();renderMonitor();
-  const r=S.round;
-  if(!r||!r.ids.length)return renderEmpty();
-  if(r.i>=r.ids.length)return renderResults();
-  renderQuestion();
-}
-
-function pick(pos){
-  const r=S.round,id=r.ids[r.i];if(r.picks[id]!==undefined)return;
-  const orig=r.perm[id][pos];r.picks[id]=orig;const ok=orig===BANK[id].a;
-  S.hist[id]=ok?1:0;r.streak=ok?r.streak+1:0;r.best=Math.max(r.best,r.streak);
-  save();render();$("#next")?.focus();
-}
-function next(){const r=S.round;if(r.picks[r.ids[r.i]]===undefined)return;r.i++;save();render();window.scrollTo({top:$("#card").offsetTop-12,behavior:"smooth"})}
-
-document.addEventListener("keydown",e=>{
-  if(e.metaKey||e.ctrlKey||e.altKey)return;const r=S.round;if(!r||r.i>=r.ids.length)return;
-  const k=e.key.toUpperCase();let pos=LET.indexOf(k);if(pos<0&&/^[1-5]$/.test(k))pos=+k-1;
-  const id=r.ids[r.i];
-  if(pos>=0&&pos<BANK[id].o.length&&r.picks[id]===undefined){e.preventDefault();pick(pos)}
-  else if((e.key==="Enter"||e.key==="ArrowRight")&&r.picks[id]!==undefined&&document.activeElement?.id!=="prev"){e.preventDefault();next()}
+// ----- Setup -----
+const CATS = [...new Set(QUESTIONS.map((q) => q.cat))];
+const catBox = $("#catChips");
+CATS.forEach((c) => {
+  const l = document.createElement("label");
+  l.className = "chip";
+  l.innerHTML = '<input type="checkbox" checked><span></span>';
+  l.querySelector("input").value = c;
+  l.querySelector("span").textContent = c;
+  catBox.appendChild(l);
 });
-$("#missed-only").addEventListener("change",e=>{S.missedOnly=e.target.checked;save();renderSettings()});
-$("#start").addEventListener("click",()=>newRound());
-function resetUI(){
-  const w=$("#reset-wrap");w.textContent="";
-  w.append(el("span",{class:"confirm"},"Clear all saved answers?",
-    el("button",{class:"danger",id:"reset-yes",onclick:()=>{S.hist={};S.missedOnly=false;newRound();restoreReset()}},"Clear"),
-    el("button",{id:"reset-no",onclick:restoreReset},"Cancel")));
+
+function selectedCats() { return [...catBox.querySelectorAll("input:checked")].map((i) => i.value); }
+function pool() {
+  const set = radio("set"), cats = selectedCats();
+  return QUESTIONS.filter((q) => (set === "all" || q.src === set) && cats.includes(q.cat));
 }
-function restoreReset(){const w=$("#reset-wrap");w.textContent="";w.append(el("button",{class:"linkish",id:"reset",onclick:resetUI},"Reset saved progress"))}
-$("#reset").addEventListener("click",resetUI);
-if(window.innerWidth>700)$("#settings").open=true;
+function updateAvail() {
+  const n = pool().length;
+  $("#avail").textContent = n + (n === 1 ? " question available" : " questions available");
+  $("#startBtn").disabled = n === 0;
+  const all = catBox.querySelectorAll("input").length, on = selectedCats().length;
+  $("#toggleCats").textContent = on === all ? "Select none" : "Select all";
+}
+document.querySelectorAll('#setup input').forEach((i) => i.addEventListener("change", updateAvail));
+$("#toggleCats").onclick = () => {
+  const all = catBox.querySelectorAll("input"), turnOn = selectedCats().length !== all.length;
+  all.forEach((i) => (i.checked = turnOn));
+  updateAvail();
+};
 
-/* pleth waveform */
-(function(){let d="M0 28";const w=70;for(let x=0;x<700;x+=w){d+=` C${x+8} 28 ${x+12} 4 ${x+20} 4 S${x+28} 16 ${x+32} 17 S${x+38} 12 ${x+42} 14 S${x+56} 28 ${x+w} 28`}$("#pleth-path").setAttribute("d",d)})();
+function readBest() { try { return JSON.parse(localStorage.getItem(BEST_KEY)); } catch (e) { return null; } }
+function writeBest(v) { try { localStorage.setItem(BEST_KEY, JSON.stringify(v)); } catch (e) {} }
+function showBest() {
+  const b = readBest();
+  $("#bestLine").hidden = !b;
+  if (b) $("#bestLine").textContent = `Best score so far: ${b.pct}% (${b.right}/${b.total})`;
+}
 
-if(!S.round||!S.round.ids||S.round.ids.some(id=>!BANK[id]))newRound();else render();
+// ----- Quiz -----
+function startTest(questions, opts) {
+  lastSettings = opts;
+  let qs = opts.shuffle ? shuffle(questions) : questions.slice();
+  if (opts.count !== "all") qs = qs.slice(0, Number(opts.count));
+  state = {
+    mode: opts.mode, i: 0,
+    items: qs.map((q) => ({
+      q, pick: null,
+      order: opts.shuffle && !q.fixed ? shuffle(q.o.map((_, k) => k)) : q.o.map((_, k) => k),
+    })),
+  };
+  show("quiz");
+  renderQ();
+}
+
+$("#startBtn").onclick = () => startTest(pool(), {
+  mode: radio("mode"), count: $("#count").value, shuffle: $("#shuffle").checked,
+});
+
+function renderQ() {
+  const it = state.items[state.i], q = it.q, n = state.items.length;
+  const practice = state.mode === "practice";
+  const locked = practice && it.pick !== null;
+
+  $("#qnum").textContent = `Question ${state.i + 1} of ${n}`;
+  $("#qcat").textContent = q.cat;
+  $("#qsrc").hidden = q.src !== "quiz";
+  $("#qtext").textContent = q.q;
+  const answered = state.items.filter((x) => x.pick !== null).length;
+  $("#bar").style.width = (answered / n) * 100 + "%";
+
+  const box = $("#opts");
+  box.innerHTML = "";
+  it.order.forEach((orig, p) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "opt";
+    b.innerHTML = '<span class="key"></span><span class="txt"></span>';
+    b.querySelector(".key").textContent = LETTERS[p];
+    b.querySelector(".txt").textContent = q.o[orig];
+    if (locked) {
+      b.disabled = true;
+      if (orig === q.a) b.classList.add("right");
+      else if (orig === it.pick) b.classList.add("wrong");
+    } else if (it.pick === orig) {
+      b.classList.add("picked");
+    }
+    b.onclick = () => choose(orig);
+    box.appendChild(b);
+  });
+
+  const fb = $("#fb");
+  if (locked) {
+    const ok = it.pick === q.a;
+    fb.className = "fb " + (ok ? "good" : "bad");
+    fb.innerHTML = "<strong></strong><span></span>";
+    fb.querySelector("strong").textContent = ok ? "Correct!" : "Not quite — the answer is: " + q.o[q.a];
+    fb.querySelector("span").textContent = q.e;
+    fb.hidden = false;
+  } else {
+    fb.hidden = true;
+  }
+
+  const last = state.i === n - 1;
+  $("#prevBtn").hidden = practice || state.i === 0;
+  $("#nextBtn").textContent = last ? "Finish" : "Next";
+  $("#nextBtn").disabled = practice && !locked;
+}
+
+function choose(orig) {
+  const it = state.items[state.i];
+  if (state.mode === "practice" && it.pick !== null) return;
+  it.pick = orig;
+  renderQ();
+  if (state.mode === "practice") $("#nextBtn").focus();
+}
+
+function next() {
+  if ($("#nextBtn").disabled) return;
+  if (state.i < state.items.length - 1) { state.i++; renderQ(); return; }
+  const blank = state.items.filter((x) => x.pick === null).length;
+  if (blank && !confirm(`You have ${blank} unanswered question${blank === 1 ? "" : "s"}. Finish anyway?`)) return;
+  finish();
+}
+$("#nextBtn").onclick = next;
+$("#prevBtn").onclick = () => { if (state.i > 0) { state.i--; renderQ(); } };
+$("#quitBtn").onclick = () => { if (confirm("Quit this test? Your progress will be lost.")) { show("setup"); showBest(); } };
+
+document.addEventListener("keydown", (e) => {
+  if ($("#quiz").hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  const it = state.items[state.i];
+  let idx = "1234".indexOf(k);
+  if (idx < 0) idx = "abcd".indexOf(k);
+  if (idx >= 0 && idx < it.order.length) { choose(it.order[idx]); return; }
+  if (k === "enter" || k === "arrowright") {
+    if (document.activeElement && document.activeElement.classList.contains("opt")) return;
+    e.preventDefault(); next();
+  }
+  if (k === "arrowleft" && state.mode === "exam" && state.i > 0) { state.i--; renderQ(); }
+});
+
+// ----- Results -----
+function finish() {
+  const items = state.items, total = items.length;
+  const right = items.filter((x) => x.pick === x.q.a).length;
+  const pct = Math.round((right / total) * 100);
+
+  $("#scorePct").textContent = pct + "%";
+  $("#scoreLine").textContent = `${right} of ${total} correct` +
+    (pct >= 90 ? " — excellent!" : pct >= 75 ? " — solid. Review the misses below." : " — keep at it. Retry the missed ones.");
+
+  const best = readBest();
+  if (total >= 10 && (!best || pct > best.pct)) writeBest({ pct, right, total });
+
+  const byCat = {};
+  items.forEach((x) => {
+    const c = (byCat[x.q.cat] = byCat[x.q.cat] || { r: 0, t: 0 });
+    c.t++; if (x.pick === x.q.a) c.r++;
+  });
+  const tbl = $("#catTable");
+  tbl.innerHTML = '<tr><th>Topic</th><th class="num">Score</th></tr>';
+  Object.keys(byCat).sort().forEach((c) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td></td><td class="num"></td>';
+    tr.children[0].textContent = c;
+    tr.children[1].textContent = `${byCat[c].r}/${byCat[c].t}`;
+    tbl.appendChild(tr);
+  });
+
+  const missed = items.filter((x) => x.pick !== x.q.a);
+  const list = $("#missList");
+  list.innerHTML = "";
+  $("#missWrap").hidden = missed.length === 0;
+  $("#retryMissed").hidden = missed.length === 0;
+  missed.forEach((x) => {
+    const d = document.createElement("div");
+    d.className = "miss";
+    d.innerHTML = '<div class="q"></div><div class="yours"></div><div class="ans"></div><div class="ex"></div>';
+    d.querySelector(".q").textContent = x.q.q;
+    d.querySelector(".yours").textContent = "Your answer: " + (x.pick === null ? "(skipped)" : x.q.o[x.pick]);
+    d.querySelector(".ans").textContent = "Correct: " + x.q.o[x.q.a];
+    d.querySelector(".ex").textContent = x.q.e;
+    list.appendChild(d);
+  });
+  state.missed = missed.map((x) => x.q);
+  show("results");
+}
+
+$("#retryMissed").onclick = () => startTest(state.missed, { ...lastSettings, count: "all" });
+$("#newTest").onclick = () => { show("setup"); showBest(); };
+
+updateAvail();
+showBest();
 </script>
-
 </body>
 </html>

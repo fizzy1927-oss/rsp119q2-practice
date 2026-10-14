@@ -1,39 +1,47 @@
-# RT Assessment Quiz Bank
+# RSP 119 Practice Test
 
-A practice quiz for Intro to Respiratory Therapy, covering bedside assessment of the patient and interpretation of clinical laboratory data.
+A study quiz for RSP 119 (patient assessment): vital signs, breathing patterns, chest inspection, chest deformities, breath sounds, labs, charting, and meds/emergencies.
 
-- 187 multiple-choice questions with explanations
-- 8 topics: ABGs, lab values, breath sounds, chest exam & inspection, vitals & pulse ox, breathing patterns & level of consciousness, history & charting, and patient care & emergencies
-- Choose topics and round length (10, 20, 50 or all questions)
-- Answer choices are shuffled each round
-- Missed questions are remembered in your browser so you can retry just those
-- Keyboard shortcuts: A–D or 1–4 to answer, Enter for the next question
+- **95 questions** — the 20 from the graded quiz plus 75 bonus questions for extra exposure
+- **Practice mode** shows the answer and an explanation after each question
+- **Exam mode** scores you at the end, with a per-topic breakdown and a review of everything you missed
+- Filter by topic, shuffle questions and answers, and retry only the ones you missed
+- Works on phone and desktop, light and dark mode. One file, no installs.
 
-The whole site is one file, `index.html`, with nothing to install or build.
+## Put it on GitHub Pages
 
-## Use it
+1. Create a new repository on GitHub (e.g. `rsp119-practice-test`).
+2. Click **Add file → Upload files** and upload `index.html` and `README.md`. Commit.
+3. Go to **Settings → Pages**. Under *Build and deployment*, set **Source** to *Deploy from a branch*, pick the **main** branch and the **/ (root)** folder, then **Save**.
+4. After a minute or two your test is live at `https://<your-username>.github.io/<repo-name>/`.
 
-Open `index.html` in any web browser.
+You can also just double-click `index.html` to open it in a browser — no internet needed.
 
-## Publish it with GitHub Pages
+## Add or edit questions
 
-1. Create a new public repository on GitHub.
-2. Upload `index.html` and `README.md` (Add file → Upload files → Commit changes).
-3. Go to **Settings → Pages**. Under "Build and deployment," set Source to **Deploy from a branch**, choose the `main` branch and the `/ (root)` folder, then click **Save**.
-4. After a minute or two, the site will be live at `https://<your-username>.github.io/<repository-name>/`.
-
-## Editing questions
-
-Questions are in the `RAW` list inside the `<script>` in `index.html`. Each entry looks like this:
+All questions live near the top of the `<script>` section in `index.html`, inside `const QUESTIONS = [ ... ]`. Each one looks like this:
 
 ```js
-["sounds", "Question text?", ["Correct answer", "Wrong", "Wrong", "Wrong"], "Explanation shown after answering."],
+{ cat: "Vital signs", src: "bonus",
+  q: "What is the normal adult respiratory rate?",
+  o: ["12–20 breaths/min", "6–10 breaths/min", "20–30 breaths/min", "60–100 breaths/min"], a: 0,
+  e: "12–20 breaths/min. Above 20 is tachypnea; below 12 is bradypnea." },
 ```
 
-List the correct answer first; the page shuffles the choices. For combination questions ("1, 2 and 3"), the choices keep their order and the correct one is set with `{a: index, items: [...]}`, where `index` counts from 0.
+| Field   | Meaning |
+|---------|---------|
+| `cat`   | Topic. A new name automatically becomes a new filter chip. |
+| `src`   | `"quiz"` for questions from the graded quiz, `"bonus"` for extra practice. |
+| `q`     | The question. Use `\n` for line breaks. |
+| `o`     | 2–4 answer choices. |
+| `a`     | Which choice is correct, **counting from 0** (0 = first, 1 = second…). |
+| `e`     | Explanation shown after answering. |
+| `fixed` | Optional. `true` keeps the choices in order (for "1, 3 and 4" style answers). |
 
-Topic keys: `abg`, `labs`, `sounds`, `exam`, `vitals`, `patterns`, `history`, `care`.
+Don't forget the comma after each `}`.
 
-## Note
+## Notes
 
-These questions are a study aid built from course lecture slides and standard textbook material. They are not a substitute for your course materials. Where they differ, go with your instructor.
+- Original quiz Q13 displayed the potassium range as "5-5.0 m/eq" — the leading "3." was cut off. The correct normal range is **3.5–5.0 mEq/L**, and that's what this test uses.
+- Lab reference ranges vary slightly between labs and textbooks; go with your course materials if they differ.
+- Study aid only — not a substitute for your textbook or instructor.
