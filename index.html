@@ -2,768 +2,546 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RC Pharm Exam Prep</title>
-<meta name="description" content="Practice questions, case studies, dose-calculation drills and key terms for mucus-controlling drugs, corticosteroids and drug dose calculations.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Practice quiz for Intro to Respiratory Therapy: bedside assessment, ABGs, lab values and breath sounds.">
+<title>RT Assessment Quiz Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-:root{
-  --bg:#f6f4fa;--surface:#ffffff;--surface2:#f1edf8;--text:#1d1a26;--muted:#5f5a6e;--border:#e2dcec;
-  --accent:#5b2a9e;--accent-ink:#ffffff;--accent-soft:#ede4fa;--gold:#f2b705;
-  --ok:#1d7f47;--ok-soft:#e2f4e9;--bad:#b83227;--bad-soft:#fbe6e3;
-  --shadow:0 1px 2px rgba(30,10,60,.06),0 6px 20px rgba(30,10,60,.06);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#14111b;--surface:#1e1a28;--surface2:#272233;--text:#ece8f4;--muted:#a49db5;--border:#352e44;
-    --accent:#b48cf0;--accent-ink:#1a1024;--accent-soft:#2e2442;--gold:#f2c230;
-    --ok:#5fd393;--ok-soft:#173326;--bad:#ff8a7d;--bad-soft:#3a1d1b;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#14111b;--surface:#1e1a28;--surface2:#272233;--text:#ece8f4;--muted:#a49db5;--border:#352e44;
-  --accent:#b48cf0;--accent-ink:#1a1024;--accent-soft:#2e2442;--gold:#f2c230;
-  --ok:#5fd393;--ok-soft:#173326;--bad:#ff8a7d;--bad-soft:#3a1d1b;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
-}
-*{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-button,input,select{font:inherit;color:inherit}
-.wrap{max-width:760px;margin:0 auto;padding:0 16px}
-header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 10px}
-.brand h1{font-size:1.15rem;margin:0;letter-spacing:-.01em}
-.brand p{margin:2px 0 0;font-size:.82rem;color:var(--muted)}
-.brand h1 span{color:var(--accent)}
-.icon-btn{border:1px solid var(--border);background:var(--surface);border-radius:10px;width:40px;height:40px;cursor:pointer;flex:none}
-nav.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--surface2);padding:4px;border-radius:12px;margin-bottom:12px}
-nav.tabs button{border:0;background:transparent;padding:8px 4px;border-radius:9px;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted)}
-nav.tabs button[aria-selected="true"]{background:var(--surface);color:var(--accent);box-shadow:var(--shadow)}
-main{padding:16px 0 40px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
-.card h2{margin:0 0 6px;font-size:1.15rem;line-height:1.35}
-.card h3{margin:0 0 8px;font-size:1rem}
-.muted{color:var(--muted)}
-.small{font-size:.85rem}
-.label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 6px}
+body{margin:0}
+/* Layout: one study column — bedside-monitor scoreboard on top, round settings, then the question card. */
+:root{
+  --bg:#F3F6F7; --surface:#FFFFFF; --ink:#13222C; --muted:#56687A; --line:#D3DDE3;
+  --accent:#2D6A9F; --accent-soft:#E2EDF6; --accent-ink:#FFFFFF;
+  --good:#1D7448; --good-bg:#E2F3E9; --bad:#B03636; --bad-bg:#F9E4E2;
+  --mon-bg:#0A1216; --mon-line:#1B2A31; --mon-green:#3BE07C; --mon-cyan:#4FD6EE; --mon-yellow:#F0CF4A; --mon-dim:#6F8791;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E161C; --surface:#152029; --ink:#E2EAF0; --muted:#94A6B4; --line:#263541;
+  --accent:#7DB3E2; --accent-soft:#1B2E3E; --accent-ink:#0E161C;
+  --good:#5FCB92; --good-bg:#14301F; --bad:#EE8686; --bad-bg:#3A1C1E;
+  --mon-bg:#070D10; --mon-line:#18262C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E161C; --surface:#152029; --ink:#E2EAF0; --muted:#94A6B4; --line:#263541;
+  --accent:#7DB3E2; --accent-soft:#1B2E3E; --accent-ink:#0E161C;
+  --good:#5FCB92; --good-bg:#14301F; --bad:#EE8686; --bad-bg:#3A1C1E;
+  --mon-bg:#070D10; --mon-line:#18262C; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding-block:28px 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.05;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;font-size:15px}
+
+/* Monitor */
+.monitor{background:var(--mon-bg);border-radius:var(--r);padding:14px 16px 10px;color:#fff;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.readouts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ro{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ro .lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--mon-dim);text-transform:uppercase}
+.ro .val{font-family:var(--f-mono);font-weight:600;font-size:clamp(22px,5vw,30px);line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ro .val small{font-size:.5em;color:var(--mon-dim);font-weight:500;margin-left:2px}
+.ro.g .val{color:var(--mon-green)} .ro.c .val{color:var(--mon-cyan)} .ro.y .val{color:var(--mon-yellow)}
+.pleth{display:block;width:100%;height:34px}
+.pleth path{fill:none;stroke:var(--mon-green);stroke-width:1.6;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:0;animation:sweep 6s linear infinite}
+.pleth .base{stroke:var(--mon-line);stroke-width:1;animation:none}
+@keyframes sweep{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion: reduce){.pleth path{animation:none}}
+
+/* Settings */
+.settings{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:14px}
+summary{cursor:pointer;font-weight:700;font-size:15px;list-style-position:inside}
+.settings:not([open]){gap:0}
+.row{display:flex;flex-direction:column;gap:8px}
+.row-lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--border);background:var(--surface);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.9rem}
-.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
-select,input[type=text],input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
-.toggle{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:.95rem;cursor:pointer}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.chip[aria-pressed="true"] .n{color:var(--accent)}
+.inline{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:14px;border:0;background:var(--bg);color:var(--ink);padding:6px 12px;cursor:pointer;font-variant-numeric:tabular-nums}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;cursor:pointer}
 .toggle input{width:18px;height:18px;accent-color:var(--accent)}
-.btn{border:1px solid var(--border);background:var(--surface);padding:11px 16px;border-radius:12px;cursor:pointer;font-weight:600}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.btn.block{width:100%;margin-top:18px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.row.end{justify-content:flex-end}
-.row.between{justify-content:space-between}
-.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:4px}
-.tag.gold{background:color-mix(in srgb,var(--gold) 22%,transparent);color:var(--text)}
-.progress{height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:4px 0 14px}
-.progress i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .25s}
-.choices{display:grid;gap:8px;margin-top:14px}
-.choice{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--border);background:var(--surface);border-radius:12px;padding:12px;cursor:pointer;line-height:1.4}
-.choice:hover:not(:disabled){border-color:var(--accent)}
-.choice .letter{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:var(--surface2)}
-.choice.sel{border-color:var(--accent);background:var(--accent-soft)}
-.choice.correct{border-color:var(--ok);background:var(--ok-soft)}
-.choice.correct .letter{background:var(--ok);color:#fff}
-.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.choice.wrong .letter{background:var(--bad);color:#fff}
-.choice.dim{opacity:.6}
-.choice:disabled{cursor:default}
-.feedback{margin-top:14px;border-radius:12px;padding:12px 14px;border-left:4px solid var(--ok);background:var(--ok-soft)}
-.feedback.bad{border-left-color:var(--bad);background:var(--bad-soft)}
-.feedback b{display:block;margin-bottom:4px}
-.src{display:block;margin-top:6px;font-size:.78rem;color:var(--muted)}
-.nav{margin-top:16px}
-.score-big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;color:var(--accent);line-height:1}
-.bar{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;margin:8px 0}
-.bar .track{grid-column:1/-1;height:8px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.bar .track i{display:block;height:100%;background:var(--accent)}
-.review{border-top:1px solid var(--border);padding-top:12px;margin-top:12px}
-.review p{margin:4px 0}
-.ok{color:var(--ok)} .bad{color:var(--bad)}
-.case-card{display:block;width:100%;text-align:left;cursor:pointer}
-.case-card:hover{border-color:var(--accent)}
-.scenario{background:var(--surface2);border-radius:12px;padding:12px 14px;margin:10px 0}
-.scenario .who{font-weight:700;margin-bottom:4px}
-.step{border-top:1px dashed var(--border);margin-top:16px;padding-top:14px}
-.step .num{font-size:.78rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
-.info{background:color-mix(in srgb,var(--gold) 14%,var(--surface));border-radius:10px;padding:10px 12px;margin:8px 0;font-size:.95rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
-.stat{background:var(--surface2);border-radius:12px;padding:10px;text-align:center}
-.stat b{display:block;font-size:1.3rem}
-.stat span{font-size:.75rem;color:var(--muted)}
-.prompt{font-size:1.05rem;margin:6px 0 14px}
-.answer-row{display:flex;gap:8px}
-.answer-row input{flex:1}
-.unit-suffix{align-self:center;color:var(--muted);font-weight:600;white-space:nowrap}
-ol.steps{margin:6px 0 0;padding-left:20px}
-ol.steps li{margin:3px 0}
-.terms{display:grid;gap:8px;margin-top:12px}
-.term{display:block;width:100%;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:12px 14px;cursor:pointer}
-.term .t{font-weight:700;display:flex;justify-content:space-between;gap:8px}
-.term .t::after{content:"+";color:var(--muted);font-weight:400}
-.term.open .t::after{content:"–"}
-.term .d{display:none;margin-top:6px;color:var(--muted);font-size:.95rem}
-.term.open .d{display:block}
-.obj-list{margin:0;padding-left:18px}
-.obj-list li{margin:4px 0}
-.obj-list button{border:0;background:none;padding:0;color:var(--accent);cursor:pointer;text-align:left;font:inherit}
-footer{padding:20px 0 40px;color:var(--muted);font-size:.82rem;text-align:center}
-footer button{border:0;background:none;color:var(--accent);cursor:pointer;text-decoration:underline;font-size:inherit}
-@media (max-width:420px){.card{padding:15px}.score-big{font-size:2.2rem}nav.tabs button{font-size:.84rem}}
+.btn{font:inherit;font-weight:600;font-size:15px;border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Question card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:16px}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.qnum{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:3px 8px}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.stem{font-size:18px;font-weight:600;line-height:1.45;margin:0;text-wrap:pretty}
+.items{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:2px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{font:inherit;text-align:left;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:11px 12px;cursor:pointer;min-height:48px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{font-family:var(--f-mono);font-weight:600;font-size:13px;width:26px;height:26px;border-radius:6px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.opt .mk{font-weight:700;font-size:13px}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--good);background:var(--good-bg)}
+.opt.right .k{border-color:var(--good);color:var(--good)}
+.opt.right .mk{color:var(--good)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong .k{border-color:var(--bad);color:var(--bad)}
+.opt.wrong .mk{color:var(--bad)}
+.opt.fade{opacity:.6}
+.why{border-radius:8px;padding:12px 14px;border:1px solid var(--line);background:var(--bg)}
+.why b{display:block;margin-bottom:2px}
+.why.ok b{color:var(--good)} .why.no b{color:var(--bad)}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.hint{font-size:13px;color:var(--muted)}
+
+/* Results */
+.big{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:clamp(44px,12vw,64px);line-height:1;margin:0;font-variant-numeric:tabular-nums}
+.res-table{display:flex;flex-direction:column;gap:10px}
+.res-row{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:4px 12px;align-items:center}
+.res-row .nm{font-size:14px;font-weight:600}
+.res-row .sc{font-family:var(--f-mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.res-row .track{grid-column:1/-1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.res-row .track i{display:block;height:100%}
+.missed-list{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.missed-list span{color:var(--good);font-weight:600}
+
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted)}
+.linkish{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0}
+.confirm{display:inline-flex;gap:8px;align-items:center}
+.confirm button{font:inherit;font-size:13px;border-radius:6px;padding:4px 10px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.confirm .danger{border-color:var(--bad);color:var(--bad)}
+@media (max-width:480px){.card{padding:16px}.stem{font-size:17px}.hint{display:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <h1>RC Pharm <span>Exam Prep</span></h1>
-        <p>Mucus-controlling drugs · Corticosteroids · Dose calculations</p>
-      </div>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+<div class="wrap">
+  <header>
+    <h1>RT Assessment Quiz Bank</h1>
+    <p class="sub" id="sub">Bedside assessment and clinical lab data · Intro to Respiratory Therapy</p>
+  </header>
+
+  <section class="monitor" aria-label="Score">
+    <div class="readouts">
+      <div class="ro g"><span class="lab">Score</span><span class="val" id="m-score">--<small>%</small></span></div>
+      <div class="ro c"><span class="lab">Answered</span><span class="val" id="m-ans">0<small>/0</small></span></div>
+      <div class="ro y"><span class="lab">Streak</span><span class="val" id="m-streak">0</span></div>
     </div>
-    <nav class="tabs" role="tablist">
-      <button role="tab" data-tab="quiz">Quiz</button>
-      <button role="tab" data-tab="cases">Cases</button>
-      <button role="tab" data-tab="calc">Calc drill</button>
-      <button role="tab" data-tab="terms">Terms</button>
-    </nav>
-  </div>
-</header>
-<main class="wrap" id="app"></main>
-<footer class="wrap">
-  Study aid built from Respiratory Care Pharmacology lecture slides (Goss). Not clinical guidance.<br>
-  Progress is saved in this browser. <button id="resetBtn">Reset progress</button>
-</footer>
+    <svg class="pleth" viewBox="0 0 700 34" preserveAspectRatio="none" aria-hidden="true">
+      <line class="base" x1="0" y1="28" x2="700" y2="28" stroke="currentColor"/>
+      <path id="pleth-path" d=""/>
+    </svg>
+  </section>
+
+  <details class="settings" id="settings"><summary id="set-sum">Round settings</summary>
+    <div class="row">
+      <span class="row-lab">Topics</span>
+      <div class="chips" id="topics"></div>
+    </div>
+    <div class="inline">
+      <div class="row">
+        <span class="row-lab">Questions per round</span>
+        <div class="seg" id="size"></div>
+      </div>
+      <label class="toggle" for="missed-only"><input type="checkbox" id="missed-only"> <span id="missed-label">Only questions I've missed</span></label>
+    </div>
+    <div><button class="btn" id="start">Start new round</button></div>
+  </details>
+
+  <main class="card" id="card" aria-live="polite"></main>
+
+  <footer>
+    <span id="bank-count"></span>
+    <span id="reset-wrap"><button class="linkish" id="reset">Reset saved progress</button></span>
+  </footer>
+</div>
 
 <script>
-/* ======================= DATA ======================= */
-const UNITS = {
-  mucus:   {name:"Mucus-Controlling Drug Therapy", short:"Mucus"},
-  steroids:{name:"Corticosteroids & Anti-asthmatics", short:"Steroids"},
-  calc:    {name:"Calculating Drug Doses", short:"Calc"}
+const TOPICS = {
+  abg:"ABGs", labs:"Lab values", sounds:"Breath sounds", exam:"Chest exam & inspection",
+  vitals:"Vitals & pulse ox", patterns:"Breathing patterns & LOC", history:"History & charting", care:"Patient care & emergencies"
 };
-const OBJ = {
-  m1:{u:"mucus",t:"Define key terms related to mucokinetic agents"},
-  m2:{u:"mucus",t:"Compare mechanisms: bland aerosols vs mucolytics"},
-  m3:{u:"mucus",t:"Indications for bland aerosols and mucolytics"},
-  m4:{u:"mucus",t:"Standard dose & administration frequency"},
-  m5:{u:"mucus",t:"CFTR modulator candidates (mutation & age)"},
-  s1:{u:"steroids",t:"Physiology of corticosteroids"},
-  s2:{u:"steroids",t:"Managing a patient on inhaled corticosteroids"},
-  s3:{u:"steroids",t:"Side effects & adverse effects"},
-  s4:{u:"steroids",t:"Oral, parenteral & inhaled pharmacotherapy"},
-  s5:{u:"steroids",t:"Leukotriene modifiers in asthma"},
-  c1:{u:"calc",t:"Terms used to describe medication solutions"},
-  c2:{u:"calc",t:"Strength of solutions in percentage form"},
-  c3:{u:"calc",t:"Drug dosage calculations"}
+/* Each entry: [topic, question, options, explanation, extra]
+   The correct option is listed FIRST unless extra.a gives its index (those keep a fixed order). */
+const RAW = [
+/* ---------- ABGs ---------- */
+["abg","What is the normal arterial pH range?",["7.35–7.45","7.25–7.35","7.45–7.55","7.00–7.35"],"Below 7.35 is acidosis; above 7.45 is alkalosis."],
+["abg","What is the normal PaCO₂?",["35–45 mm Hg","80–100 mm Hg","22–26 mm Hg","45–55 mm Hg"],"PaCO₂ is 35–45 mm Hg, with 40 as the ideal middle value."],
+["abg","What is the normal PaO₂ on room air?",["80–100 mm Hg","35–45 mm Hg","60–70 mm Hg","100–150 mm Hg"],"A PaO₂ below 80 mm Hg on room air means hypoxemia."],
+["abg","According to the lecture slides, the normal HCO₃⁻ is:",["22–24 mEq/L","3.5–5.0 mEq/L","35–45 mEq/L","95–105 mEq/L"],"The slides list 22–24 mEq/L. Many textbooks use 22–26."],
+["abg","What is the normal base excess (BE)?",["±2 mEq/L","±10 mEq/L","+5 to +10 mEq/L","Always exactly 0"],"Normal base excess is ±2."],
+["abg","Which ABG value tells you most directly how well the patient is ventilating?",["PaCO₂","PaO₂","HCO₃⁻","SaO₂"],"Breathing removes CO₂, so PaCO₂ reflects ventilation. PaO₂ reflects oxygenation."],
+["abg","Which ABG value is controlled mainly by the kidneys (the metabolic side)?",["HCO₃⁻","PaCO₂","PaO₂","SaO₂"],"The kidneys regulate bicarbonate; the lungs regulate CO₂."],
+["abg","ABG: pH 7.25, PaCO₂ 60 mm Hg, HCO₃⁻ 24 mEq/L. This is:",["Respiratory acidosis","Metabolic acidosis","Respiratory alkalosis","Metabolic alkalosis"],"pH is low and PaCO₂ is high (moving opposite ways), so the problem is respiratory. HCO₃⁻ is normal."],
+["abg","ABG: pH 7.52, PaCO₂ 28 mm Hg, HCO₃⁻ 23 mEq/L. This is:",["Respiratory alkalosis","Metabolic alkalosis","Respiratory acidosis","Metabolic acidosis"],"pH is high and PaCO₂ is low (opposite directions), so it is respiratory alkalosis."],
+["abg","ABG: pH 7.29, PaCO₂ 38 mm Hg, HCO₃⁻ 16 mEq/L. This is:",["Metabolic acidosis","Respiratory acidosis","Metabolic alkalosis","Respiratory alkalosis"],"pH and HCO₃⁻ are both low (moving the same way), so it is metabolic acidosis. PaCO₂ is normal."],
+["abg","ABG: pH 7.51, PaCO₂ 43 mm Hg, HCO₃⁻ 33 mEq/L. This is:",["Metabolic alkalosis","Respiratory alkalosis","Metabolic acidosis","Respiratory acidosis"],"pH and HCO₃⁻ are both high (same direction), so it is metabolic alkalosis."],
+["abg","After a drug overdose, a patient breathes 6 times a minute with shallow breaths. What would you expect on the ABG?",["PaCO₂ rises → respiratory acidosis","PaCO₂ falls → respiratory alkalosis","HCO₃⁻ falls → metabolic acidosis","No change from normal"],"Hypoventilation lets CO₂ build up, which lowers the pH."],
+["abg","An anxious patient breathes 32 times a minute after hearing bad news. The ABG most likely shows:",["Low PaCO₂ — respiratory alkalosis","High PaCO₂ — respiratory acidosis","Low HCO₃⁻ — metabolic acidosis","High HCO₃⁻ — metabolic alkalosis"],"Hyperventilation blows off CO₂, which raises the pH."],
+["abg","A patient has been vomiting for three days. Which acid–base problem is most likely?",["Metabolic alkalosis","Metabolic acidosis","Respiratory acidosis","Respiratory alkalosis"],"Vomiting loses stomach acid (along with K⁺ and Cl⁻), leaving extra base."],
+["abg","A patient has had severe diarrhea for several days. Which acid–base problem is most likely?",["Metabolic acidosis","Metabolic alkalosis","Respiratory alkalosis","Respiratory acidosis"],"Diarrhea loses bicarbonate from the gut, so the blood becomes acidic."],
+["abg","A patient in diabetic ketoacidosis has deep, rapid Kussmaul breathing. Which ABG fits?",["Low pH, low HCO₃⁻, low PaCO₂","High pH, high HCO₃⁻, normal PaCO₂","Low pH, high PaCO₂, normal HCO₃⁻","All values normal"],"Metabolic acidosis (low pH and HCO₃⁻), with the lungs blowing off CO₂ to compensate."],
+["abg","Using ROME, in a metabolic acid–base problem the pH and HCO₃⁻:",["Move in the same direction","Move in opposite directions","Do not change","Both always fall"],"ROME: Respiratory = Opposite (pH vs. PaCO₂); Metabolic = Equal (pH and HCO₃⁻ move together)."],
+["abg","Which device measures the actual SaO₂ and carboxyhemoglobin level?",["A co-oximeter run on an arterial sample","A pulse oximeter","A spirometer","A capnograph"],"Pulse oximetry only estimates saturation. A co-oximeter on an ABG sample gives the true SaO₂ and HbCO."],
+["abg","A patient's PaO₂ is 65 mm Hg on room air. This indicates:",["Hypoxemia","Normal oxygenation","Hypercapnia","Respiratory alkalosis"],"Normal PaO₂ is 80–100 mm Hg; below 80 is hypoxemia. Hypercapnia refers to high CO₂."],
+["abg","What is the normal SaO₂ on an ABG?",["98–100%","90–92%","85–90%","75–80%"],"The slides list SaO₂ at 98–100%. Normal SpO₂ by pulse oximetry is 95–100%."],
+
+/* ---------- Lab values ---------- */
+["labs","What is the normal hemoglobin (Hb)?",["12–16 g/dL","4–6 g/dL","20–25 g/dL","8–10 g/dL"],"Below this range is anemia; above it is polycythemia."],
+["labs","What is the normal hematocrit (Hct)?",["40–50%","20–30%","60–70%","12–16%"],"Hct is the percent of blood volume made up of red cells."],
+["labs","What is the normal WBC count?",["5,000–10,000 /mm³","1,000–4,000 /mm³","15,000–20,000 /mm³","150,000–400,000 /mm³"],"Above 10,000 is leukocytosis; below 5,000 is leukopenia."],
+["labs","What is the normal RBC count?",["4–6 million /mm³","12–16 million /mm³","1–2 million /mm³","40–50 million /mm³"],"Low = anemia; high = polycythemia."],
+["labs","A patient's WBC is 3,200 /mm³. This is:",["Leukopenia, often seen with viral infection","Leukocytosis, often seen with bacterial infection","Polycythemia","Within normal limits"],"Below 5,000 is leukopenia. The slides link it to viral infection."],
+["labs","A patient has a fever, yellow-green purulent sputum and a WBC of 16,000 /mm³. This suggests:",["Leukocytosis from a bacterial infection","Leukopenia from a viral infection","Anemia","Polycythemia"],"WBC above 10,000 is leukocytosis, typical of bacterial infection."],
+["labs","A long-term COPD patient has an Hb of 19 g/dL and an Hct of 58%. The best explanation is:",["Polycythemia from chronic hypoxemia","Anemia from blood loss","Leukocytosis","These are normal adult values"],"Chronic hypoxemia drives the body to make extra red cells."],
+["labs","What is the normal sodium (Na⁺)?",["135–145 mEq/L","3.5–5.0 mEq/L","95–105 mEq/L","22–26 mEq/L"],"Sodium is the major extracellular ion, controlled by the kidneys."],
+["labs","A dehydrated patient has a sodium of 151 mEq/L. This is:",["Hypernatremia","Hyponatremia","Hyperkalemia","Within normal limits"],"Above 145 is hypernatremia, usually from dehydration."],
+["labs","A CHF patient receiving IV fluids has a sodium of 128 mEq/L. This is:",["Hyponatremia from fluid gain","Hypernatremia from dehydration","Hyperkalemia","Within normal limits"],"Below 135 is hyponatremia. Extra fluid from CHF or IV fluids dilutes the sodium."],
+["labs","What is the normal potassium (K⁺) level?",["3.5–5.0 mEq/L","135–145 mEq/L","95–105 mEq/L","22–26 mEq/L"],"Your practice quiz accepted 3.5–5.0 mEq/L. The slides say 3.5–4.5."],
+["labs","A patient in kidney failure has a K⁺ of 6.1 mEq/L. This is:",["Hyperkalemia","Hypokalemia","Hypernatremia","Within normal limits"],"The kidneys excrete potassium, so kidney failure lets it build up."],
+["labs","A patient who is having trouble weaning from the ventilator has a K⁺ of 2.8 mEq/L. Why does this matter?",["Low K⁺ weakens the respiratory muscles","Low K⁺ increases lung compliance","Low K⁺ causes polycythemia","It does not affect breathing"],"Severe electrolyte problems weaken the respiratory muscles and make spontaneous breathing hard to sustain."],
+["labs","What is the normal chloride (Cl⁻)?",["95–105 mEq/L","135–145 mEq/L","3.5–5.0 mEq/L","70–105 mEq/L"],"Chloride is a major extracellular ion."],
+["labs","Prolonged vomiting most often causes which chloride change?",["Hypochloremia (low Cl⁻)","Hyperchloremia (high Cl⁻)","No change","Hypernatremia"],"Per the slides: vomiting → low chloride; diarrhea → high chloride."],
+["labs","What is the normal BUN?",["8–25 mg/dL","0.7–1.3 mg/dL","70–105 mg/dL","135–145 mg/dL"],"BUN and creatinine are both kidney-function tests."],
+["labs","What is the normal blood glucose?",["70–105 mg/dL","8–25 mg/dL","135–145 mg/dL","150–200 mg/dL"],"The slides list 70–105 mg/dL."],
+["labs","What is the normal creatinine?",["0.7–1.3 mg/dL","8–25 mg/dL","3.5–5.0 mg/dL","12–16 mg/dL"],"Creatinine is excreted by the kidneys."],
+["labs","Which lab value is most specific for kidney failure?",["Creatinine","BUN","Glucose","Chloride"],"The slides call creatinine more specific than BUN for kidney failure."],
+["labs","How is hematocrit measured?",["By spinning blood to see what percent is red cells","By counting white cells","With a pulse oximeter","By measuring plasma sodium"],"Spinning separates the cells, and the red-cell layer is read as a percentage."],
+["labs","How much O₂ does 1 gram of fully saturated hemoglobin carry?",["1.34 mL","13.4 mL","0.003 mL","4 mL"],"Each gram of Hb carries 1.34 mL of O₂ when fully saturated."],
+["labs","An anemic patient has an SpO₂ of 99%, but her tissues may still be short of oxygen. Why?",["There is too little Hb to carry enough O₂, even when it's fully saturated","The pulse oximeter must be broken","Her CO₂ is too high","Her WBC count is high"],"Saturation is a percentage of the Hb present. Low Hb means low O₂ content."],
+["labs","When reviewing the chart of a patient with an acute pulmonary infection, which study helps choose the right antibiotic?",["Sputum culture and sensitivity","Electrolyte tests","Hb and Hct","Sputum acid-fast stain"],"C&S identifies the organism and which antibiotics it is sensitive to."],
+["labs","A patient has night sweats, weight loss and a chronic cough, and tuberculosis is suspected. Which lab study is most useful?",["Sputum acid-fast stain","Electrolyte tests","Hb and Hct","WBC count"],"Acid-fast testing identifies acid-fast bacteria such as TB."],
+["labs","A Gram stain of sputum tells you:",["Whether the organism is gram-positive or gram-negative, and its shape","Exactly which antibiotic will work","Whether the patient has anemia","The patient's clotting time"],"Choosing an antibiotic takes a culture and sensitivity, not a Gram stain."],
+["labs","After a sputum sample is stained and acid-washed, the organism resists decolorization. It is classified as:",["An acid-fast bacterium","A gram-negative bacterium","Normal mouth flora","A virus"],"Resisting decolorization after an acid wash defines acid-fast bacteria such as TB."],
+["labs","A sputum sample shows many epithelial cells and few pus cells. You should:",["Collect a new sample — this one is mostly saliva","Send it for culture and sensitivity","Chart it as purulent sputum","Order an acid-fast stain"],"A real sputum sample has many pus cells and few epithelial cells."],
+["labs","Before drawing an ABG, you see that the platelet count is very low and the INR is high. You should:",["Draw it only if necessary and hold pressure on the site longer","Skip holding pressure afterward","Use a larger needle","Use the femoral artery instead"],"Poor clotting raises the risk of bleeding and a hematoma at the site."],
+["labs","Which procedures call for checking clotting values (platelets, PT/INR) first?",["ABG puncture and nasotracheal suctioning","Pulse oximetry and blood pressure","Auscultation and percussion","Temperature and pulse"],"Both procedures can cause bleeding in a patient who clots poorly."],
+
+/* ---------- Breath sounds ---------- */
+["sounds","Which breath sound is normal over most of the lung periphery?",["Vesicular","Bronchial","Rhonchi","Crackles"],"Vesicular sounds are soft and low-pitched, heard mostly on inspiration over normal lung."],
+["sounds","Which breath sound is normal over the trachea and manubrium?",["Bronchial","Vesicular","Wheezes","Crackles"],"Bronchial sounds are loud and high-pitched. They are normal only over the large airways."],
+["sounds","According to the slides, bronchovesicular sounds are normally heard:",["Over the right apex and near the sternum","At the lung bases","Over the lateral chest wall","Only in children"],"They are a mix of bronchial and vesicular sounds, heard near the large airways."],
+["sounds","You hear bronchial breath sounds out over the right lower lobe instead of vesicular sounds. This suggests:",["Consolidation, such as pneumonia","Normal lung tissue","Pneumothorax","Emphysema"],"Solid (consolidated) lung carries tracheal sounds out to the chest wall."],
+["sounds","A patient having an asthma attack has high-pitched, musical, continuous sounds on exhalation in both lungs. Which term would you record?",["Wheezes","Crackles","Stridor","Rhonchi"],"Wheezes come from narrowed, constricted airways."],
+["sounds","Wheezes indicate:",["Narrowed, constricted airways","Fluid in the alveoli","Normal airflow","Upper-airway obstruction"],"Bronchospasm, as in asthma and COPD, causes wheezing."],
+["sounds","A patient is wheezing during an asthma exacerbation. What should the RT recommend?",["A bronchodilator such as albuterol","A diuretic such as furosemide","Racemic epinephrine for stridor","An antibiotic"],"Bronchodilators open constricted airways."],
+["sounds","Following airway clearance therapy, you hear coarse, low-pitched, continuous sounds around the upper chest. Which term would you record?",["Rhonchi","Wheezes","Crackles","Stridor"],"Rhonchi are continuous, wet or rumbling sounds from secretions in the larger airways."],
+["sounds","Rhonchi that clear after the patient coughs tell you:",["Secretions are in the larger airways","There is fluid in the alveoli","There is bronchospasm","The upper airway is blocked"],"A cough moves the secretions, which changes or clears the sound."],
+["sounds","A CHF patient has fine crackling sounds, like Rice Krispies in milk, at both lung bases. The most likely cause is:",["Fluid in the lungs (pulmonary edema)","Air trapping","Pneumothorax","Upper-airway obstruction"],"Crackles mean fluid: pulmonary edema, pneumonia or CHF."],
+["sounds","During auscultation you hear intermittent bubbling sounds at the lung bases. Which chart entry fits best?",["Crackles heard at the lung bases","Bronchial breath sounds at the lung bases","Wheezes heard at the lung bases","Rhonchi heard at the lung bases"],"Intermittent (discontinuous) bubbling or popping is crackles."],
+["sounds","Which adventitious sound is discontinuous (popping) rather than continuous?",["Crackles","Wheezes","Rhonchi","Stridor"],"Crackles pop. Wheezes, rhonchi and stridor are continuous."],
+["sounds","Which of these adventitious sounds are continuous?",["1 and 2","2 and 3","2, 3 and 4","1, 2, 3 and 4"],"Wheezes, rhonchi and stridor are continuous. Crackles are discontinuous.",{a:2,items:["Crackles","Wheezes","Rhonchi","Stridor"]}],
+["sounds","Crackles are usually heard mainly during:",["Inspiration","Expiration only","Coughing only","Breath-holding"],"Fluid-filled or collapsed small airways pop open as the patient breathes in."],
+["sounds","Stridor is heard mainly during:",["Inspiration","Expiration","Neither phase","Only while asleep"],"Stridor is an inspiratory sound from the upper airway. Wheezes are usually on expiration."],
+["sounds","A recently extubated patient has a loud, high-pitched sound on inspiration, heard best over the neck. This indicates:",["Upper-airway obstruction — an emergency","Fluid in the alveoli","Normal tracheal breath sounds","Small-airway bronchospasm"],"Stridor means severe upper-airway obstruction."],
+["sounds","A child with croup has a barking cough and a high-pitched sound on every inspiration. This sound is:",["Stridor","Wheezes","Crackles","Rhonchi"],"Croup swells the upper airway, which causes inspiratory stridor."],
+["sounds","A patient develops stridor after extubation. What treatment would you expect?",["Racemic epinephrine, with reintubation if it is severe","Furosemide","Chest physiotherapy","Lowering the oxygen"],"The slides list racemic epinephrine (Vaponefrin) or intubation for stridor."],
+["sounds","Breath sounds are diminished throughout the chest of an emphysema patient. Why?",["Air trapping means little air is moving","Pulmonary edema","Consolidation","This is normal for any adult"],"Hyperinflated lungs move little air, so the sounds are faint and distant."],
+["sounds","After chest trauma, there are no breath sounds at all over the left chest. The most likely cause is:",["Pneumothorax","Asthma","Pulmonary edema","Bronchitis"],"Absent breath sounds point to pneumothorax."],
+["sounds","Which patient is most likely to have crackles?",["A patient with pneumonia","A patient with an anxiety attack","A patient with pectus carinatum","A patient hyperventilating at rest"],"Pneumonia fills the alveoli with fluid and pus."],
+
+/* ---------- Chest exam & inspection ---------- */
+["exam","A patient's sternum is sunken in. This is called:",["Pectus excavatum","Pectus carinatum","Kyphosis","Barrel chest"],"Pectus excavatum is also called funnel chest. It decreases lung volumes."],
+["exam","A patient's sternum sticks out, giving a pigeon-chest appearance. This is called:",["Pectus carinatum","Pectus excavatum","Scoliosis","Barrel chest"],"Carinatum means pigeon chest."],
+["exam","Which chest deformity decreases lung volumes?",["Pectus excavatum","Pectus carinatum","A normal A-P diameter","A midline trachea"],"Per the slides, excavatum (funnel chest) decreases lung volumes."],
+["exam","How does pectus carinatum usually affect breathing?",["It usually causes no respiratory problems","It causes severe restrictive disease","It causes air trapping","It causes a pneumothorax"],"Per the slides, pigeon chest has no respiratory complications."],
+["exam","A sideways (lateral) curve of the spine is called:",["Scoliosis","Kyphosis","Pectus carinatum","Barrel chest"],"Scoliosis bends sideways in an S or C shape."],
+["exam","A forward hunch of the upper spine (hunchback) is called:",["Kyphosis","Scoliosis","Pectus excavatum","Barrel chest"],"Kyphosis curves forward, rounding the upper back."],
+["exam","A spine that curves both forward and sideways is called:",["Kyphoscoliosis","Kyphosis","Scoliosis","Pectus carinatum"],"Kyphoscoliosis combines the two curves."],
+["exam","Severe kyphoscoliosis can lead to:",["A restrictive lung defect and respiratory failure","Larger lung volumes","Barrel chest","Digital clubbing within days"],"The deformed chest wall can't expand fully, which restricts the lungs."],
+["exam","An increased A-P chest diameter (barrel chest) is most often seen with:",["COPD / emphysema","Pectus carinatum","Pneumonia","Pulmonary edema"],"Air trapping enlarges the front-to-back diameter."],
+["exam","What causes barrel chest?",["Air trapping and hyperinflation","Fluid overload","A sideways spinal curve","A sunken sternum"],"Trapped air keeps the chest in a partly inhaled, rounded shape."],
+["exam","In a normal adult, the A-P diameter compared with the side-to-side diameter is about:",["1:2","1:1","2:1","1:4"],"Normally the chest is about half as deep as it is wide. In barrel chest it nears 1:1."],
+["exam","Percussion over the chest of a COPD patient sounds like a hollow drum. This is called:",["Hyperresonance, from air trapping","Dullness, from consolidation","Flatness, from effusion","Normal resonance"],"Hyperresonance is loud, low-pitched and long, from trapped air."],
+["exam","Percussing over an area of pneumonia (consolidation) produces:",["Dullness","Resonance","Hyperresonance","A hollow, drum-like sound"],"Dullness means consolidation or atelectasis."],
+["exam","According to the slides, percussion over a pleural effusion produces:",["Flatness","Hyperresonance","Resonance","A hollow, drum-like sound"],"The slides describe flatness as low-pitched and usually heard over pleural effusions."],
+["exam","A trauma patient has absent breath sounds and hyperresonance on the left, and the trachea is shifted to the right. The most likely problem is:",["Left pneumothorax","Left lower lobe atelectasis","Right pleural effusion","Left lower lobe pneumonia"],"The trachea shifts away from a pneumothorax."],
+["exam","The trachea is shifted toward the right, and percussion over the right lower chest is dull. The most likely problem is:",["Right lower lobe atelectasis","Right pneumothorax","Left pleural effusion","Emphysema"],"The trachea shifts toward atelectasis or fibrosis."],
+["exam","On examination of a normal patient's neck, the trachea should be:",["Midline, centered at the suprasternal notch","Shifted to the right","Shifted to the left","Under the left clavicle"],"A normal trachea is midline."],
+["exam","In a tension pneumothorax, the trachea shifts:",["Away from the affected side","Toward the affected side","Nowhere","Upward"],"Air pressure pushes the trachea away from a pneumothorax or pleural effusion."],
+["exam","To check vocal fremitus, you ask the patient to say:",["\"99\"","\"Ahh\"","Their full name","Nothing, just breathe"],"Saying \"99\" sends vibration through the airways to your hand."],
+["exam","Palpating the neck and upper chest, you feel a crackling sensation under the skin. This is:",["Subcutaneous emphysema","Tactile fremitus","Pitting edema","Digital clubbing"],"Subcutaneous emphysema is air trapped under the skin."],
+["exam","Which of these is NOT an accessory muscle of ventilation?",["Diaphragm","Sternocleidomastoid","Scalenes","Trapezius"],"The diaphragm is the main muscle of breathing. Accessory muscles are the scalenes, sternocleidomastoid, trapezius and pectoralis."],
+["exam","Activity of the accessory muscles of ventilation at rest suggests:",["Increased work of breathing","Increased pulmonary compliance","Decreased airway resistance","Increased physiologic deadspace"],"The patient needs extra muscles just to move air."],
+["exam","An infant shows nasal flaring and retractions at rest. This suggests:",["Increased work of breathing","Increased lung compliance","Normal infant breathing","Decreased airway resistance"],"Nasal flaring is the infant's sign of respiratory distress."],
+["exam","Jugular venous distention (JVD) indicates:",["Increased venous pressure","Low blood volume","Dehydration","Normal circulation"],"Blood backs up into the neck veins when venous pressure rises."],
+["exam","Inspection reveals jugular venous distention. The most likely cause is:",["Right heart failure","Hypovolemia","Pulmonary hypotension","Dehydration"],"A failing right heart can't move blood forward, so it backs up into the veins."],
+["exam","JVD is best assessed with the head of the bed at about:",["45°","0° (flat)","90° (fully upright)","Head down (Trendelenburg)"],"At 45° the neck veins of a healthy patient should not look distended."],
+["exam","A COPD patient has JVD and 2+ pitting edema in both ankles. The most likely cause is:",["Right heart failure (cor pulmonale)","Hypovolemia","Dehydration","Pulmonary hypotension"],"JVD plus peripheral edema in lung disease points to cor pulmonale."],
+["exam","Cor pulmonale is:",["Right heart failure caused by lung disease","Left heart failure caused by a heart attack","A type of lung infection","A collapsed lung"],"Chronic hypoxemia strains the right ventricle until it fails."],
+["exam","You press on a patient's ankle and the dent stays. This finding is:",["Pitting edema","Digital clubbing","Cyanosis","JVD"],"Pitting edema is graded 1+, 2+ and so on. Check the feet and hands."],
+["exam","On entering a patient's room, you notice that his lips and nail beds are blue-gray. This is a sign of:",["Hypoxemia","Advanced age","Hypercapnia","Peripheral edema"],"Cyanosis is a sign of low oxygen."],
+["exam","Cyanosis appears when the blood holds about how much reduced (unoxygenated) hemoglobin?",["5 g/dL","1 g/dL","15 g/dL","Any amount when SpO₂ is below 99%"],"The slides use 5 g of reduced Hb per 100 mL of blood."],
+["exam","A severely anemic patient is hypoxemic but does not look cyanotic. Why?",["Too little Hb to reach 5 g/dL of reduced Hb","Anemia makes the skin pink","The pulse oximeter is wrong","Cyanosis requires a high CO₂"],"With little Hb, there isn't enough unoxygenated Hb to turn the skin blue."],
+["exam","Compared with a normal patient, cyanosis in a polycythemic COPD patient appears:",["Sooner, at milder hypoxemia","Never","Later, only at severe hypoxemia","Only in the feet"],"Extra Hb means the 5 g/dL of reduced Hb is reached sooner."],
+["exam","Digital clubbing looks like:",["Loss of the normal nail-base angle, with a rounded, widened fingertip","Yellow, brittle nails","Swollen knuckles","Pale nail beds that refill quickly"],"In clubbing, the fingertip (DPD) becomes wider than the last joint (IPD)."],
+["exam","Digital clubbing is most associated with:",["Cystic fibrosis or bronchiectasis (chronic hypoxemia)","An acute asthma attack","A sprained finger","Acute anxiety"],"Clubbing develops over time with chronic lung or heart disease."],
+["exam","When measuring a clubbed finger, you find:",["DPD greater than IPD","IPD greater than DPD","DPD equal to IPD","No measurable change"],"DPD is the depth at the nail base; IPD is the depth at the last finger joint."],
+["exam","It is noted in the chart that a patient has a six-second capillary refill time. This indicates the patient:",["Has inadequate perfusion to the extremities","Has pulmonary edema","Has adequate pulmonary perfusion","Has increased cardiac output"],"Normal capillary refill is 2–3 seconds."],
+["exam","A patient's capillary refill is 2 seconds. This indicates:",["Normal peripheral perfusion","Poor perfusion to the extremities","Pulmonary edema","Decreased cardiac output"],"Normal is 2–3 seconds."],
+["exam","A patient becomes restless and anxious, and his heart rate is climbing. What should you suspect first?",["Hypoxemia","Hypothermia","CO₂ retention","Hyponatremia"],"Restlessness is an early sign of hypoxemia."],
+["exam","A COPD patient becomes increasingly sleepy and hard to wake. What should you suspect?",["CO₂ retention (hypercapnia)","Hypoxemia alone","Hyperthermia","Anemia"],"Sleepiness suggests CO₂ retention."],
+["exam","When does inspection of the patient begin?",["The moment you walk into the room","After taking vital signs","After auscultation","At discharge"],"Your first look at the patient's color, posture and breathing is part of inspection."],
+
+/* ---------- Vitals & pulse ox ---------- */
+["vitals","What is the normal respiratory rate for an adult?",["12–20 /min","20–26 /min","24–34 /min","8–10 /min"],"Child 20–26; infant 24–34."],
+["vitals","What is the normal respiratory rate for an infant, per the slides?",["24–34 /min","12–20 /min","20–26 /min","8–12 /min"],"Adult 12–20; child 20–26; infant 24–34."],
+["vitals","Which temperature site is most accurate?",["Rectal","Oral","Axillary","Ear"],"Rectal is the most accurate site."],
+["vitals","A patient's temperature rises from 37 °C to 39 °C. About how much does his O₂ consumption increase?",["20%","5%","10%","40%"],"O₂ consumption and CO₂ production rise about 10% for every 1 °C."],
+["vitals","How does a fever affect heart rate and breathing?",["Both increase","Both decrease","Heart rate rises, breathing slows","Neither changes"],"Higher metabolism means more O₂ use and more CO₂ to remove."],
+["vitals","Which term best describes an adult pulse rate of 125 per minute?",["Tachycardia","Bradycardia","Pulsus paradoxus","Pulsus alternans"],"Tachycardia is above 100/min."],
+["vitals","Which term best describes an adult pulse of 52/min?",["Bradycardia","Tachycardia","Pulsus alternans","Normal sinus rate"],"Bradycardia is below 60/min."],
+["vitals","A COPD patient's pulse gets noticeably weaker each time he inhales. You would chart:",["Pulsus paradoxus","Pulsus alternans","Bounding pulse","Thready pulse"],"Pulsus paradoxus is a weaker pulse on inhalation, common in COPD."],
+["vitals","A pulse that alternates strong and weak beats is called:",["Pulsus alternans","Pulsus paradoxus","Bounding pulse","Bradycardia"],"Pulsus alternans is a regular alternation of strong and weak beats."],
+["vitals","A patient's pulse is irregular. How long should you count it?",["A full 60 seconds","15 seconds × 4","30 seconds × 2","10 seconds × 6"],"Shorter counts miss the irregular beats."],
+["vitals","Why take a pulse with your index and middle fingers instead of your thumb?",["Your thumb has its own pulse, which can confuse the count","The thumb is too weak to feel a pulse","It's an infection-control rule","Only for patient comfort"],"The slides say never to use the thumb."],
+["vitals","Blood pressure above which value is hypertension?",["140/90 mm Hg","120/80 mm Hg","100/60 mm Hg","160/110 mm Hg"],"Normal adult BP is 120/80. Per the slides, hypotension is below 95/60."],
+["vitals","The systolic pressure mainly reflects:",["Cardiac contractility","Blood vessel resistance","Respiratory rate","Body temperature"],"Systolic is the first number and reflects how hard the heart contracts."],
+["vitals","The diastolic pressure mainly reflects:",["Blood vessel resistance","Cardiac contractility","Oxygen saturation","Lung compliance"],"Diastolic is the second number and reflects resistance in the vessels."],
+["vitals","A patient's blood pressure is 110/70. What is the mean arterial pressure?",["83 mm Hg","90 mm Hg","70 mm Hg","97 mm Hg"],"(2 × 70 + 110) ÷ 3 = 250 ÷ 3 ≈ 83 mm Hg."],
+["vitals","A patient's blood pressure is 130/85. What is the mean arterial pressure?",["100 mm Hg","108 mm Hg","85 mm Hg","115 mm Hg"],"(2 × 85 + 130) ÷ 3 = 300 ÷ 3 = 100 mm Hg."],
+["vitals","What is the normal SpO₂ by pulse oximetry?",["95–100%","85–90%","80–85%","100% only"],"Pulse oximetry estimates SaO₂ with light; normal is 95–100%."],
+["vitals","Which abnormal hemoglobins make a pulse oximeter overestimate saturation?",["Carboxyhemoglobin and methemoglobin","Fetal and adult hemoglobin","Oxyhemoglobin only","None of these"],"The oximeter reads these as if they were carrying oxygen."],
+["vitals","A house-fire victim has an SpO₂ of 99%, a headache and confusion. You should:",["Give 100% O₂ and get an ABG with co-oximetry","Accept the reading — no oxygen is needed","Place him on a 2 L/min nasal cannula","Move the probe to another finger and recheck"],"CO makes pulse oximetry read falsely high."],
+["vitals","Carbon monoxide binds to hemoglobin about how much more strongly than oxygen does?",["About 200 times","About 2 times","About 20 times","About 2,000 times"],"CO forms HbCO and pushes oxygen off the hemoglobin."],
+["vitals","Carbon monoxide shifts the oxyhemoglobin curve:",["To the left, so less O₂ is released to the tissues","To the right, so more O₂ is released","Not at all","Only during exercise"],"Hb holds on to the oxygen it does carry."],
+["vitals","How is carbon monoxide poisoning treated?",["100% FiO₂ or hyperbaric oxygen","A 2 L/min nasal cannula","A diuretic","A bronchodilator"],"High-concentration O₂ speeds the removal of CO from the hemoglobin."],
+["vitals","Which of the following can make a pulse oximeter reading unreliable?",["1 and 3","2 and 4","1, 2 and 3","1, 2, 3 and 4"],"Nail polish, poor perfusion, HbCO and movement all affect readings.",{a:3,items:["Dark nail polish","Shock or poor perfusion","Carbon monoxide poisoning","Patient movement"]}],
+["vitals","Which are indications for pulse oximetry?",["1 and 2","1, 2 and 3","3 and 4","1, 2, 3 and 4"],"Pulse oximetry estimates oxygen saturation. It cannot measure PaCO₂.",{a:1,items:["Continuous monitoring","Spot checks","Weaning from oxygen and measuring response to O₂ therapy","Measuring PaCO₂"]}],
+["vitals","The best quick check that a pulse oximeter reading is believable is to:",["Compare the oximeter's pulse rate with the patient's actual pulse","Turn up the oxygen","Take a blood pressure","Ask the patient how they feel"],"If the pulse rates don't match, the reading is suspect. Also ask whether the numbers make sense."],
+["vitals","Spectrophotometry in a pulse oximeter measures:",["How much light the hemoglobin absorbs","Arterial blood pressure","CO₂ levels","Body temperature"],"Oxygenated and unoxygenated Hb absorb different wavelengths of light."],
+
+/* ---------- Breathing patterns & LOC ---------- */
+["patterns","A patient says he has trouble sleeping unless he uses two pillows. This indicates:",["Orthopnea","Dysphagia","Platypnea","Tachypnea"],"Orthopnea is dyspnea lying flat, relieved by sitting up."],
+["patterns","A patient says he can only breathe comfortably sitting upright and now sleeps in a recliner. Which term should you chart?",["Orthopnea","Platypnea","Dysphagia","Tachypnea"],"Orthopnea is dyspnea lying flat."],
+["patterns","A patient gets short of breath when she sits up, and it eases when she lies flat. This is:",["Platypnea","Orthopnea","Paroxysmal nocturnal dyspnea","Hyperpnea"],"Platypnea is the reverse of orthopnea."],
+["patterns","Paroxysmal nocturnal dyspnea is most associated with:",["CHF, COPD and asthma","Pectus carinatum","Scoliosis","Anemia"],"The patient wakes suddenly at night short of breath."],
+["patterns","Kussmaul's breathing is a pattern seen in which type of patient?",["Diabetic ketoacidosis patients","Congestive heart failure patients","Pulmonary edema patients","Emphysema patients"],"Kussmaul breathing is deep and rapid, to blow off CO₂ in metabolic acidosis."],
+["patterns","Deep, rapid Kussmaul breathing is the body's attempt to:",["Blow off CO₂ to make up for metabolic acidosis","Retain CO₂","Increase oxygen stores","Make up for metabolic alkalosis"],"Lowering PaCO₂ pushes the pH back up."],
+["patterns","Breathing gradually gets faster and deeper, then shallower, followed by a period of apnea. This pattern is:",["Cheyne-Stokes","Kussmaul's","Biot's","Eupnea"],"Cheyne-Stokes is a cyclic rise and fall with apnea."],
+["patterns","Biot's breathing is best described as:",["Irregular breaths with sudden periods of apnea","Deep, rapid and regular breathing","A smooth crescendo–decrescendo cycle","Normal breathing"],"Biot's breathing is irregular, unlike the smooth cycles of Cheyne-Stokes."],
+["patterns","Which of these commonly causes tachypnea?",["Hypoxemia, pain, anxiety or fever","An opioid overdose","Hypothermia","Deep sleep"],"Each of these raises the drive to breathe."],
+["patterns","Which of these commonly causes bradypnea?",["CNS depression, such as a drug overdose","Fever","Anxiety","Exercise"],"Hypothermia also slows breathing."],
+["patterns","Hypopnea means:",["Shallow breathing","Deep breathing","No breathing","Fast breathing"],"Hyperpnea is deep breathing; apnea is no breathing."],
+["patterns","Hyperpnea means:",["Deep breathing","Shallow breathing","Absent breathing","Slow breathing"],"Hypopnea is shallow breathing; apnea is no breathing."],
+["patterns","Pursed-lip breathing is most often seen in:",["COPD","Pneumothorax","Pectus carinatum","Anemia"],"Breathing out against pursed lips helps keep the airways open."],
+["patterns","A patient is sleepy but wakes easily when you say his name. His level of consciousness is:",["Lethargic","Obtunded","Stuporous","Comatose"],"Lethargic means sleepy but arouses easily."],
+["patterns","A patient wakes only with difficulty. His level of consciousness is:",["Obtunded","Lethargic","Delirious","Confused"],"Obtunded means awakens with difficulty."],
+["patterns","A patient does not wake up but does respond to painful stimuli. His level of consciousness is:",["Stuporous","Lethargic","Obtunded","Comatose"],"Comatose patients don't respond to any stimulus."],
+["patterns","An agitated patient is having hallucinations. His level of consciousness is:",["Delirious","Lethargic","Obtunded","Stuporous"],"Confused means incoherent thoughts; delirious adds agitation and hallucinations."],
+["patterns","A patient who is unconscious and does not respond to any stimulus is:",["Comatose","Stuporous","Obtunded","Lethargic"],"Comatose is the deepest level."],
+["patterns","It is written in the chart that the patient is awake, alert and oriented × 3. This means that:",["You asked the patient their name, place and what date it is","You asked the same question three times","The patient said their name three times","The patient answered three of five questions"],"Oriented × 3 means oriented to person, place and time."],
+["patterns","A patient knows her name and that she is in the hospital, but not today's date. You would chart her as:",["Oriented × 2","Oriented × 1","Oriented × 3","Delirious"],"She is oriented to person and place, but not time."],
+
+/* ---------- History & charting ---------- */
+["history","Where in the medical record would you find a patient's understanding of the drugs they take and how they're given?",["Medication record","Progress notes","Doctor's orders","Admission/demographics"],"The medication record tracks a patient's drugs and how they are given."],
+["history","Where in the medical record would you find the physician's prescription for a patient's oxygen therapy?",["Doctor's orders","Progress notes","Medication record","Admission/demographics"],"Every prescribed therapy, including O₂, is in the doctor's orders."],
+["history","Where in the medical record would you find a patient's date of birth, address and insurance?",["Admission/demographics","Doctor's orders","Progress notes","Medication record"],"Demographic data covers name, age, date of birth, height, weight and similar details."],
+["history","The progress notes contain:",["Ongoing notes on the patient's condition and response to treatment","Insurance information","Only the drug list","Only the physician's prescriptions"],"Progress notes show how the patient is doing over time."],
+["history","A patient's chief complaint is:",["The main reason the patient is seeking care, usually one sentence","The doctor's final diagnosis","The patient's past surgeries","The most abnormal lab value"],"For example: \"I came because I'm having trouble breathing.\""],
+["history","In a patient history, HPI stands for:",["History of present illness","Hospital patient index","Hypoxemia, pain, infection","Health and physical inspection"],"PMH is past medical history."],
+["history","Which part of a patient's social history matters most when assessing lung disease?",["Smoking history","Marital status","Cultural background","Education"],"Smoking is the top risk factor for lung disease."],
+["history","Which part of a patient's history is most important in diagnosing work-related lung disease?",["Occupational history","Marital status","Cultural background","Education"],"Dusts, fumes and chemicals at work can cause lung disease."],
+["history","Which of the following is a sign rather than a symptom?",["Cyanosis","Nausea","Chest pain","Shortness of breath"],"A sign is objective and observable; a symptom is reported by the patient."],
+["history","Dyspnea is:",["Subjective — what the patient reports","An objective sign","Measured by pulse oximetry","Always visible from the doorway"],"Dyspnea is a symptom, so you evaluate whether it is present and how bad it is."],
+["history","Which four qualities of sputum must you always chart?",["Amount, odor, viscosity, color","Amount, pH, temperature, color","Odor, taste, volume, smell","Color, weight, culture, stain"],"Always include all four in your charting."],
+["history","A patient coughs up pink, frothy sputum. This suggests:",["Pulmonary edema","Normal sputum","An asthma attack","Chronic bronchitis"],"Pink, frothy sputum is a classic sign of pulmonary edema."],
+["history","A patient coughs up blood-tinged sputum. What should you do?",["Notify the nurse and the physician","Chart it only","Ignore it if the amount is small","Give a bronchodilator"],"Report hemoptysis or any blood."],
+["history","When analyzing a symptom, asking \"On a scale of 1 to 10, how bad is it?\" measures:",["Severity","Onset","Location","Timing"],"The full list is onset, characteristics, location, severity, timing and aggravating or relieving factors."],
+["history","A patient complains of chest pain. Which would you ask about?",["1 and 2","1, 2 and 3","2, 3 and 4","1, 2, 3 and 4"],"Analyze a symptom by onset, characteristics, location, severity, timing and aggravating or relieving factors.",{a:3,items:["Onset","Location","Severity on a 1–10 scale","What makes it better or worse"]}],
+["history","During an interview, a patient complains about coughing. What further information would you seek?",["1 and 2","2 and 3","1, 2 and 3","1 and 3"],"Ask about onset, the cough's characteristics (productive or not) and how it has changed over time.",{a:2,items:["Onset (what brings it on?)","Characteristics (is it productive?)","Course (how has it progressed over time?)"]}],
+
+/* ---------- Patient care & emergencies ---------- */
+["care","RR, tidal volume, chest movement, breath sounds and PaCO₂ are used to assess which critical life function?",["Ventilation","Oxygenation","Circulation","Perfusion"],"Ventilation is moving air into and out of the lungs."],
+["care","Heart rate, skin color, sensorium and PaO₂ are used to assess which critical life function?",["Oxygenation","Ventilation","Circulation","Perfusion"],"Oxygenation is getting O₂ into the blood."],
+["care","Blood pressure, temperature, urine output and sensorium are used to assess which critical life function?",["Perfusion","Ventilation","Oxygenation","Circulation"],"Perfusion is getting blood and O₂ into the tissues."],
+["care","Pulse rate, pulse strength and cardiac output are used to assess which critical life function?",["Circulation","Perfusion","Oxygenation","Ventilation"],"Circulation is moving the blood through the body."],
+["care","The RT has an order for a bronchodilator by SVN. The patient is lethargic, with an RR of 6/min and a heart rate of 160/min with a weak pulse. What should the therapist do FIRST?",["Activate the emergency medical team","Obtain an arterial blood gas","Increase the O₂ to 5 L/min and monitor with pulse oximetry","Recommend a chest radiograph"],"A failing critical life function is treated stat."],
+["care","You find a patient gray, gasping and not responding to your voice. What should you do FIRST?",["Call for help and support ventilation","Draw an ABG","Order a chest X-ray","Finish charting"],"Problems with ventilation or oxygenation come before any diagnostic test."],
+["care","You arrive to give a scheduled treatment and find the patient unresponsive, not breathing, with no pulse. You should FIRST:",["Call a code and start CPR","Give the ordered treatment","Obtain an arterial blood gas","Increase the O₂ and recheck in 5 minutes"],"No pulse and no breathing means a code: call it and start CPR."],
+["care","A patient in cardiogenic shock has a blood pressure of 72/40. Which medication should the RT recommend?",["Dopamine (Intropin)","Lidocaine (Xylocaine)","Nitroprusside (Nipride)","Furosemide (Lasix)"],"Dopamine raises blood pressure. Nitroprusside and furosemide would lower it."],
+["care","A patient in cardiogenic pulmonary edema has bilateral crackles and a BP of 150/90. Which medication should the RT recommend to remove the excess fluid?",["Furosemide (Lasix)","Dopamine (Intropin)","Lidocaine (Xylocaine)","Albuterol"],"Furosemide is a diuretic. Dopamine is for low blood pressure."],
+["care","To assess what a patient learned after an education session, you would:",["Have the patient explain the information back to you","Ask the assigned nurse to quiz the patient","Check the progress notes for improvement","Give the patient a pamphlet"],"Teach-back shows what the patient actually understood."],
+["care","After teaching a patient to use a metered-dose inhaler, the best way to confirm what she learned is to:",["Have her demonstrate the technique back to you","Ask whether she has any questions","Give her a pamphlet to read","Ask the nurse to check on her later"],"A return demonstration proves she can actually do it."],
+["care","The RT should recommend which of the following to a patient with COPD to manage his disease?",["1 and 2","3 and 4","1, 3 and 4","2, 3 and 4"],"Flu shots, quitting smoking and β₂ agonists for flare-ups all help. Patients should stay active, not minimize exercise.",{a:2,items:["Annual flu vaccination","Minimizing exercise","A smoking cessation program","β₂ agonists for acute exacerbations"]}],
+["care","Which of these help a patient manage COPD?",["1 and 4","2 and 3","1, 2 and 3","2, 3 and 4"],"Exercise, vaccines and quitting smoking help. Avoiding activity leads to deconditioning.",{a:2,items:["Pulmonary rehab and regular exercise","Flu and pneumococcal vaccines","Quitting smoking","Avoiding all physical activity"]}],
+["care","When taking a patient's pulse, why is it best not to announce that you're counting?",["The patient may change their breathing or heart rate if they know","It is against hospital policy","It wastes time","Patients find it rude"],"Patients who know they're being watched often change their rate without meaning to."],
+];
+
+const BANK = RAW.map((r,i)=>{const x=r[4]||{};return {id:i,t:r[0],q:r[1],o:r[2],why:r[3],a:x.a??0,items:x.items||null,fixed:x.a!==undefined}});
+const LET = ["A","B","C","D","E"];
+const KEY = "rt-quiz-v1";
+
+/* ---------- storage (per-viewer convenience only) ---------- */
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({hist:S.hist,topics:[...S.topics],size:S.size,missedOnly:S.missedOnly,round:S.round}))}catch(e){}}
+
+const saved = (window.claude?.hot?.data) || load();
+const S = {
+  hist: saved.hist || {},
+  topics: new Set(saved.topics && saved.topics.length ? saved.topics : Object.keys(TOPICS)),
+  size: saved.size ?? 20,
+  missedOnly: !!saved.missedOnly,
+  round: saved.round || null,
 };
+window.claude?.hot?.snapshot?.(()=>({hist:S.hist,topics:[...S.topics],size:S.size,missedOnly:S.missedOnly,round:S.round}));
 
-/* Questions: c[0] is always the correct answer (choices are shuffled on screen). */
-const Q = [
-/* ---------- MUCUS ---------- */
-{id:"m01",u:"mucus",o:"m1",q:"Normal mucus is composed of approximately what percentage of water?",c:["95%","50%","75%","99.9%"],e:"The mucus molecule is very large and complex, yet it is about 95% water. Its volume, consistency and structure can change in disease states.",s:"Mucus slide 3"},
-{id:"m02",u:"mucus",o:"m1",q:"Which statement best defines a mucolytic agent?",c:["A drug that directly alters the structure of the mucus molecule, liquefying it to aid expectoration","A solution that increases the depth of the sol layer by adding water","A drug that improves ciliary beat activity","An agent that suppresses the cough reflex"],e:"Mucolytics control mucus by directly altering the structure of the mucus molecule — they break down the complex molecular strands to thin and liquefy it.",s:"Mucus slide 19"},
-{id:"m03",u:"mucus",o:"m1",q:"Which group of agents primarily increases the depth of the sol layer?",c:["Water or saline solutions and expectorants","Mucolytics such as acetylcysteine","Sympathomimetic bronchodilators","Corticosteroids"],e:"Three approaches: mucolytics alter the consistency of the gel layer; water/saline and expectorants increase the depth of the sol layer; sympathomimetic bronchodilators and corticosteroids improve ciliary activity.",s:"Mucus slide 5"},
-{id:"m04",u:"mucus",o:"m2",q:"Which drug groups are listed as improving ciliary activity?",c:["Sympathomimetic bronchodilators and corticosteroids","Hypertonic saline and sterile water","Dornase alfa and acetylcysteine","CFTR correctors and potentiators"],e:"Improving ciliary activity is the third pharmacologic approach to secretion management, achieved with sympathomimetic bronchodilators and corticosteroids.",s:"Mucus slide 5"},
-{id:"m05",u:"mucus",o:"m2",q:"How do bland aerosols differ from mucolytics in their effect on mucus?",c:["Bland aerosols do not act on the mucus molecule directly and may only dilute it; mucolytics break down the molecule’s structure","Bland aerosols break disulfide bonds; mucolytics only add water","Both digest extracellular DNA","Bland aerosols open CFTR chloride channels; mucolytics do not"],e:"Bland aerosols do not affect the mucus molecule directly — they MAY dilute mucus by altering its water content, and their irritation can increase production of thinner mucus. Mucolytics directly break the molecular strands.",s:"Mucus slides 9 & 19"},
-{id:"m06",u:"mucus",o:"m2",q:"N-acetyl-L-cysteine (NAC) thins mucus by:",c:["Substituting free thiol groups for the disulfide bonds that connect mucin proteins","Digesting extracellular DNA","Increasing chloride transport through CFTR","Stimulating β2 receptors to increase ciliary beat"],e:"NAC disrupts the mucus polymer by substituting free thiol (sulfhydryl) groups for the disulfide bonds linking mucin proteins, reducing viscosity immediately.",s:"Mucus slide 21"},
-{id:"m07",u:"mucus",o:"m2",q:"Dornase alfa (Pulmozyme) decreases mucus viscosity by:",c:["Digesting extracellular DNA in the secretions","Breaking disulfide bonds in mucin with thiol groups","Osmotically hydrating the sol layer","Correcting misfolded CFTR protein"],e:"Dornase alfa is a peptide mucolytic — a recombinant form of human DNase I — that digests extracellular DNA, decreasing viscosity and restoring the mucus’s ability to flow.",s:"Mucus slide 23"},
-{id:"m08",u:"mucus",o:"m3",q:"Dornase alfa is indicated as:",c:["Maintenance therapy for the viscous pulmonary secretions of cystic fibrosis","Rescue therapy for acute bronchospasm","An antidote for acetaminophen overdose","A sputum-induction agent"],e:"Dornase alfa is indicated as maintenance therapy in managing the viscous pulmonary secretions seen in cystic fibrosis.",s:"Mucus slide 22"},
-{id:"m09",u:"mucus",o:"m3",q:"Besides its use as a mucolytic, acetylcysteine is used as:",c:["An antioxidant antidote to reduce liver injury from acetaminophen overdose","An anticoagulant","A long-acting bronchodilator","An antifungal for oral candidiasis"],e:"A second use of NAC is as an antioxidant antidote to reduce hepatic injury with acetaminophen overdose.",s:"Mucus slide 20"},
-{id:"m10",u:"mucus",o:"m3",q:"Which statement about aerosolized NAC is supported by the lecture?",c:["Despite in-vitro mucolytic activity and long use, there are no data showing it is effective therapy for any lung disease","It is first-line maintenance therapy for COPD","It is the preferred agent for sputum induction","It works mainly by improving ciliary activity"],e:"Despite in-vitro mucolytic activity and a long history of use, there are no data showing aerosolized NAC is effective therapy for any lung disease.",s:"Mucus slide 20"},
-{id:"m11",u:"mucus",o:"m1",q:"What is the difference between sterile and distilled water?",c:["Sterile water is free of microorganisms (may contain bacteriostatic additives); distilled water is both sterile and pure, with all other constituents removed","Distilled water may contain bacteria; sterile water cannot","They are identical terms","Sterile water is hypertonic; distilled water is hypotonic"],e:"Sterile = free of microorganisms (may have bacteriostatic additives). Distilled = sterile AND pure, with no additives and all other constituents removed.",s:"Mucus slide 10"},
-{id:"m12",u:"mucus",o:"m3",q:"Any solution intended for inhalation must be:",c:["Sterile — it does not need to be distilled","Distilled — it does not need to be sterile","Both sterile and hypertonic","Bacteriostatic and isotonic"],e:"Any solution intended for inhalation must be sterile; water does not need to be distilled.",s:"Mucus slide 10"},
-{id:"m13",u:"mucus",o:"m2",q:"Why may sterile water thin mucus more effectively than normal saline?",c:["It is hypotonic and more readily absorbed by mucus","It is hypertonic and draws water into the airway","It breaks disulfide bonds","It is isotonic and non-irritating"],e:"Sterile water is hypotonic, so it is more readily absorbed by mucus and may thin it more effectively than saline.",s:"Mucus slide 11"},
-{id:"m14",u:"mucus",o:"m3",q:"Which bland aerosol is MOST likely to cause bronchospasm?",c:["Hypertonic saline (1.8%–10%)","Normal saline (0.9%)","Hypotonic saline (0.45%)","Bacteriostatic normal saline"],e:"Hypertonic saline is more likely to cause bronchospasm than any of the other bland aerosols.",s:"Mucus slide 14"},
-{id:"m15",u:"mucus",o:"m3",q:"Which bland aerosol is commonly used to induce a cough and obtain a sputum sample?",c:["Hypertonic saline","Hypotonic saline 0.45%","Normal saline 0.9%","Distilled water as a croup-tent mist"],e:"Hypertonic saline (1.8%–10%) is commonly used to induce a cough and sputum sample. The irritation and cough from dense aerosols make them useful for sputum induction.",s:"Mucus slides 11 & 14"},
-{id:"m16",u:"mucus",o:"m3",q:"Hypertonic saline is beneficial in which population, but may decrease lung function in which population?",c:["Beneficial in cystic fibrosis; may decrease lung function in COPD","Beneficial in COPD; harmful in cystic fibrosis","Beneficial in asthma; harmful in croup","Beneficial in croup; harmful in CF"],e:"Hypertonic saline may cause a decrease in lung function in COPD, but is beneficial in CF, where it improves mucus clearance and subsequently lung function.",s:"Mucus slide 14"},
-{id:"m17",u:"mucus",o:"m3",q:"Which solution is described as less irritating than both sterile water and hypertonic saline and is used with ultrasonic and large-volume nebulizers?",c:["0.45% (hypotonic) saline","3% saline","7% saline","Undiluted 20% acetylcysteine"],e:"0.45% saline is less irritating than sterile water or hypertonic saline and is used with ultrasonic nebulizers, any large-volume nebulizer, or as a diluent.",s:"Mucus slide 12"},
-{id:"m18",u:"mucus",o:"m3",q:"Why is 0.9% saline well tolerated and frequently used as a diluent?",c:["It is isotonic to the body, less irritating, and less likely to cause bronchospasm","It is hypotonic and readily absorbed into mucus","It contains a mucolytic additive","It is hypertonic and induces cough"],e:"Normal saline is isotonic to the body, so it is well tolerated, less irritating, less likely to cause bronchospasm, and frequently used as a diluent.",s:"Mucus slide 13"},
-{id:"m19",u:"mucus",o:"m3",q:"A drawback of large-volume and ultrasonic nebulizers delivering bland aerosol is that they:",c:["Can produce runny, watery secretions that impair the mucociliary system","Cannot deliver significant volumes of aerosol","Cause adrenal suppression","Only work with distilled water"],e:"Large-volume and ultrasonic nebulizers deliver significant volumes of aerosol and have been shown to cause runny, watery secretions — and thin secretions impair mucociliary function.",s:"Mucus slide 6"},
-{id:"m20",u:"mucus",o:"m3",q:"Which patient is MOST likely to benefit from mucoactive drug therapy?",c:["A patient with an impaired cough and reduced expiratory airflow","A patient with a strong cough and normal airflow","A patient with seasonal rhinitis and no sputum","Every patient with any amount of sputum"],e:"Not all patients with retained mucus benefit. Those with impaired cough clearance and reduced expiratory airflow benefit most; a strong cough with preserved airflow usually clears secretions without drugs.",s:"Mucus slide 17"},
-{id:"m21",u:"mucus",o:"m4",q:"When should mucoactive drugs be given relative to airway clearance techniques?",c:["Before airway clearance, to decrease viscosity and enhance clearance","After airway clearance, to soothe the airway","Only on days airway clearance is skipped","Timing does not matter"],e:"Mucoactive therapy should be given BEFORE physical airway clearance to decrease viscosity, enhance clearance, and reduce infection/inflammation risk.",s:"Mucus slide 17"},
-{id:"m22",u:"mucus",o:"m3",q:"Which is NOT one of the listed goals of mucus-controlling therapy?",c:["Directly relaxing airway smooth muscle","Improving pulmonary function","Improving gas exchange","Preventing repeated infection and airway damage"],e:"The clinical indication is to reduce accumulated secretions with improvement in pulmonary function and gas exchange, and to prevent repeated infection and airway damage.",s:"Mucus slide 16"},
-{id:"m23",u:"mucus",o:"m1",q:"Direct instillation of a drug into the respiratory tract is performed through all of the following EXCEPT:",c:["A simple oxygen mask","An artificial airway","Bronchoscopy","A transtracheal catheter"],e:"Direct instillation is performed in patients with artificial airways, during bronchoscopy, or through a transtracheal catheter.",s:"Mucus slide 7"},
-{id:"m24",u:"mucus",o:"m5",q:"The CFTR protein normally functions as:",c:["A cell-surface channel controlling movement of chloride and water","An enzyme that digests extracellular DNA","A β2 receptor on airway smooth muscle","A mucin protein linked by disulfide bonds"],e:"CFTR acts as a channel on the cell surface controlling chloride and water movement — essential for thin, slippery mucus. Defective or absent CFTR causes thick, sticky mucus.",s:"Mucus slide 25"},
-{id:"m25",u:"mucus",o:"m5",q:"Which CFTR modulator is a potentiator?",c:["Ivacaftor","Elexacaftor","Tezacaftor","Dornase alfa"],e:"Potentiators (ivacaftor) act on CFTR channels already at the cell surface and help open the gate. Correctors (elexacaftor, tezacaftor) help misfolded protein fold and reach the surface.",s:"Mucus slide 26"},
-{id:"m26",u:"mucus",o:"m5",q:"What does a CFTR corrector such as elexacaftor or tezacaftor do?",c:["Helps misfolded CFTR protein form its correct 3-D shape and move to the cell surface","Holds open the gate of channels already at the surface","Breaks DNA strands in mucus","Blocks leukotriene receptors"],e:"Correctors fix folding and trafficking so more CFTR reaches the cell surface; the potentiator then boosts the function of those channels.",s:"Mucus slides 26–27"},
-{id:"m27",u:"mucus",o:"m5",q:"Trikafta is indicated for which patients?",c:["Age 2 years and older with at least one F508del mutation or another responsive CFTR mutation","Any age with two copies of any CFTR mutation","Adults only, with any CF diagnosis","Age 12 and older with COPD"],e:"Trikafta (elexacaftor/tezacaftor/ivacaftor) is indicated for individuals aged 2 years and older with at least one copy of F508del or another responsive mutation.",s:"Mucus slide 28"},
-{id:"m28",u:"mucus",o:"m5",q:"Which patient is NOT a candidate for Trikafta based on lecture criteria?",c:["An 18-month-old with two F508del copies","A 3-year-old with one F508del copy","A 25-year-old homozygous for F508del","A 10-year-old with one F508del copy and one other mutation"],e:"The 18-month-old has the mutation but does not meet the age criterion (2 years and older).",s:"Mucus slide 28"},
-{id:"m29",u:"mucus",o:"m4",q:"A 15-year-old with CF (one F508del copy) starts Trikafta. What is the correct regimen?",c:["AM: two orange tablets (elexacaftor 100/tezacaftor 50/ivacaftor 75 mg); PM: one light blue tablet (ivacaftor 150 mg)","AM: one orange tablet; PM: one orange tablet","AM: two light orange tablets (50/25/37.5 mg); PM: ivacaftor 75 mg","AM: one packet of granules; PM: one packet of granules"],e:"Adults and children 12+: two orange tablets in the morning and one light blue ivacaftor 150 mg tablet in the evening.",s:"Mucus slide 30"},
-{id:"m30",u:"mucus",o:"m4",q:"An 8-year-old weighing 25 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: two light orange tablets (elexacaftor 50/tezacaftor 25/ivacaftor 37.5 mg); PM: one light blue tablet (ivacaftor 75 mg)","AM: two orange tablets (100/50/75 mg); PM: ivacaftor 150 mg","AM: one packet granules (80/40/60 mg); PM: ivacaftor 59.5 mg","AM: one orange tablet only"],e:"Age 6 to <12 years and <30 kg: two light orange tablets AM, one light blue ivacaftor 75 mg tablet PM. (≥30 kg uses the adult dose.)",s:"Mucus slide 30"},
-{id:"m31",u:"mucus",o:"m4",q:"A 4-year-old weighing 12 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: one packet of granules (elexacaftor 80/tezacaftor 40/ivacaftor 60 mg); PM: one packet ivacaftor 59.5 mg","AM: one packet (100/50/75 mg); PM: one packet ivacaftor 75 mg","AM: two light orange tablets; PM: ivacaftor 75 mg tablet","Not eligible until age 6"],e:"Age 2 to <6 years and <14 kg: AM granules 80/40/60 mg; PM granules ivacaftor 59.5 mg.",s:"Mucus slide 30"},
-{id:"m32",u:"mucus",o:"m4",q:"A 5-year-old weighing 16 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: one packet of granules (elexacaftor 100/tezacaftor 50/ivacaftor 75 mg); PM: one packet ivacaftor 75 mg","AM: one packet (80/40/60 mg); PM: one packet ivacaftor 59.5 mg","AM: two orange tablets; PM: ivacaftor 150 mg","AM: two light orange tablets; PM: none"],e:"Age 2 to <6 years and ≥14 kg: AM granules 100/50/75 mg; PM granules ivacaftor 75 mg.",s:"Mucus slide 30"},
-{id:"m33",u:"mucus",o:"m4",q:"How is Trikafta taken?",c:["Orally with fat-containing food, usually twice daily about 12 hours apart","By nebulizer twice daily","Orally on an empty stomach once daily","IV once weekly"],e:"Trikafta is oral, taken with fatty foods, usually twice a day about 12 hours apart.",s:"Mucus slide 29"},
-{id:"m34",u:"mucus",o:"m5",q:"Which serious adverse effects of Trikafta were highlighted?",c:["Life-threatening liver damage and vision problems such as cataracts in children","Oral candidiasis and dysphonia","Adrenal crisis on abrupt withdrawal","Bronchospasm and hypernatremia"],e:"Potential serious side effects: life-threatening liver damage and vision problems such as cataracts in children. It also has drug interactions.",s:"Mucus slide 29"},
-{id:"m35",u:"mucus",o:"m5",q:"A teen on Trikafta feels much better and wants to stop dornase alfa and airway clearance. Best response?",c:["Continue all previous therapies unless the prescriber advises otherwise","Stop all inhaled therapies since Trikafta replaces them","Stop airway clearance but keep dornase alfa","Double the Trikafta dose instead"],e:"Compliance and education are key — the patient should continue all previous therapies unless advised otherwise.",s:"Mucus slide 29"},
-{id:"m36",u:"mucus",o:"m5",q:"Which is NOT an FDA-approved CFTR modulator product?",c:["Pulmozyme","Trikafta","Symdeko","Kalydeco"],e:"FDA-approved CFTR modulators: Trikafta, Symdeko, Orkambi, Kalydeco. Pulmozyme is dornase alfa, a peptide mucolytic.",s:"Mucus slide 27"},
-
-/* ---------- STEROIDS ---------- */
-{id:"s01",u:"steroids",o:"s1",q:"Corticosteroids are classified into which two groups?",c:["Mineralocorticoids and glucocorticoids","Agonists and antagonists","Correctors and potentiators","Leukotrienes and prostaglandins"],e:"Corticosteroids are classified into mineralocorticoids and glucocorticoids; synthetic versions were developed to optimize anti-inflammatory activity.",s:"Steroids slide 3"},
-{id:"s02",u:"steroids",o:"s1",q:"Why are corticosteroids the backbone of treatment for allergic asthma?",c:["They block the initial immune response and the subsequent inflammatory process","They relax bronchial smooth muscle within minutes","They break down mucus","They block muscarinic receptors"],e:"Corticosteroids can block both the initial immune response and the subsequent inflammatory process.",s:"Steroids slide 3"},
-{id:"s03",u:"steroids",o:"s1",q:"The HPA axis consists of which three glands?",c:["Hypothalamus, pituitary, adrenal glands","Hypothalamus, pancreas, adrenal glands","Pituitary, thyroid, adrenal glands","Hypothalamus, pituitary, thyroid"],e:"The hypothalamic–pituitary–adrenal axis is a hormonal cascade and feedback loop that controls corticosteroid release.",s:"Steroids slide 4"},
-{id:"s04",u:"steroids",o:"s1",q:"The HPA axis is responsible for which normal pattern of steroid levels?",c:["Diurnal (daily) variation in blood steroid levels","Constant levels around the clock","A monthly cycle","Seasonal variation only"],e:"The HPA axis controls corticosteroid release and is responsible for the normal diurnal variation in steroid blood levels.",s:"Steroids slide 4"},
-{id:"s05",u:"steroids",o:"s1",q:"Why does long-term exogenous corticosteroid therapy cause HPA suppression?",c:["The body cannot distinguish exogenous glucocorticoids from its own, so production shuts down and the adrenals atrophy","The drug destroys the pituitary gland","Exogenous steroids are pure mineralocorticoids","The liver stops metabolizing cortisol"],e:"Because the body cannot tell endogenous from exogenous glucocorticoids, it suppresses the HPA axis and the adrenal glands atrophy.",s:"Steroids slide 5"},
-{id:"s06",u:"steroids",o:"s3",q:"A patient on prednisone for a year stops it abruptly. What is the major risk?",c:["Acute adrenal crisis","Oral candidiasis","Cataracts","Paradoxical bronchospasm"],e:"Atrophied adrenal glands cannot immediately manufacture cortisol when steroids are stopped suddenly, leading to an acute adrenal crisis.",s:"Steroids slide 6"},
-{id:"s07",u:"steroids",o:"s2",q:"How should prolonged systemic corticosteroid therapy be discontinued?",c:["Gradually tapered over weeks or months","Stopped abruptly once symptoms resolve","Switched immediately to a leukotriene modifier","Stopped and restarted only during flares"],e:"Tapering protocols: gradually taper exogenous steroids over weeks or months.",s:"Steroids slide 6"},
-{id:"s08",u:"steroids",o:"s1",q:"Corticosteroids reduce inflammation by all of the following EXCEPT:",c:["Increasing circulating eosinophils and basophils","Blocking arachidonic acid metabolites (leukotrienes and prostaglandins)","Decreasing lymphocytes and macrophages","Inhibiting late-phase inflammation"],e:"Corticosteroids DECREASE monocytes, eosinophils, basophils, lymphocytes and macrophages, block arachidonic acid metabolites, and inhibit late-phase inflammation.",s:"Steroids slide 8"},
-{id:"s09",u:"steroids",o:"s4",q:"What is the rationale for an IV corticosteroid bolus in status asthmaticus?",c:["Glucocorticoids increase the number and availability of β receptors within 2–4 hours, restoring responsiveness to β-agonists","IV steroids cause immediate bronchodilation within 5 minutes","IV steroids prevent oral thrush","IV steroids replace the need for oxygen"],e:"Within 2–4 hours after IV administration, glucocorticoids increase the number and availability of β receptors — the rationale for a bolus in status asthmaticus.",s:"Steroids slide 9"},
-{id:"s10",u:"steroids",o:"s4",q:"Seasonal bronchial hyperresponsiveness requires how much steroid therapy to reverse?",c:["At least one week","2–4 hours","24 hours","One year"],e:"Seasonal BHR requires at least a week of therapy to reverse.",s:"Steroids slide 9"},
-{id:"s11",u:"steroids",o:"s4",q:"Sensitivity to exercise-induced bronchospasm (EIB) decreases after about how long of corticosteroid therapy?",c:["4 weeks","2–4 hours","3 days","6 months"],e:"EIB sensitivity decreases after about 4 weeks of therapy.",s:"Steroids slide 9"},
-{id:"s12",u:"steroids",o:"s2",q:"A patient started on an ICS 5 days ago says it “isn’t working.” Best response?",c:["Improvement typically begins in 1–2 weeks with maximum benefit at 4–8 weeks, so keep using it daily","Stop the ICS and use it only during attacks","Double the dose immediately","Switch to an oral steroid for maintenance"],e:"ICS produce symptom improvement in the first 1–2 weeks, with maximum improvement at 4–8 weeks.",s:"Steroids slide 16"},
-{id:"s13",u:"steroids",o:"s4",q:"When do FEV1 and PEF typically reach maximum improvement on inhaled corticosteroids?",c:["3–6 weeks","24–48 hours","4–6 hours","1–2 days"],e:"FEV1 and PEF may take 3–6 weeks for maximum improvement.",s:"Steroids slide 16"},
-{id:"s14",u:"steroids",o:"s4",q:"Improvement in bronchial hyperresponsiveness on ICS:",c:["Can take 1–3 months and may continue over a year","Is complete within 24 hours","Occurs only with oral steroids","Never occurs"],e:"BHR improvement can take one to three months and continue over a year.",s:"Steroids slide 16"},
-{id:"s15",u:"steroids",o:"s4",q:"Initial onset and peak effect of oral corticosteroids:",c:["Onset 4–6 hours; peak 24–48 hours","Onset 1–2 weeks; peak 4–8 weeks","Onset 5 minutes; peak 1 hour","Onset 2 days; peak 2 weeks"],e:"OCS: initial onset 4–6 hours, peak effect 24–48 hours. ICS: initial improvement 1–2 weeks, full effect 4–8 weeks.",s:"Steroids slide 17"},
-{id:"s16",u:"steroids",o:"s4",q:"Which statement correctly compares oral and inhaled corticosteroids?",c:["OCS: acute flare-ups, systemic, high side-effect risk; ICS: long-term maintenance, localized, very low risk at therapeutic doses","OCS: maintenance, localized; ICS: acute flare-ups, systemic","Both have identical onset and side-effect risk","ICS are preferred for severe acute exacerbations"],e:"OCS are for acute flare-ups/severe exacerbations, act systemically and carry high systemic side-effect risk. ICS are for daily maintenance/prevention, act locally, and have very low systemic risk at therapeutic doses.",s:"Steroids slide 17"},
-{id:"s17",u:"steroids",o:"s3",q:"Which finding is NOT a feature of iatrogenic Cushing syndrome?",c:["Muscle hypertrophy of the extremities","Moon face","Buffalo hump","Abdominal striae and poor wound healing"],e:"Cushingoid features include moon face, buffalo hump, osteoporosis, muscle WASTING in the extremities, skin ulcers/poor wound healing, abdominal striae, obesity, and cardiac hypertrophy (plus dark facial hair and amenorrhea in women).",s:"Steroids slide 11"},
-{id:"s18",u:"steroids",o:"s3",q:"Which organisms are associated with oropharyngeal infections from ICS use?",c:["Candida albicans and Aspergillus niger","Pseudomonas aeruginosa and Staph aureus","Mycobacterium tuberculosis","Influenza A and RSV"],e:"Infections with Candida albicans or Aspergillus niger may occur in the mouth, pharynx and larynx.",s:"Steroids slide 12"},
-{id:"s19",u:"steroids",o:"s3",q:"The occurrence and severity of oropharyngeal fungal infection with ICS is:",c:["Dose-related, and more likely if the patient also takes oral steroids","Unrelated to dose","Only seen with leukotriene modifiers","Prevented by inhaling without a spacer"],e:"Fungal infection is dose-related and more likely in patients who are also taking oral steroids.",s:"Steroids slide 14"},
-{id:"s20",u:"steroids",o:"s2",q:"Which two measures reduce oropharyngeal deposition of an ICS?",c:["Using a spacer and gargling/rinsing after each treatment","Taking it at bedtime without rinsing","Using it only during acute attacks","Taking two puffs back-to-back as fast as possible"],e:"Use of a spacer device and gargling after treatment reduce oropharyngeal deposition, lowering the risk of thrush.",s:"Steroids slide 14"},
-{id:"s21",u:"steroids",o:"s3",q:"Which statement about corticosteroids and airway remodeling is correct?",c:["They can prevent or reduce remodeling but cannot completely reverse established smooth muscle hyperplasia or fibrosis","They completely reverse all fibrotic airway changes","They cause airway remodeling","They have no effect on airway inflammation"],e:"By suppressing inflammation, steroids reduce BHR and help prevent/reduce remodeling, but cannot completely reverse established smooth muscle hyperplasia or fibrotic tissue.",s:"Steroids slide 15"},
-{id:"s22",u:"steroids",o:"s5",q:"Leukotrienes cause all of the following EXCEPT:",c:["Increased mucociliary clearance","Airway smooth muscle contraction","Increased vascular permeability","Increased mucus secretion"],e:"Leukotrienes cause smooth muscle contraction, vasodilation, increased vascular permeability, increased mucus secretion and DECREASED mucociliary clearance.",s:"Steroids slide 19"},
-{id:"s23",u:"steroids",o:"s5",q:"Leukotriene modifiers are considered:",c:["Alternatives to low-dose inhaled corticosteroids in mild persistent asthma, for long-term control","First-line rescue drugs for acute attacks","Replacements for IV steroids in status asthmaticus","Mucolytics"],e:"Leukotriene modifiers block leukotriene action and are alternatives to low-dose ICS in mild persistent asthma — for long-term control, not acute treatment.",s:"Steroids slide 20"},
-{id:"s24",u:"steroids",o:"s5",q:"A patient wants to take their leukotriene modifier tablet to stop an asthma attack. Best response?",c:["Leukotriene modifiers are for long-term control, not acute treatment — use the prescribed rescue inhaler","Take two tablets for faster effect","Yes, it works within seconds","Take it with an ICS to turn it into a rescue drug"],e:"Leukotriene modifiers are used for long-term control, not acute treatment.",s:"Steroids slide 20"},
-{id:"s25",u:"steroids",o:"s1",q:"Synthetic corticosteroids were developed to:",c:["Optimize anti-inflammatory activity","Maximize salt-retaining (mineralocorticoid) activity","Act as direct bronchodilators","Stimulate the adrenal glands"],e:"Synthetic corticosteroids have been developed to optimize anti-inflammatory activity.",s:"Steroids slide 3"},
-{id:"s26",u:"steroids",o:"s4",q:"Clinically, corticosteroids do all of the following EXCEPT:",c:["Provide immediate rescue bronchodilation","Reduce airway inflammation","Improve oxygenation","Increase the response to β-agonists"],e:"Clinically, steroids reduce inflammation and obstruction, improve oxygenation and increase β-agonist response — but they are not immediate rescue bronchodilators.",s:"Steroids slide 8"},
-{id:"s27",u:"steroids",o:"s2",q:"A patient asks why their ICS is safer long-term than daily oral prednisone. Best explanation?",c:["Inhaled delivery is localized to the airway, so systemic side-effect risk is very low at therapeutic doses","Inhaled steroids are not actually corticosteroids","Inhaled steroids work faster","Inhaled steroids cannot cause any side effects"],e:"ICS act locally, giving very low systemic risk at therapeutic doses — though local effects like thrush can still occur.",s:"Steroids slides 14 & 17"},
-
-/* ---------- CALC ---------- */
-{id:"c01",u:"calc",o:"c1",q:"In drug calculations, “percentage” refers to:",c:["Parts of active ingredient in a solution containing 100 parts","Milligrams per liter","The patient’s dose per kilogram","The ratio of diluent to drug"],e:"Percentage = the part of the active ingredient in a solution containing 100 parts.",s:"Calc slide 2"},
-{id:"c02",u:"calc",o:"c1",q:"A drug’s “schedule” is:",c:["The amount of drug needed based on the patient’s weight","The drug’s expiration date","The strength in percent","The volume of diluent added"],e:"Schedule = the amount of drug needed based on a patient’s weight (e.g., mg/kg).",s:"Calc slide 2"},
-{id:"c03",u:"calc",o:"c1",q:"The “strength” of a solution refers to:",c:["The amount of solute in a solution, usually expressed as a percentage","The volume of diluent added","The patient’s weight-based dose","The pH of the solution"],e:"Strength = amount of solute in a solution, usually as a percentage.",s:"Calc slide 2"},
-{id:"c04",u:"calc",o:"c1",q:"The substance that is dissolved is the ___; the substance that dissolves it is the ___.",c:["Solute; solvent","Solvent; solute","Diluent; solute","Solution; solvent"],e:"Solute = active ingredient that is dissolved (liquid or solid). Solvent = substance that dissolves the solute.",s:"Calc slide 3"},
-{id:"c05",u:"calc",o:"c1",q:"A solution is best defined as:",c:["A physically homogeneous mixture of two or more substances","Any liquid medication","The active ingredient only","A suspension of particles that settles out"],e:"A solution is a physically homogeneous mixture of two or more substances.",s:"Calc slide 3"},
-{id:"c06",u:"calc",o:"c2",q:"A 2% solution contains:",c:["20 mg/ml","2 mg/ml","200 mg/ml","0.2 mg/ml"],e:"% → mg/ml: move the decimal one place right. 2% = 20 mg/ml.",s:"Calc slide 5"},
-{id:"c07",u:"calc",o:"c2",q:"Albuterol 0.5% solution contains:",c:["5 mg/ml","0.5 mg/ml","50 mg/ml","0.05 mg/ml"],e:"0.5% → move decimal one place right → 5 mg/ml.",s:"Calc slide 5"},
-{id:"c08",u:"calc",o:"c2",q:"75 mg/ml expressed as a percentage is:",c:["7.5%","75%","0.75%","750%"],e:"mg/ml → %: move the decimal one place left. 75 mg/ml = 7.5%.",s:"Calc slide 5"},
-{id:"c09",u:"calc",o:"c2",q:"Acetylcysteine 20% contains:",c:["200 mg/ml","20 mg/ml","2 mg/ml","2,000 mg/ml"],e:"20% → 200 mg/ml (decimal one place right).",s:"Calc slide 6"},
-{id:"c10",u:"calc",o:"c2",q:"10 mg/ml expressed as a percentage is:",c:["1%","10%","0.1%","100%"],e:"10 mg/ml → move decimal one place left → 1%.",s:"Calc slide 5"},
-{id:"c11",u:"calc",o:"c3",q:"Albuterol 5 mg per aerosol dose is ordered. You have a 0.5% solution. How many ml?",c:["1 ml","0.5 ml","10 ml","0.1 ml"],e:"0.5% = 5 mg/ml. 5 mg / 1 ml = 5 mg / x ml → x = 1 ml.",s:"Calc slide 9"},
-{id:"c12",u:"calc",o:"c3",q:"Albuterol 2.5 mg per aerosol dose is ordered. You have a 0.5% solution. How many ml?",c:["0.5 ml","1 ml","5 ml","0.25 ml"],e:"0.5% = 5 mg/ml. 2.5 mg ÷ 5 mg/ml = 0.5 ml.",s:"Calc slide 10"},
-{id:"c13",u:"calc",o:"c3",q:"Acetylcysteine 500 mg per aerosol dose is ordered. You have a 20% solution. How many ml?",c:["2.5 ml","25 ml","5 ml","0.4 ml"],e:"20% = 200 mg/ml. 500 mg ÷ 200 mg/ml = 2.5 ml.",s:"Calc slide 11"},
-{id:"c14",u:"calc",o:"c3",q:"Acetylcysteine 800 mg per aerosol dose is ordered. You have a 10% solution. How many ml?",c:["8 ml","4 ml","0.8 ml","80 ml"],e:"10% = 100 mg/ml. 800 mg ÷ 100 mg/ml = 8 ml.",s:"Calc slide 12"},
-{id:"c15",u:"calc",o:"c3",q:"0.5 ml of a 1% drug is diluted with 2 ml of saline in one nebulizer and 10 ml in another. Which contains more active drug?",c:["Neither — both contain 5 mg of active ingredient","The 2 ml dilution","The 10 ml dilution","Cannot be determined"],e:"Diluent does not “weaken” the dose. 1% = 10 mg/ml × 0.5 ml = 5 mg, regardless of diluent volume.",s:"Calc slide 15"},
-{id:"c16",u:"calc",o:"c1",q:"Per lecture, the medication left in the nebulizer at the end of treatment is:",c:["Only diluent","Concentrated drug that should be re-dosed","Half of the original dose","Pure solute"],e:"The misconception slide notes that medication left in the nebulizer is only diluent.",s:"Calc slide 15"},
-{id:"c17",u:"calc",o:"c3",q:"A drug is ordered at 0.1 mg/kg. The child weighs 25 kg and you have a 0.5% solution. How many ml?",c:["0.5 ml","2.5 ml","5 ml","0.25 ml"],e:"Dose = 0.1 mg/kg × 25 kg = 2.5 mg. 0.5% = 5 mg/ml → 2.5 ÷ 5 = 0.5 ml.",s:"Calc slide 14"},
-{id:"c18",u:"calc",o:"c3",q:"A child weighs 44 lb. What is the weight in kg?",c:["20 kg","96.8 kg","22 kg","40 kg"],e:"44 lb ÷ 2.2 lb/kg = 20 kg. Always convert to kg before applying an mg/kg schedule.",s:"Calc slide 14"},
-{id:"c19",u:"calc",o:"c3",q:"Ipratropium 0.02% contains 0.2 mg/ml. How many ml provide 0.5 mg?",c:["2.5 ml","0.25 ml","25 ml","1 ml"],e:"0.5 mg ÷ 0.2 mg/ml = 2.5 ml.",s:"Calc slide 8"},
-{id:"c20",u:"calc",o:"c3",q:"The first step of the proportion method is to:",c:["Convert all quantities to consistent units of measure","Add the diluent","Multiply by body weight","Divide the percent by 100"],e:"Convert to consistent units, then set up Original dose/Per amount = Desired dose/Per amount.",s:"Calc slide 8"},
-{id:"c21",u:"calc",o:"c3",q:"How is a weight-based dose calculated?",c:["After obtaining body weight: mg/kg × weight (kg), then use the proportion formula for volume","Use an average adult weight","Only for adults","Only if the drug is a tablet"],e:"Dose must be calculated after body weight is obtained: schedule (mg/kg) × kg, then follow the proportion formula.",s:"Calc slide 14"},
-{id:"c22",u:"calc",o:"c2",q:"How many mg of active drug are in 3 ml of a 1% solution?",c:["30 mg","3 mg","300 mg","0.3 mg"],e:"1% = 10 mg/ml × 3 ml = 30 mg.",s:"Calc slide 5"}
-];
-
-const CASES = [
-/* ---------- MUCUS CASES ---------- */
-{id:"cm1",u:"mucus",title:"Maya — CF clinic visit",who:"Maya, 9-year-old girl, 27 kg",text:"Maya has cystic fibrosis and is homozygous for the F508del mutation. She uses dornase alfa daily and a high-frequency chest wall oscillation vest twice daily, but has had three exacerbations this year and thick, tenacious sputum. Her pulmonologist is considering Trikafta.",steps:[
- {q:"Is Maya an appropriate candidate for Trikafta?",c:["Yes — she is 2 years or older and has at least one F508del mutation","No — she must be 12 or older","No — she needs two different mutations","No — Trikafta is only for adults with COPD"],e:"Criteria: age ≥2 and at least one F508del (or other responsive) mutation. Maya meets both."},
- {q:"Which Trikafta regimen is correct for Maya (age 9, 27 kg)?",c:["AM: two light orange tablets (50/25/37.5 mg); PM: one light blue ivacaftor 75 mg tablet","AM: two orange tablets (100/50/75 mg); PM: ivacaftor 150 mg","AM: one packet granules (100/50/75 mg); PM: granules ivacaftor 75 mg","AM: one packet granules (80/40/60 mg); PM: granules ivacaftor 59.5 mg"],e:"Age 6 to <12 and <30 kg → two light orange tablets AM, one light blue ivacaftor 75 mg PM."},
- {q:"Maya’s mother asks how to give the medication.",c:["By mouth with fat-containing food, about 12 hours apart","On an empty stomach first thing in the morning","Crushed into her nebulizer","Once daily at bedtime with water only"],e:"Trikafta is taken orally with fatty foods, usually twice a day 12 hours apart."},
- {q:"Which explanation of how Trikafta works is most accurate?",c:["Correctors (elexacaftor, tezacaftor) get more CFTR protein to the cell surface; the potentiator (ivacaftor) helps the channel open","It digests the DNA in her mucus","It hydrates the sol layer like hypertonic saline","It blocks leukotrienes to reduce inflammation"],e:"The combination first increases the number of CFTR proteins at the surface and then boosts their function → thinner mucus."},
- {info:"Two months later Maya feels great. Her mother asks if she can stop the Pulmozyme and the vest.",q:"Best response?",c:["Continue all previous therapies unless her prescriber advises otherwise","Yes — Trikafta replaces all other CF therapies","Stop Pulmozyme but keep the vest","Stop the vest but double the Pulmozyme"],e:"Patients should continue all previous therapies unless advised otherwise — compliance and education are key."},
- {q:"When should Maya take her dornase alfa relative to her vest treatment?",c:["Before airway clearance","After airway clearance","At the same time as Trikafta only","Timing does not matter"],e:"Mucoactive drugs are given before physical airway clearance to decrease viscosity and enhance clearance."},
- {q:"Given Trikafta’s serious adverse effects, which monitoring makes the most sense?",c:["Liver function and eye exams (cataract screening)","Serum cortisol for adrenal suppression","Oral exam for thrush only","No monitoring is needed"],e:"Serious side effects include life-threatening liver damage and vision problems such as cataracts in children."}
-]},
-{id:"cm2",u:"mucus",title:"Mr. Delgado — sputum induction",who:"Mr. Delgado, 68-year-old man with COPD",text:"Mr. Delgado has a chronic cough, low-grade fevers and an abnormal chest X-ray. The physician needs a sputum sample, but he cannot produce one on his own. A sputum induction is ordered.",steps:[
- {q:"Which bland aerosol is most commonly used for sputum induction?",c:["Hypertonic saline","0.45% saline","0.9% saline","Bacteriostatic water"],e:"Hypertonic saline (1.8%–10%) is commonly used to induce a cough and sputum sample."},
- {q:"Why do these aerosols help produce a sample?",c:["They irritate the airway, causing cough and increasing production of thinner mucus","They break disulfide bonds in mucin","They open CFTR chloride channels","They increase β-receptor numbers"],e:"Bland aerosols are somewhat irritating; the irritation and cough from dense aerosols are what make them useful for sputum induction."},
- {q:"What is the main concern for THIS patient?",c:["Bronchospasm and a possible decrease in lung function because he has COPD","Adrenal crisis","Liver damage","Hyponatremia from absorbed water"],e:"Hypertonic saline is the bland aerosol most likely to cause bronchospasm and may decrease lung function in COPD."},
- {info:"Five minutes in, Mr. Delgado develops audible wheezing and increased work of breathing.",q:"Most appropriate action?",c:["Stop the treatment, assess him, and notify the provider/give a bronchodilator per protocol","Increase the nebulizer output to finish faster","Switch to sterile water and continue","Continue — wheezing means it is working"],e:"Bronchospasm is the key risk; stop the irritant, assess, and treat per protocol."},
- {info:"After the sample is collected, an albuterol treatment is ordered.",q:"Which solution is best as the well-tolerated diluent?",c:["0.9% normal saline","7% hypertonic saline","Distilled water in a large-volume nebulizer","20% acetylcysteine"],e:"Normal saline is isotonic, less irritating, less likely to cause bronchospasm, and frequently used as a diluent."}
-]},
-{id:"cm3",u:"mucus",title:"ICU — thick secretions on the ventilator",who:"Ms. Okafor, 45-year-old intubated patient",text:"Ms. Okafor is intubated after abdominal surgery. Suctioning returns small amounts of very thick, tenacious secretions. The physician orders acetylcysteine 400 mg by direct instillation; you have a 20% solution.",steps:[
- {q:"How many ml of 20% acetylcysteine do you instill?",c:["2 ml","4 ml","0.5 ml","20 ml"],e:"20% = 200 mg/ml. 400 mg ÷ 200 mg/ml = 2 ml."},
- {q:"Direct instillation is an accepted route for Ms. Okafor because she has:",c:["An artificial airway","A strong spontaneous cough","A nasal cannula","A peripheral IV"],e:"Direct instillation is performed on patients with artificial airways, during bronchoscopy, or via a transtracheal catheter."},
- {q:"How does acetylcysteine thin her secretions?",c:["Free thiol groups replace the disulfide bonds linking mucin proteins","It digests extracellular DNA","It simply adds water to the sol layer","It increases ciliary beat frequency"],e:"NAC substitutes free thiol groups for disulfide bonds, reducing viscosity immediately."},
- {q:"What should the RT recognize about the evidence for aerosolized NAC?",c:["No data show aerosolized NAC is effective therapy for any lung disease","It is proven to cure COPD","It is the standard maintenance therapy for CF","It is more effective than dornase alfa in CF"],e:"Despite in-vitro activity and long use, there are no data showing aerosolized NAC is effective for any lung disease."},
- {info:"A colleague suggests running continuous heated aerosol from a large-volume nebulizer at high output to “really soak” her secretions.",q:"What is the concern with this plan?",c:["Large volumes can produce runny, watery secretions that impair mucociliary function","It will cause adrenal suppression","Large-volume nebulizers cannot deliver significant aerosol","It will make secretions thicker"],e:"Large-volume/ultrasonic nebulizers can cause runny, watery secretions — thin secretions impair mucociliary function."},
- {info:"In the next bed, a patient with a strong cough and normal expiratory flows asks for “something to break up mucus.”",q:"Is mucoactive therapy likely to benefit him?",c:["Probably not — a strong cough with preserved airflow usually clears secretions without drugs","Yes — everyone with mucus benefits","Yes — give hypertonic saline routinely","Only if given after airway clearance"],e:"Patients with impaired cough and reduced expiratory airflow benefit most; those with preserved airflow and a strong cough usually don’t need it."}
-]},
-/* ---------- STEROID CASES ---------- */
-{id:"cs1",u:"steroids",title:"Jordan — starting an inhaled corticosteroid",who:"Jordan, 14-year-old with mild persistent asthma",text:"Jordan is prescribed an inhaled corticosteroid MDI twice daily for maintenance plus albuterol as needed. You are doing his inhaler teaching.",steps:[
- {q:"Which instruction best reduces his risk of oral thrush?",c:["Use a spacer and rinse/gargle after each dose","Take the ICS right before bed and don’t rinse","Use the ICS only when wheezing","Hold the MDI at arm’s length"],e:"A spacer and gargling after treatment reduce oropharyngeal deposition."},
- {q:"Jordan asks how soon he will feel better.",c:["Initial improvement in 1–2 weeks; maximum benefit at 4–8 weeks","Within 5 minutes, like albuterol","Within 4–6 hours","Only after a year"],e:"ICS: symptoms improve in the first 1–2 weeks with maximum improvement at 4–8 weeks."},
- {info:"At follow-up, Jordan admits he only uses the ICS “when I’m wheezy.”",q:"What should you reinforce?",c:["The ICS is a daily maintenance/prevention drug, not a rescue inhaler — use albuterol for acute symptoms","That’s correct use","Switch the ICS to an oral steroid","Use the ICS four times in a row during attacks"],e:"ICS are for long-term daily maintenance and prevention; they have a slow onset."},
- {info:"Three weeks later he has white patches on his tongue and a sore mouth.",q:"What is the most likely cause?",c:["Oropharyngeal candidiasis (Candida albicans) from ICS deposition","Iatrogenic Cushing syndrome","Adrenal crisis","A leukotriene reaction"],e:"Candida albicans (or Aspergillus niger) infection of the mouth, pharynx or larynx can occur; risk is dose-related."},
- {q:"His parents ask about a tablet instead of an inhaled steroid. Which option fits mild persistent asthma?",c:["A leukotriene modifier as an alternative to low-dose ICS for long-term control","An oral steroid daily","Acetylcysteine tablets","No controller is needed"],e:"Leukotriene modifiers are considered alternatives to low-dose ICS in mild persistent asthma, for long-term control."},
- {q:"Jordan plays soccer and gets exercise-induced bronchospasm. When might the ICS reduce EIB sensitivity?",c:["After about 4 weeks of therapy","Within 2–4 hours","After the first dose","Never"],e:"EIB sensitivity decreases after about 4 weeks of corticosteroid therapy."}
-]},
-{id:"cs2",u:"steroids",title:"ED — status asthmaticus",who:"Mr. Reyes, 32-year-old in severe exacerbation",text:"Mr. Reyes arrives with a severe asthma exacerbation. He is tachypneic, using accessory muscles, and responding poorly to repeated albuterol. The physician orders IV methylprednisolone.",steps:[
- {q:"What is the main rationale for an IV steroid bolus here?",c:["Glucocorticoids restore β-agonist responsiveness by increasing the number and availability of β receptors","IV steroids are immediate bronchodilators","It prevents oral thrush","It replaces the need for albuterol"],e:"Restoring responsiveness to β-adrenergic stimulation is a key effect — the rationale for a bolus in status asthmaticus."},
- {q:"When would you expect the increase in β-receptor availability?",c:["Within 2–4 hours after IV administration","Within 5 minutes","After 1–2 weeks","After 4–8 weeks"],e:"β receptors increase within 2–4 hours after IV glucocorticoids."},
- {q:"A student suggests giving his inhaled corticosteroid as the main acute treatment. Why is that inappropriate?",c:["ICS take 1–2 weeks for initial improvement; systemic steroids are used for acute exacerbations","ICS are more dangerous than IV steroids","ICS have no anti-inflammatory effect","ICS cause adrenal crisis"],e:"ICS are for long-term maintenance; OCS/IV steroids are used for acute flare-ups and severe exacerbations."},
- {info:"He improves and is discharged on a short oral prednisone burst.",q:"Expected onset and peak effect of the oral steroid?",c:["Onset 4–6 hours; peak 24–48 hours","Onset 1–2 weeks; peak 4–8 weeks","Onset 5 minutes; peak 30 minutes","Onset 3 days; peak 3 weeks"],e:"OCS onset 4–6 hours, peak effect 24–48 hours."},
- {q:"Which effect on inflammatory cells do corticosteroids produce?",c:["Decrease eosinophils, basophils, monocytes, lymphocytes and macrophages","Increase eosinophils","Increase lymphocytes","Increase leukotriene production"],e:"Corticosteroids decrease these cells and block arachidonic acid metabolites (leukotrienes and prostaglandins)."},
- {q:"What is the best long-term controller plan after discharge?",c:["Daily inhaled corticosteroid maintenance","Daily oral prednisone indefinitely","Albuterol only","IV steroids weekly"],e:"ICS are the long-term maintenance/prevention therapy with very low systemic risk at therapeutic doses."}
-]},
-{id:"cs3",u:"steroids",title:"Mrs. Patel — long-term oral steroids",who:"Mrs. Patel, 61-year-old with severe asthma",text:"Mrs. Patel has taken daily oral prednisone for two years. She has a rounded face, a fat pad between her shoulders, purple abdominal striae, a slow-healing leg ulcer, thin arms and legs, and a recent vertebral compression fracture.",steps:[
- {q:"These findings are most consistent with:",c:["Iatrogenic Cushing (cushingoid) syndrome","Adrenal crisis","Oropharyngeal candidiasis","Leukotriene excess"],e:"Moon face, buffalo hump, striae, poor wound healing, muscle wasting and osteoporosis are cushingoid features."},
- {q:"Her vertebral fracture is best explained by:",c:["Steroid-induced osteoporosis","Cardiac hypertrophy","Oral thrush","Hypertonic saline use"],e:"Osteoporosis is among the systemic effects of long-term corticosteroids."},
- {info:"Upset about her appearance, Mrs. Patel says she will stop the prednisone today.",q:"What is the major danger of stopping abruptly?",c:["Acute adrenal crisis","Immediate cataracts","Thrush","Bronchospasm from the tablet"],e:"Atrophied adrenals cannot immediately make cortisol after sudden withdrawal → acute adrenal crisis."},
- {q:"Why are her adrenal glands unable to respond?",c:["Exogenous steroids suppressed the HPA axis; the body cannot tell drug from its own cortisol, so the adrenals atrophied","The prednisone destroyed her thyroid","Her liver stopped producing cortisol","Leukotrienes blocked the pituitary"],e:"HPA suppression → adrenal atrophy, because the body cannot distinguish endogenous from exogenous glucocorticoids."},
- {q:"Best plan to discuss with the team?",c:["Gradually taper the oral steroid over weeks–months while optimizing inhaled (localized) corticosteroid therapy","Stop prednisone today and start nothing","Double the prednisone to fix the symptoms","Switch to acetylcysteine"],e:"Taper over weeks or months; ICS act locally with very low systemic risk at therapeutic doses."},
- {q:"She asks whether steroids will reverse the long-standing scarring in her airways.",c:["Steroids can prevent or reduce remodeling but cannot completely reverse established smooth muscle hyperplasia or fibrosis","Yes, completely, within 4 weeks","Yes, but only with IV steroids","Steroids cause the scarring"],e:"Corticosteroids alone cannot completely reverse established remodeling."}
-]},
-/* ---------- CALC CASES ---------- */
-{id:"cc1",u:"calc",title:"Pediatric floor — weight-based dose",who:"Liam, 3-year-old, 33 lb",text:"Liam has wheezing. The order is albuterol 0.15 mg/kg by small-volume nebulizer. You have albuterol 0.5% solution and unit-dose normal saline.",steps:[
- {q:"What is Liam’s weight in kg?",c:["15 kg","72.6 kg","16.5 kg","30 kg"],e:"33 lb ÷ 2.2 = 15 kg. Weight must be obtained (in kg) before calculating the dose."},
- {q:"What dose (mg) is ordered?",c:["2.25 mg","0.15 mg","4.95 mg","22.5 mg"],e:"0.15 mg/kg × 15 kg = 2.25 mg."},
- {q:"What is the concentration of 0.5% albuterol?",c:["5 mg/ml","0.5 mg/ml","50 mg/ml","0.05 mg/ml"],e:"Move the decimal one place right: 0.5% = 5 mg/ml."},
- {q:"How many ml of 0.5% albuterol do you draw up?",c:["0.45 ml","2.25 ml","4.5 ml","0.225 ml"],e:"2.25 mg ÷ 5 mg/ml = 0.45 ml."},
- {q:"You add 3 ml of normal saline. How much albuterol is now in the nebulizer?",c:["Still 2.25 mg","Less than 2.25 mg — the saline weakened it","More than 2.25 mg","0.45 mg"],e:"Diluent doesn’t change the amount of active drug — it is still 2.25 mg."}
-]},
-{id:"cc2",u:"calc",title:"Mucolytic orders",who:"Respiratory therapy department",text:"An order reads: acetylcysteine 600 mg via SVN. Your stock is the 20% vial.",steps:[
- {q:"20% acetylcysteine contains:",c:["200 mg/ml","20 mg/ml","2 mg/ml","2,000 mg/ml"],e:"20% → 200 mg/ml."},
- {q:"How many ml of 20% solution deliver 600 mg?",c:["3 ml","30 ml","1.2 ml","6 ml"],e:"600 mg ÷ 200 mg/ml = 3 ml."},
- {info:"Pharmacy is out of the 20% vial and sends the 10% vial instead.",q:"How many ml of 10% solution deliver 600 mg?",c:["6 ml","3 ml","60 ml","0.6 ml"],e:"10% = 100 mg/ml → 600 ÷ 100 = 6 ml. Half the concentration means double the volume."},
- {q:"In this solution, acetylcysteine is the:",c:["Solute","Solvent","Diluent","Schedule"],e:"The solute is the active ingredient dissolved in the solution."},
- {q:"A 10% vial label could also be written as:",c:["100 mg/ml","10 mg/ml","1 mg/ml","1,000 mg/ml"],e:"10% → move decimal one place right → 100 mg/ml."}
-]},
-{id:"cc3",u:"calc",title:"Double-checking a colleague",who:"Adult patient, albuterol 2.5 mg ordered",text:"A colleague has drawn up 5 ml of albuterol 0.5% for an order of albuterol 2.5 mg and asks you to double-check before giving it.",steps:[
- {q:"How many mg are in what your colleague drew up?",c:["25 mg","2.5 mg","5 mg","0.25 mg"],e:"0.5% = 5 mg/ml × 5 ml = 25 mg — ten times the ordered dose."},
- {q:"What is the correct volume for 2.5 mg?",c:["0.5 ml","5 ml","2.5 ml","1 ml"],e:"2.5 mg ÷ 5 mg/ml = 0.5 ml."},
- {q:"What likely caused the error?",c:["Confusing the dose volume with the diluent volume / skipping the % → mg/ml conversion","Using the wrong patient weight","Using a solvent instead of solute","Dornase interaction"],e:"Always convert % to mg/ml, then set up the proportion. Diluent volume is separate from drug volume."},
- {q:"Albuterol 0.083% unit dose contains about how many mg/ml?",c:["0.83 mg/ml","8.3 mg/ml","0.083 mg/ml","83 mg/ml"],e:"0.083% → move decimal one place right → 0.83 mg/ml (a 3 ml unit dose ≈ 2.5 mg)."}
-]}
-];
-
-const TERMS = [
- {u:"mucus",t:"Mucus",d:"Large, complex glycoprotein secretion that is about 95% water; its volume, consistency and structure change in disease."},
- {u:"mucus",t:"Gel layer",d:"The viscous upper layer of airway mucus that traps particles. Mucolytics alter its consistency."},
- {u:"mucus",t:"Sol layer",d:"The thin, watery periciliary layer in which cilia beat. Water/saline and expectorants increase its depth."},
- {u:"mucus",t:"Mucokinetic / mucoactive agent",d:"Any drug that improves the ability to clear secretions — by changing mucus consistency, hydrating the sol layer, or improving ciliary activity."},
- {u:"mucus",t:"Mucolytic",d:"Drug that directly alters the structure of the mucus molecule, breaking molecular strands to liquefy mucus (e.g., acetylcysteine, dornase alfa)."},
- {u:"mucus",t:"Expectorant",d:"Agent that increases the depth of the sol layer to help secretions be coughed up."},
- {u:"mucus",t:"Bland aerosol",d:"Water or saline aerosol (sterile water, 0.45%, 0.9%, hypertonic saline). Does not act on the mucus molecule directly; may dilute it; somewhat irritating."},
- {u:"mucus",t:"Sterile water",d:"Free of microorganisms; may contain bacteriostatic additives. Hypotonic, so readily absorbed by mucus. Solutions for inhalation must be sterile."},
- {u:"mucus",t:"Distilled water",d:"Both sterile and pure — no additives, all other constituents removed. Not required for inhalation solutions."},
- {u:"mucus",t:"Hypotonic saline (0.45%)",d:"Less irritating than sterile water or hypertonic saline; used in ultrasonic and large-volume nebulizers and as a diluent."},
- {u:"mucus",t:"Normal saline (0.9%)",d:"Isotonic to the body; well tolerated, less irritating, less likely to cause bronchospasm; common diluent."},
- {u:"mucus",t:"Hypertonic saline (1.8%–10%)",d:"Used for sputum induction; most likely bland aerosol to cause bronchospasm; may decrease lung function in COPD; beneficial in CF."},
- {u:"mucus",t:"Sputum induction",d:"Using an irritating dense aerosol (usually hypertonic saline) to provoke cough and obtain a sputum sample."},
- {u:"mucus",t:"Direct instillation",d:"Placing drug directly into the respiratory tract via artificial airway, bronchoscopy or transtracheal catheter."},
- {u:"mucus",t:"N-acetyl-L-cysteine (NAC)",d:"Thiol mucolytic: free thiol groups replace disulfide bonds between mucin proteins, reducing viscosity immediately. Also an acetaminophen-overdose antidote."},
- {u:"mucus",t:"Dornase alfa (Pulmozyme)",d:"Peptide mucolytic; recombinant human DNase I that digests extracellular DNA. Maintenance therapy for viscous CF secretions."},
- {u:"mucus",t:"CFTR",d:"Cystic Fibrosis Transmembrane Conductance Regulator — cell-surface channel moving chloride and water to keep mucus thin."},
- {u:"mucus",t:"CFTR corrector",d:"Helps misfolded CFTR protein fold correctly and reach the cell surface (elexacaftor, tezacaftor)."},
- {u:"mucus",t:"CFTR potentiator",d:"Helps open the gate of CFTR channels already at the cell surface (ivacaftor)."},
- {u:"mucus",t:"Trikafta",d:"Elexacaftor + tezacaftor + ivacaftor. Age ≥2 with at least one F508del or responsive mutation. Oral with fatty food, ~12 h apart. Watch liver and eyes (cataracts)."},
- {u:"mucus",t:"F508del",d:"The CFTR mutation named in Trikafta’s indication — at least one copy is required (or another responsive mutation)."},
- {u:"steroids",t:"Glucocorticoid",d:"Corticosteroid class with anti-inflammatory/immunosuppressive effects; synthetic forms optimize this activity."},
- {u:"steroids",t:"Mineralocorticoid",d:"Corticosteroid class that regulates salt and water balance."},
- {u:"steroids",t:"HPA axis",d:"Hypothalamus–pituitary–adrenal feedback loop controlling corticosteroid release and the normal diurnal variation in steroid levels."},
- {u:"steroids",t:"HPA / adrenal suppression",d:"Exogenous steroids suppress the HPA axis because the body can’t distinguish them from its own cortisol; adrenals atrophy."},
- {u:"steroids",t:"Acute adrenal crisis",d:"Result of abruptly stopping prolonged steroids — atrophied adrenals can’t make cortisol fast enough."},
- {u:"steroids",t:"Tapering",d:"Gradually reducing exogenous steroids over weeks or months to let the HPA axis recover."},
- {u:"steroids",t:"Iatrogenic Cushing syndrome",d:"Cushingoid effects of steroid therapy: moon face, buffalo hump, osteoporosis, muscle wasting, poor wound healing, striae, obesity."},
- {u:"steroids",t:"Oropharyngeal candidiasis",d:"Fungal infection (Candida albicans, Aspergillus niger) of mouth/pharynx/larynx from ICS; dose-related; reduce with spacer + gargling."},
- {u:"steroids",t:"Airway remodeling",d:"Structural change in the airway wall; steroids can prevent/reduce it but cannot fully reverse established hyperplasia or fibrosis."},
- {u:"steroids",t:"Bronchial hyperresponsiveness (BHR)",d:"Exaggerated airway narrowing to stimuli. Seasonal BHR needs ≥1 week of steroids; on ICS it improves over 1–3 months and beyond."},
- {u:"steroids",t:"Exercise-induced bronchospasm (EIB)",d:"Bronchospasm with exercise; sensitivity decreases after ~4 weeks of steroid therapy."},
- {u:"steroids",t:"Oral vs inhaled corticosteroids",d:"OCS: acute flares, onset 4–6 h, peak 24–48 h, systemic, high risk. ICS: maintenance, 1–2 wk onset, 4–8 wk peak, localized, very low risk."},
- {u:"steroids",t:"Leukotrienes",d:"Mediators causing smooth muscle contraction, vasodilation, vascular permeability, ↑ mucus secretion and ↓ mucociliary clearance."},
- {u:"steroids",t:"Leukotriene modifier",d:"Blocks leukotriene action; alternative to low-dose ICS in mild persistent asthma; long-term control only, not rescue."},
- {u:"calc",t:"Percentage",d:"Parts of active ingredient in a solution containing 100 parts."},
- {u:"calc",t:"Strength",d:"Amount of solute in a solution, usually expressed as a percentage."},
- {u:"calc",t:"Schedule",d:"Amount of drug needed based on the patient’s weight (e.g., mg/kg)."},
- {u:"calc",t:"Solute",d:"Substance or active ingredient dissolved in a solution; may be liquid or solid."},
- {u:"calc",t:"Solvent",d:"Substance used to make a solution; dissolves the solute."},
- {u:"calc",t:"Solution",d:"Physically homogeneous mixture of two or more substances."},
- {u:"calc",t:"Diluent",d:"Liquid (usually normal saline) added to a nebulized drug; it does not change the amount of active drug delivered."},
- {u:"calc",t:"% → mg/ml",d:"Move the decimal one place to the right (2% = 20 mg/ml). mg/ml → %: move it one place left."},
- {u:"calc",t:"Proportion formula",d:"Convert to consistent units, then Original dose / Per amount = Desired dose / Per amount."}
-];
-
-/* ======================= HELPERS ======================= */
-const $ = (s, el=document) => el.querySelector(s);
-const app = $("#app");
-const LETTERS = "ABCDEFG";
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const shuffle = a => { for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
-const pick = a => a[Math.floor(Math.random()*a.length)];
-const fmt = n => String(Math.round(n*1000)/1000);
-const KEY = "rcpharm-prep-v1";
-function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){} }
-let saved = Object.assign({missed:[], cases:{}, quizzes:0}, load());
-function markMissed(id, wrong){
-  const s = new Set(saved.missed); wrong ? s.add(id) : s.delete(id); saved.missed = [...s]; save();
-}
-const unitTag = u => `<span class="tag">${UNITS[u].short}</span>`;
-
-/* ======================= STATE ======================= */
-const state = { tab:"quiz", unit:"all", obj:"all", len:10, mode:"practice", missedOnly:false,
-  quiz:null, caseId:null, caseStep:0, caseAns:[], calcType:"mixed", calc:null, calcStats:{c:0,t:0,streak:0} };
-
-/* ======================= QUIZ ======================= */
-function pool(){
-  return Q.filter(q => (state.unit==="all"||q.u===state.unit) && (state.obj==="all"||q.o===state.obj) && (!state.missedOnly||saved.missed.includes(q.id)));
-}
-function chips(k, opts, cur){
-  return `<div class="chips">${opts.map(([v,l]) => `<button class="chip${String(v)===String(cur)?" on":""}" data-act="set" data-k="${k}" data-v="${v}">${l}</button>`).join("")}</div>`;
-}
-const unitOpts = () => [["all","All"], ...Object.entries(UNITS).map(([k,v]) => [k, v.short])];
-
-function renderQuizSetup(){
-  const p = pool();
-  const n = state.len==="all" ? p.length : Math.min(state.len, p.length);
-  const objs = Object.entries(OBJ).filter(([k,v]) => state.unit==="all" || v.u===state.unit);
-  const counts = u => Q.filter(q=>q.u===u).length;
-  app.innerHTML = `
-  <section class="card">
-    <h2>Practice quiz</h2>
-    <p class="muted small">${Q.length} questions · Mucus ${counts("mucus")} · Steroids ${counts("steroids")} · Calc ${counts("calc")}</p>
-    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
-    <span class="label">Learning objective</span>
-    <select data-act="obj">
-      <option value="all">All objectives</option>
-      ${objs.map(([k,v]) => `<option value="${k}" ${state.obj===k?"selected":""}>${esc(v.t)}</option>`).join("")}
-    </select>
-    <span class="label">Length</span>${chips("len", [[10,"10"],[20,"20"],["all","All"]], state.len)}
-    <span class="label">Mode</span>${chips("mode", [["practice","Practice · instant feedback"],["exam","Exam · score at end"]], state.mode)}
-    <label class="toggle"><input type="checkbox" data-act="missed" ${state.missedOnly?"checked":""}> Only questions I’ve missed (${saved.missed.length})</label>
-    <button class="btn primary block" data-act="start" ${n?"":"disabled"}>${n ? `Start · ${n} question${n>1?"s":""}` : "No questions match"}</button>
-  </section>
-  <section class="card">
-    <h3>Learning objectives</h3>
-    ${Object.keys(UNITS).filter(u => state.unit==="all"||state.unit===u).map(u => `
-      <p class="small muted" style="margin:12px 0 4px"><b>${UNITS[u].name}</b></p>
-      <ul class="obj-list">${Object.entries(OBJ).filter(([k,v])=>v.u===u).map(([k,v]) =>
-        `<li><button data-act="quizObj" data-k="${k}">${esc(v.t)}</button> <span class="muted small">(${Q.filter(q=>q.o===k).length})</span></li>`).join("")}</ul>`).join("")}
-  </section>`;
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function pool(){return BANK.filter(q=>S.topics.has(q.t)&&(!S.missedOnly||S.hist[q.id]===0))}
+function newRound(ids){
+  if(!ids){const p=shuffle(pool());ids=(S.size==="all"?p:p.slice(0,S.size)).map(q=>q.id)}
+  const perm={};ids.forEach(id=>{const q=BANK[id];const idx=q.o.map((_,k)=>k);perm[id]=q.fixed?idx:shuffle(idx)});
+  S.round={ids,i:0,picks:{},perm,streak:0,best:0};save();render();
 }
 
-function startQuiz(items){
-  state.quiz = { items: items.map(q => ({q, order: shuffle(q.c.map((_,i)=>i)), pick:null})), i:0, mode:state.mode, done:false };
-  saved.quizzes++; save(); render(); window.scrollTo(0,0);
+/* ---------- rendering ---------- */
+const $=s=>document.querySelector(s);
+const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==="class")n.className=v;else if(k.startsWith("on"))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v)}kids.flat().forEach(c=>c!=null&&n.append(c.nodeType?c:document.createTextNode(c)));return n};
+
+function renderSettings(){
+  const box=$("#topics");box.textContent="";
+  const allOn=S.topics.size===Object.keys(TOPICS).length;
+  box.append(el("button",{class:"chip","aria-pressed":String(allOn),onclick:()=>{S.topics=new Set(allOn?[]:Object.keys(TOPICS));save();renderSettings()}},"All topics",el("span",{class:"n"},String(BANK.length))));
+  for(const[k,v]of Object.entries(TOPICS)){
+    const n=BANK.filter(q=>q.t===k).length;
+    box.append(el("button",{class:"chip","aria-pressed":String(S.topics.has(k)&&!allOn),onclick:()=>{
+      if(allOn)S.topics=new Set([k]);else{S.topics.has(k)?S.topics.delete(k):S.topics.add(k)}
+      if(!S.topics.size)S.topics=new Set(Object.keys(TOPICS));save();renderSettings()}},v,el("span",{class:"n"},String(n))));
+  }
+  const seg=$("#size");seg.textContent="";
+  [10,20,50,"all"].forEach(v=>seg.append(el("button",{"aria-pressed":String(S.size===v),onclick:()=>{S.size=v;save();renderSettings()}},v==="all"?"All":String(v))));
+  const missed=BANK.filter(q=>S.topics.has(q.t)&&S.hist[q.id]===0).length;
+  $("#missed-only").checked=S.missedOnly;
+  $("#missed-label").textContent=`Only questions I've missed (${missed})`;
+  const p=pool().length;
+  $("#start").textContent=p?`Start new round · ${S.size==="all"?p:Math.min(S.size,p)} questions`:"Start new round";
+  $("#start").disabled=!p;
+  $("#set-sum").textContent=`Round settings · ${S.topics.size===Object.keys(TOPICS).length?"All topics":S.topics.size+" topic"+(S.topics.size>1?"s":"")} · ${S.size==="all"?"All":S.size} questions${S.missedOnly?" · missed only":""}`;
+  $("#bank-count").textContent=`${BANK.length} questions in the bank · progress is saved in this browser`;
 }
-const isRight = it => it.pick!==null && it.order[it.pick]===0;
+
+function renderMonitor(){
+  const r=S.round;let ans=0,ok=0;
+  if(r){for(const id of r.ids){if(id in r.picks){ans++;if(r.picks[id]===BANK[id].a)ok++}}}
+  $("#m-score").innerHTML=(ans?Math.round(ok/ans*100):"--")+"<small>%</small>";
+  $("#m-ans").innerHTML=ans+"<small>/"+(r?r.ids.length:0)+"</small>";
+  $("#m-streak").textContent=r?r.streak:0;
+}
 
 function renderQuestion(){
-  const z = state.quiz, it = z.items[z.i], q = it.q;
-  const reveal = z.mode==="practice" && it.pick!==null;
-  const score = z.items.filter(isRight).length, answered = z.items.filter(x=>x.pick!==null).length;
-  const last = z.i === z.items.length-1;
-  app.innerHTML = `
-  <section class="card">
-    <div class="row between small muted">
-      <span>Question ${z.i+1} of ${z.items.length}</span>
-      <span>${z.mode==="practice" ? `Score ${score}/${answered}` : "Exam mode"}</span>
-    </div>
-    <div class="progress"><i style="width:${(z.i+1)/z.items.length*100}%"></i></div>
-    <div>${unitTag(q.u)}<span class="tag gold">${esc(OBJ[q.o].t)}</span></div>
-    <h2 style="margin-top:10px">${esc(q.q)}</h2>
-    <div class="choices">
-      ${it.order.map((oi,di) => {
-        let cls = "choice";
-        if (reveal){ if (oi===0) cls+=" correct"; else if (di===it.pick) cls+=" wrong"; else cls+=" dim"; }
-        else if (di===it.pick) cls+=" sel";
-        return `<button class="${cls}" data-act="pick" data-i="${di}" ${reveal?"disabled":""}><span class="letter">${LETTERS[di]}</span><span>${esc(q.c[oi])}</span></button>`;
-      }).join("")}
-    </div>
-    ${reveal ? `<div class="feedback ${isRight(it)?"":"bad"}"><b>${isRight(it)?"Correct":"Not quite — answer: "+esc(q.c[0])}</b>${esc(q.e)}<span class="src">${esc(q.s)}</span></div>` : ""}
-    <div class="row between nav">
-      <div class="row">
-        <button class="btn" data-act="quit">Quit</button>
-        ${z.mode==="exam" && z.i>0 ? `<button class="btn" data-act="prev">Back</button>` : ""}
-      </div>
-      <button class="btn primary" data-act="${last?"finish":"next"}" ${z.mode==="practice" && it.pick===null ? "disabled" : ""}>${last?"Finish":"Next"}</button>
-    </div>
-  </section>`;
+  const r=S.round,card=$("#card");card.textContent="";
+  const id=r.ids[r.i],q=BANK[id],picked=r.picks[id],done=picked!==undefined;
+  card.append(
+    el("div",{class:"meta"},el("span",{class:"qnum"},`Question ${r.i+1} of ${r.ids.length}`),el("span",{class:"tag"},TOPICS[q.t])),
+    el("div",{class:"bar"},el("i",{style:`width:${(r.i+(done?1:0))/r.ids.length*100}%`})),
+    el("p",{class:"stem"},q.q)
+  );
+  if(q.items)card.append(el("ol",{class:"items"},q.items.map(t=>el("li",{},t))));
+  const opts=el("div",{class:"opts",role:"group","aria-label":"Answer choices"});
+  r.perm[id].forEach((orig,pos)=>{
+    let cls="opt",mark="";
+    if(done){if(orig===q.a){cls+=" right";mark="Correct"}else if(orig===picked){cls+=" wrong";mark="Your answer"}else cls+=" fade"}
+    const b=el("button",{class:cls,id:`opt-${pos}`,onclick:()=>pick(pos)},el("span",{class:"k"},LET[pos]),el("span",{},q.o[orig]),el("span",{class:"mk"},mark));
+    if(done)b.disabled=true;opts.append(b);
+  });
+  card.append(opts);
+  if(done){
+    const ok=picked===q.a,ansPos=r.perm[id].indexOf(q.a);
+    card.append(el("div",{class:"why "+(ok?"ok":"no")},el("b",{},ok?"Correct.":`Not quite. The answer is ${LET[ansPos]}.`),q.why));
+  }
+  const last=r.i===r.ids.length-1;
+  card.append(el("div",{class:"actions"},
+    el("span",{class:"hint"},done?"Press Enter for the next question":"Press A–D or 1–4 to answer"),
+    el("div",{style:"display:flex;gap:8px"},
+      r.i>0?el("button",{class:"btn ghost",id:"prev",onclick:()=>{r.i--;save();render()}},"Back"):null,
+      el("button",{class:"btn",id:"next",onclick:next,...(done?{}:{disabled:""})},last?"See results":"Next question"))
+  ));
 }
 
 function renderResults(){
-  const z = state.quiz, n = z.items.length, c = z.items.filter(isRight).length, pct = Math.round(c/n*100);
-  const by = {};
-  z.items.forEach(it => { const o = it.q.o; by[o] = by[o] || {c:0,t:0}; by[o].t++; if (isRight(it)) by[o].c++; });
-  const wrong = z.items.filter(it => !isRight(it));
-  const msg = pct>=90 ? "Exam-ready on this set." : pct>=75 ? "Solid — review the misses below." : pct>=60 ? "Getting there. Drill your weakest objective next." : "Worth another pass through the slides for these objectives.";
-  app.innerHTML = `
-  <section class="card">
-    <p class="label" style="margin-top:0">Results</p>
-    <div class="score-big">${pct}%</div>
-    <p style="margin:6px 0 0"><b>${c} of ${n}</b> correct. <span class="muted">${msg}</span></p>
-    <span class="label">By learning objective</span>
-    ${Object.entries(by).map(([o,v]) => `<div class="bar"><span class="small">${esc(OBJ[o].t)}</span><span class="small muted">${v.c}/${v.t}</span><div class="track"><i style="width:${v.c/v.t*100}%"></i></div></div>`).join("")}
-    <div class="row" style="margin-top:16px">
-      ${wrong.length ? `<button class="btn primary" data-act="retryWrong">Retry ${wrong.length} missed</button>` : ""}
-      <button class="btn" data-act="quit">New quiz</button>
-    </div>
-  </section>
-  ${wrong.length ? `<section class="card"><h3>Review</h3>${wrong.map(it => `
-    <div class="review">
-      <div>${unitTag(it.q.u)}</div>
-      <p><b>${esc(it.q.q)}</b></p>
-      <p class="small bad">Your answer: ${it.pick===null ? "skipped" : esc(it.q.c[it.order[it.pick]])}</p>
-      <p class="small ok">Correct: ${esc(it.q.c[0])}</p>
-      <p class="small muted">${esc(it.q.e)} <i>(${esc(it.q.s)})</i></p>
-    </div>`).join("")}</section>` : ""}`;
+  const r=S.round,card=$("#card");card.textContent="";
+  let ok=0;const by={};const missed=[];
+  r.ids.forEach(id=>{const q=BANK[id],good=r.picks[id]===q.a;if(good)ok++;else missed.push(id);(by[q.t]??={n:0,ok:0});by[q.t].n++;if(good)by[q.t].ok++});
+  const pct=Math.round(ok/r.ids.length*100);
+  card.append(el("div",{class:"meta"},el("span",{class:"qnum"},"Round complete"),el("span",{class:"tag"},`Best streak ${r.best}`)));
+  card.append(el("p",{class:"big"},`${ok}/${r.ids.length}`));
+  card.append(el("p",{style:"margin:0;color:var(--muted)"},`${pct}% correct. ${pct>=90?"Exam-ready on these topics.":pct>=75?"Solid — review the misses below.":"Go back over the Need to know section, then retry your misses."}`));
+  const t=el("div",{class:"res-table"});
+  Object.entries(by).sort((a,b)=>a[1].ok/a[1].n-b[1].ok/b[1].n).forEach(([k,v])=>{
+    const p=v.ok/v.n;
+    t.append(el("div",{class:"res-row"},el("span",{class:"nm"},TOPICS[k]),el("span",{class:"sc"},`${v.ok}/${v.n}`),
+      el("div",{class:"track"},el("i",{style:`width:${p*100}%;background:${p>=.8?"var(--good)":p>=.6?"var(--accent)":"var(--bad)"}`}))));
+  });
+  card.append(t);
+  if(missed.length){
+    card.append(el("div",{class:"row-lab"},"Review your misses"));
+    card.append(el("ol",{class:"missed-list"},missed.map(id=>{const q=BANK[id];return el("li",{},q.q," ",el("span",{},"→ "+q.o[q.a]))})));
+  }
+  card.append(el("div",{class:"actions"},
+    el("span",{class:"hint"},""),
+    el("div",{style:"display:flex;gap:8px;flex-wrap:wrap"},
+      missed.length?el("button",{class:"btn ghost",id:"retry",onclick:()=>newRound(shuffle(missed))},`Retry ${missed.length} missed`):null,
+      el("button",{class:"btn",id:"again",onclick:()=>newRound()},"New round"))));
 }
 
-function renderQuiz(){
-  if (!state.quiz) return renderQuizSetup();
-  if (state.quiz.done) return renderResults();
+function renderEmpty(){
+  const card=$("#card");card.textContent="";
+  card.append(el("p",{class:"stem"},"No questions match these settings."),
+    el("p",{style:"margin:0;color:var(--muted)"},S.missedOnly?"You haven't missed anything in these topics yet. Turn off \"Only questions I've missed\" to practice everything.":"Pick at least one topic above."));
+}
+
+function render(){
+  renderSettings();renderMonitor();
+  const r=S.round;
+  if(!r||!r.ids.length)return renderEmpty();
+  if(r.i>=r.ids.length)return renderResults();
   renderQuestion();
 }
 
-/* ======================= CASES ======================= */
-function renderCaseList(){
-  const list = CASES.filter(c => state.unit==="all" || c.u===state.unit);
-  app.innerHTML = `
-  <section class="card">
-    <h2>Case studies</h2>
-    <p class="muted small">Work through each patient one decision at a time. Answers build on each other.</p>
-    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
-  </section>
-  ${list.map(c => { const s = saved.cases[c.id]; return `
-    <button class="card case-card" data-act="openCase" data-k="${c.id}">
-      <div class="row between"><div>${unitTag(c.u)}<span class="tag gold">${c.steps.length} questions</span></div>${s!=null?`<span class="small ok">Best ${s}/${c.steps.length}</span>`:""}</div>
-      <h3 style="margin:10px 0 2px">${esc(c.title)}</h3>
-      <p class="small muted" style="margin:0">${esc(c.who)}</p>
-    </button>`; }).join("")}`;
+function pick(pos){
+  const r=S.round,id=r.ids[r.i];if(r.picks[id]!==undefined)return;
+  const orig=r.perm[id][pos];r.picks[id]=orig;const ok=orig===BANK[id].a;
+  S.hist[id]=ok?1:0;r.streak=ok?r.streak+1:0;r.best=Math.max(r.best,r.streak);
+  save();render();$("#next")?.focus();
 }
+function next(){const r=S.round;if(r.picks[r.ids[r.i]]===undefined)return;r.i++;save();render();window.scrollTo({top:$("#card").offsetTop-12,behavior:"smooth"})}
 
-function openCase(id){
-  const c = CASES.find(x => x.id===id);
-  state.caseId = id; state.caseStep = 0;
-  state.caseAns = c.steps.map(s => ({order: shuffle(s.c.map((_,i)=>i)), pick:null}));
-  render(); window.scrollTo(0,0);
-}
-
-function renderCase(){
-  const c = CASES.find(x => x.id===state.caseId);
-  const done = state.caseAns.every(a => a.pick!==null);
-  const right = state.caseAns.filter(a => a.pick!==null && a.order[a.pick]===0).length;
-  let html = `
-  <section class="card">
-    <button class="btn" data-act="closeCase">← All cases</button>
-    <div style="margin-top:14px">${unitTag(c.u)}</div>
-    <h2 style="margin-top:8px">${esc(c.title)}</h2>
-    <div class="scenario"><div class="who">${esc(c.who)}</div>${esc(c.text)}</div>`;
-  for (let i=0; i<=state.caseStep; i++){
-    const s = c.steps[i], a = state.caseAns[i], ans = a.pick!==null, ok = ans && a.order[a.pick]===0;
-    html += `<div class="step" id="step${i}">
-      <div class="num">Question ${i+1} of ${c.steps.length}</div>
-      ${s.info ? `<div class="info">${esc(s.info)}</div>` : ""}
-      <p style="margin:6px 0 0;font-weight:600">${esc(s.q)}</p>
-      <div class="choices">${a.order.map((oi,di) => {
-        let cls = "choice";
-        if (ans){ if (oi===0) cls+=" correct"; else if (di===a.pick) cls+=" wrong"; else cls+=" dim"; }
-        return `<button class="${cls}" data-act="casePick" data-s="${i}" data-i="${di}" ${ans?"disabled":""}><span class="letter">${LETTERS[di]}</span><span>${esc(s.c[oi])}</span></button>`;
-      }).join("")}</div>
-      ${ans ? `<div class="feedback ${ok?"":"bad"}"><b>${ok?"Correct":"Answer: "+esc(s.c[0])}</b>${esc(s.e)}</div>` : ""}
-      ${ans && i===state.caseStep && i<c.steps.length-1 ? `<div class="row end nav"><button class="btn primary" data-act="caseNext">Next question</button></div>` : ""}
-    </div>`;
-  }
-  if (done){
-    html += `<div class="step"><p class="label" style="margin-top:0">Case complete</p><div class="score-big">${right}/${c.steps.length}</div>
-      <div class="row" style="margin-top:14px"><button class="btn primary" data-act="openCase" data-k="${c.id}">Try again</button><button class="btn" data-act="closeCase">All cases</button></div></div>`;
-  }
-  app.innerHTML = html + `</section>`;
-}
-
-function renderCases(){ state.caseId ? renderCase() : renderCaseList(); }
-
-/* ======================= CALC DRILL ======================= */
-const NEB = [
-  {d:"albuterol", p:0.5, doses:[1.25,2.5,5]},
-  {d:"acetylcysteine", p:10, doses:[300,400,500,600,800,1000]},
-  {d:"acetylcysteine", p:20, doses:[200,400,500,600,800,1000]},
-  {d:"ipratropium bromide", p:0.02, doses:[0.5]},
-  {d:"cromolyn sodium", p:1, doses:[20]}
-];
-const CALC_TYPES = [["mixed","Mixed"],["pct","% → mg/ml"],["mgml","mg/ml → %"],["vol","ml to give"],["wt","Weight-based"],["mgin","mg in volume"]];
-
-function genCalc(type){
-  const t = type==="mixed" ? pick(["pct","mgml","vol","vol","wt","wt","mgin"]) : type;
-  if (t==="pct"){
-    const p = pick([0.02,0.083,0.1,0.25,0.5,1,2,5,7.5,10,20]); const a = p*10;
-    return {t, prompt:`A solution is labeled <b>${fmt(p)}%</b>. How many mg/ml does it contain?`, ans:a, unit:"mg/ml",
-      steps:[`% → mg/ml: move the decimal point one place to the right.`, `${fmt(p)}% = ${fmt(a)} mg/ml`]};
-  }
-  if (t==="mgml"){
-    const m = pick([0.2,0.83,1,2.5,5,10,20,50,75,100,200]); const a = m/10;
-    return {t, prompt:`A solution contains <b>${fmt(m)} mg/ml</b>. What is its strength as a percentage?`, ans:a, unit:"%",
-      steps:[`mg/ml → %: move the decimal point one place to the left.`, `${fmt(m)} mg/ml = ${fmt(a)}%`]};
-  }
-  if (t==="vol"){
-    const n = pick(NEB), dose = pick(n.doses), conc = n.p*10, a = dose/conc;
-    return {t, prompt:`<b>${n.d[0].toUpperCase()+n.d.slice(1)} ${fmt(dose)} mg</b> is ordered per aerosol dose. You have a <b>${fmt(n.p)}%</b> solution. How many ml should you deliver?`, ans:a, unit:"ml",
-      steps:[`Convert % to mg/ml: ${fmt(n.p)}% = ${fmt(conc)} mg/ml`, `Proportion: ${fmt(conc)} mg / 1 ml = ${fmt(dose)} mg / x ml`, `x = ${fmt(dose)} ÷ ${fmt(conc)} = <b>${fmt(a)} ml</b>`]};
-  }
-  if (t==="wt"){
-    const mgkg = pick([0.05,0.1,0.15,0.2]), kg = pick([10,12,15,18,20,25,30]), lb = Math.random()<0.5;
-    const p = 0.5, conc = 5, dose = mgkg*kg, a = Math.round(dose/conc*100)/100;
-    const w = lb ? `${fmt(kg*2.2)} lb` : `${kg} kg`;
-    const st = [];
-    if (lb) st.push(`Convert to kg: ${fmt(kg*2.2)} lb ÷ 2.2 = ${kg} kg`);
-    st.push(`Dose = ${fmt(mgkg)} mg/kg × ${kg} kg = ${fmt(dose)} mg`, `Convert % to mg/ml: ${p}% = ${conc} mg/ml`, `Volume = ${fmt(dose)} mg ÷ ${conc} mg/ml = <b>${fmt(a)} ml</b>`);
-    return {t, prompt:`A drug is ordered at <b>${fmt(mgkg)} mg/kg</b>. The patient weighs <b>${w}</b>. You have a <b>${p}%</b> solution. How many ml should you deliver? <span class="muted small">(round to 2 decimals)</span>`, ans:a, unit:"ml", steps:st};
-  }
-  const v = pick([0.5,1,2,2.5,3,4]), p = pick([0.5,1,2,10,20]), a = v*p*10;
-  return {t:"mgin", prompt:`How many mg of active drug are in <b>${fmt(v)} ml</b> of a <b>${fmt(p)}%</b> solution? (Diluent added afterward doesn’t change this.)`, ans:a, unit:"mg",
-    steps:[`${fmt(p)}% = ${fmt(p*10)} mg/ml`, `${fmt(p*10)} mg/ml × ${fmt(v)} ml = <b>${fmt(a)} mg</b>`]};
-}
-
-function renderCalc(){
-  if (!state.calc) state.calc = {...genCalc(state.calcType), input:"", checked:false, ok:false};
-  const z = state.calc, s = state.calcStats;
-  app.innerHTML = `
-  <section class="card">
-    <h2>Dose-calculation drill</h2>
-    <p class="muted small">Unlimited randomized problems with worked solutions, using the methods from the Calculating Drug Doses slides.</p>
-    <span class="label">Problem type</span>${chips("calcType", CALC_TYPES, state.calcType)}
-    <div class="stats">
-      <div class="stat"><b>${s.c}/${s.t}</b><span>Correct</span></div>
-      <div class="stat"><b>${s.t ? Math.round(s.c/s.t*100) : 0}%</b><span>Accuracy</span></div>
-      <div class="stat"><b>${s.streak}</b><span>Streak</span></div>
-    </div>
-  </section>
-  <section class="card">
-    <p class="prompt">${z.prompt}</p>
-    <div class="answer-row">
-      <input type="text" inputmode="decimal" id="calcIn" placeholder="Your answer" value="${esc(z.input)}" ${z.checked?"disabled":""} autocomplete="off">
-      <span class="unit-suffix">${z.unit}</span>
-    </div>
-    ${z.checked ? `<div class="feedback ${z.ok?"":"bad"}"><b>${z.ok?"Correct":"Answer: "+fmt(z.ans)+" "+z.unit}</b><ol class="steps">${z.steps.map(x=>`<li>${x}</li>`).join("")}</ol></div>` : ""}
-    <div class="row end nav">
-      ${z.checked ? `<button class="btn primary" data-act="calcNext">Next problem</button>` :
-        `<button class="btn" data-act="calcSkip">Skip</button><button class="btn primary" data-act="calcCheck">Check</button>`}
-    </div>
-  </section>`;
-  const inp = $("#calcIn");
-  if (inp && !z.checked){
-    inp.addEventListener("input", e => { z.input = e.target.value; });
-    inp.addEventListener("keydown", e => { if (e.key==="Enter") checkCalc(); });
-  }
-}
-function checkCalc(){
-  const z = state.calc, v = parseFloat(String(z.input).replace(/,/g,""));
-  if (isNaN(v)) { const i=$("#calcIn"); if(i){ i.focus(); i.placeholder="Enter a number"; } return; }
-  z.ok = Math.abs(v - z.ans) <= Math.max(0.011, Math.abs(z.ans)*0.01);
-  z.checked = true;
-  const s = state.calcStats; s.t++; if (z.ok){ s.c++; s.streak++; } else s.streak = 0;
-  render();
-}
-
-/* ======================= TERMS ======================= */
-function renderTerms(){
-  const list = TERMS.filter(t => state.unit==="all" || t.u===state.unit);
-  app.innerHTML = `
-  <section class="card">
-    <h2>Key terms</h2>
-    <p class="muted small">Tap a term to reveal its definition. Try to say it out loud first.</p>
-    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
-    <div class="row" style="margin-top:14px">
-      <input type="search" id="termQ" placeholder="Search terms" style="flex:1;min-width:0">
-      <button class="btn" data-act="expandAll">Show all</button>
-    </div>
-    <div class="terms">${list.map(t => `<button class="term" data-act="term" data-text="${esc((t.t+" "+t.d).toLowerCase())}"><span class="t">${esc(t.t)}</span><span class="d">${esc(t.d)}</span></button>`).join("")}</div>
-  </section>`;
-  $("#termQ").addEventListener("input", e => {
-    const q = e.target.value.trim().toLowerCase();
-    app.querySelectorAll(".term").forEach(el => { el.hidden = q && !el.dataset.text.includes(q); });
-  });
-}
-
-/* ======================= ROUTING & EVENTS ======================= */
-function render(){
-  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab===state.tab));
-  ({quiz:renderQuiz, cases:renderCases, calc:renderCalc, terms:renderTerms})[state.tab]();
-}
-
-document.querySelector("nav.tabs").addEventListener("click", e => {
-  const b = e.target.closest("button[data-tab]"); if (!b) return;
-  state.tab = b.dataset.tab; render(); window.scrollTo(0,0);
+document.addEventListener("keydown",e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;const r=S.round;if(!r||r.i>=r.ids.length)return;
+  const k=e.key.toUpperCase();let pos=LET.indexOf(k);if(pos<0&&/^[1-5]$/.test(k))pos=+k-1;
+  const id=r.ids[r.i];
+  if(pos>=0&&pos<BANK[id].o.length&&r.picks[id]===undefined){e.preventDefault();pick(pos)}
+  else if((e.key==="Enter"||e.key==="ArrowRight")&&r.picks[id]!==undefined&&document.activeElement?.id!=="prev"){e.preventDefault();next()}
 });
+$("#missed-only").addEventListener("change",e=>{S.missedOnly=e.target.checked;save();renderSettings()});
+$("#start").addEventListener("click",()=>newRound());
+function resetUI(){
+  const w=$("#reset-wrap");w.textContent="";
+  w.append(el("span",{class:"confirm"},"Clear all saved answers?",
+    el("button",{class:"danger",id:"reset-yes",onclick:()=>{S.hist={};S.missedOnly=false;newRound();restoreReset()}},"Clear"),
+    el("button",{id:"reset-no",onclick:restoreReset},"Cancel")));
+}
+function restoreReset(){const w=$("#reset-wrap");w.textContent="";w.append(el("button",{class:"linkish",id:"reset",onclick:resetUI},"Reset saved progress"))}
+$("#reset").addEventListener("click",resetUI);
+if(window.innerWidth>700)$("#settings").open=true;
 
-app.addEventListener("change", e => {
-  const act = e.target.dataset.act;
-  if (act==="obj"){ state.obj = e.target.value; render(); }
-  if (act==="missed"){ state.missedOnly = e.target.checked; render(); }
-});
+/* pleth waveform */
+(function(){let d="M0 28";const w=70;for(let x=0;x<700;x+=w){d+=` C${x+8} 28 ${x+12} 4 ${x+20} 4 S${x+28} 16 ${x+32} 17 S${x+38} 12 ${x+42} 14 S${x+56} 28 ${x+w} 28`}$("#pleth-path").setAttribute("d",d)})();
 
-app.addEventListener("click", e => {
-  const b = e.target.closest("[data-act]"); if (!b || b.disabled) return;
-  const act = b.dataset.act, z = state.quiz;
-  switch (act){
-    case "set": {
-      const k = b.dataset.k, v = b.dataset.v;
-      state[k] = (k==="len" && v!=="all") ? Number(v) : v;
-      if (k==="unit") state.obj = "all";
-      if (k==="calcType") state.calc = null;
-      render(); break;
-    }
-    case "quizObj": state.obj = b.dataset.k; state.unit = OBJ[b.dataset.k].u; render(); window.scrollTo(0,0); break;
-    case "start": {
-      const p = shuffle(pool().slice());
-      startQuiz(p.slice(0, state.len==="all" ? p.length : state.len)); break;
-    }
-    case "pick": {
-      const it = z.items[z.i];
-      if (z.mode==="practice" && it.pick!==null) return;
-      it.pick = Number(b.dataset.i);
-      if (z.mode==="practice") markMissed(it.q.id, !isRight(it));
-      render(); break;
-    }
-    case "next": z.i++; render(); window.scrollTo(0,0); break;
-    case "prev": z.i--; render(); window.scrollTo(0,0); break;
-    case "finish":
-      z.done = true;
-      if (z.mode==="exam") z.items.forEach(it => markMissed(it.q.id, !isRight(it)));
-      render(); window.scrollTo(0,0); break;
-    case "quit": state.quiz = null; render(); window.scrollTo(0,0); break;
-    case "retryWrong": startQuiz(shuffle(z.items.filter(it=>!isRight(it)).map(it=>it.q))); break;
-    case "openCase": openCase(b.dataset.k); break;
-    case "closeCase": state.caseId = null; render(); window.scrollTo(0,0); break;
-    case "casePick": {
-      const i = Number(b.dataset.s), a = state.caseAns[i];
-      if (a.pick!==null) return;
-      a.pick = Number(b.dataset.i);
-      if (state.caseAns.every(x => x.pick!==null)){
-        const r = state.caseAns.filter(x => x.order[x.pick]===0).length;
-        saved.cases[state.caseId] = Math.max(saved.cases[state.caseId] ?? 0, r); save();
-      }
-      render(); const el = $("#step"+i); if (el) el.scrollIntoView({block:"nearest"});
-      break;
-    }
-    case "caseNext": {
-      state.caseStep++; render();
-      const el = $("#step"+state.caseStep); if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
-      break;
-    }
-    case "calcCheck": checkCalc(); break;
-    case "calcSkip": state.calc = null; render(); break;
-    case "calcNext": state.calc = null; render(); setTimeout(()=>{ const i=$("#calcIn"); if(i) i.focus(); }, 0); break;
-    case "term": b.classList.toggle("open"); break;
-    case "expandAll": {
-      const all = [...app.querySelectorAll(".term")], open = all.some(t => !t.classList.contains("open"));
-      all.forEach(t => t.classList.toggle("open", open)); b.textContent = open ? "Hide all" : "Show all"; break;
-    }
-  }
-});
-
-/* Theme */
-const root = document.documentElement;
-try { const t = localStorage.getItem(KEY+"-theme"); if (t) root.dataset.theme = t; } catch(e){}
-$("#themeBtn").addEventListener("click", () => {
-  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  root.dataset.theme = dark ? "light" : "dark";
-  try { localStorage.setItem(KEY+"-theme", root.dataset.theme); } catch(e){}
-});
-$("#resetBtn").addEventListener("click", () => {
-  if (!confirm("Clear missed questions and case scores saved in this browser?")) return;
-  saved = {missed:[], cases:{}, quizzes:0}; save(); state.quiz = null; state.calcStats = {c:0,t:0,streak:0}; render();
-});
-
-render();
+if(!S.round||!S.round.ids||S.round.ids.some(id=>!BANK[id]))newRound();else render();
 </script>
+
 </body>
 </html>
