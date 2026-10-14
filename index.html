@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RC Pharm Exam Prep</title>
+<meta name="description" content="Practice questions, case studies, dose-calculation drills and key terms for mucus-controlling drugs, corticosteroids and drug dose calculations.">
+<style>
+:root{
+  --bg:#f6f4fa;--surface:#ffffff;--surface2:#f1edf8;--text:#1d1a26;--muted:#5f5a6e;--border:#e2dcec;
+  --accent:#5b2a9e;--accent-ink:#ffffff;--accent-soft:#ede4fa;--gold:#f2b705;
+  --ok:#1d7f47;--ok-soft:#e2f4e9;--bad:#b83227;--bad-soft:#fbe6e3;
+  --shadow:0 1px 2px rgba(30,10,60,.06),0 6px 20px rgba(30,10,60,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14111b;--surface:#1e1a28;--surface2:#272233;--text:#ece8f4;--muted:#a49db5;--border:#352e44;
+    --accent:#b48cf0;--accent-ink:#1a1024;--accent-soft:#2e2442;--gold:#f2c230;
+    --ok:#5fd393;--ok-soft:#173326;--bad:#ff8a7d;--bad-soft:#3a1d1b;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14111b;--surface:#1e1a28;--surface2:#272233;--text:#ece8f4;--muted:#a49db5;--border:#352e44;
+  --accent:#b48cf0;--accent-ink:#1a1024;--accent-soft:#2e2442;--gold:#f2c230;
+  --ok:#5fd393;--ok-soft:#173326;--bad:#ff8a7d;--bad-soft:#3a1d1b;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:1.15rem;margin:0;letter-spacing:-.01em}
+.brand p{margin:2px 0 0;font-size:.82rem;color:var(--muted)}
+.brand h1 span{color:var(--accent)}
+.icon-btn{border:1px solid var(--border);background:var(--surface);border-radius:10px;width:40px;height:40px;cursor:pointer;flex:none}
+nav.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--surface2);padding:4px;border-radius:12px;margin-bottom:12px}
+nav.tabs button{border:0;background:transparent;padding:8px 4px;border-radius:9px;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted)}
+nav.tabs button[aria-selected="true"]{background:var(--surface);color:var(--accent);box-shadow:var(--shadow)}
+main{padding:16px 0 40px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+.card h2{margin:0 0 6px;font-size:1.15rem;line-height:1.35}
+.card h3{margin:0 0 8px;font-size:1rem}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+.label{display:block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--border);background:var(--surface);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:.9rem}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+select,input[type=text],input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+.toggle{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:.95rem;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.btn{border:1px solid var(--border);background:var(--surface);padding:11px 16px;border-radius:12px;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.block{width:100%;margin-top:18px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row.end{justify-content:flex-end}
+.row.between{justify-content:space-between}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:4px}
+.tag.gold{background:color-mix(in srgb,var(--gold) 22%,transparent);color:var(--text)}
+.progress{height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:4px 0 14px}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .25s}
+.choices{display:grid;gap:8px;margin-top:14px}
+.choice{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--border);background:var(--surface);border-radius:12px;padding:12px;cursor:pointer;line-height:1.4}
+.choice:hover:not(:disabled){border-color:var(--accent)}
+.choice .letter{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:var(--surface2)}
+.choice.sel{border-color:var(--accent);background:var(--accent-soft)}
+.choice.correct{border-color:var(--ok);background:var(--ok-soft)}
+.choice.correct .letter{background:var(--ok);color:#fff}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.wrong .letter{background:var(--bad);color:#fff}
+.choice.dim{opacity:.6}
+.choice:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:12px;padding:12px 14px;border-left:4px solid var(--ok);background:var(--ok-soft)}
+.feedback.bad{border-left-color:var(--bad);background:var(--bad-soft)}
+.feedback b{display:block;margin-bottom:4px}
+.src{display:block;margin-top:6px;font-size:.78rem;color:var(--muted)}
+.nav{margin-top:16px}
+.score-big{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;color:var(--accent);line-height:1}
+.bar{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;margin:8px 0}
+.bar .track{grid-column:1/-1;height:8px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--accent)}
+.review{border-top:1px solid var(--border);padding-top:12px;margin-top:12px}
+.review p{margin:4px 0}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+.case-card{display:block;width:100%;text-align:left;cursor:pointer}
+.case-card:hover{border-color:var(--accent)}
+.scenario{background:var(--surface2);border-radius:12px;padding:12px 14px;margin:10px 0}
+.scenario .who{font-weight:700;margin-bottom:4px}
+.step{border-top:1px dashed var(--border);margin-top:16px;padding-top:14px}
+.step .num{font-size:.78rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.info{background:color-mix(in srgb,var(--gold) 14%,var(--surface));border-radius:10px;padding:10px 12px;margin:8px 0;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.stat{background:var(--surface2);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:1.3rem}
+.stat span{font-size:.75rem;color:var(--muted)}
+.prompt{font-size:1.05rem;margin:6px 0 14px}
+.answer-row{display:flex;gap:8px}
+.answer-row input{flex:1}
+.unit-suffix{align-self:center;color:var(--muted);font-weight:600;white-space:nowrap}
+ol.steps{margin:6px 0 0;padding-left:20px}
+ol.steps li{margin:3px 0}
+.terms{display:grid;gap:8px;margin-top:12px}
+.term{display:block;width:100%;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:12px 14px;cursor:pointer}
+.term .t{font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.term .t::after{content:"+";color:var(--muted);font-weight:400}
+.term.open .t::after{content:"–"}
+.term .d{display:none;margin-top:6px;color:var(--muted);font-size:.95rem}
+.term.open .d{display:block}
+.obj-list{margin:0;padding-left:18px}
+.obj-list li{margin:4px 0}
+.obj-list button{border:0;background:none;padding:0;color:var(--accent);cursor:pointer;text-align:left;font:inherit}
+footer{padding:20px 0 40px;color:var(--muted);font-size:.82rem;text-align:center}
+footer button{border:0;background:none;color:var(--accent);cursor:pointer;text-decoration:underline;font-size:inherit}
+@media (max-width:420px){.card{padding:15px}.score-big{font-size:2.2rem}nav.tabs button{font-size:.84rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <h1>RC Pharm <span>Exam Prep</span></h1>
+        <p>Mucus-controlling drugs · Corticosteroids · Dose calculations</p>
+      </div>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="quiz">Quiz</button>
+      <button role="tab" data-tab="cases">Cases</button>
+      <button role="tab" data-tab="calc">Calc drill</button>
+      <button role="tab" data-tab="terms">Terms</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<footer class="wrap">
+  Study aid built from Respiratory Care Pharmacology lecture slides (Goss). Not clinical guidance.<br>
+  Progress is saved in this browser. <button id="resetBtn">Reset progress</button>
+</footer>
+
+<script>
+/* ======================= DATA ======================= */
+const UNITS = {
+  mucus:   {name:"Mucus-Controlling Drug Therapy", short:"Mucus"},
+  steroids:{name:"Corticosteroids & Anti-asthmatics", short:"Steroids"},
+  calc:    {name:"Calculating Drug Doses", short:"Calc"}
+};
+const OBJ = {
+  m1:{u:"mucus",t:"Define key terms related to mucokinetic agents"},
+  m2:{u:"mucus",t:"Compare mechanisms: bland aerosols vs mucolytics"},
+  m3:{u:"mucus",t:"Indications for bland aerosols and mucolytics"},
+  m4:{u:"mucus",t:"Standard dose & administration frequency"},
+  m5:{u:"mucus",t:"CFTR modulator candidates (mutation & age)"},
+  s1:{u:"steroids",t:"Physiology of corticosteroids"},
+  s2:{u:"steroids",t:"Managing a patient on inhaled corticosteroids"},
+  s3:{u:"steroids",t:"Side effects & adverse effects"},
+  s4:{u:"steroids",t:"Oral, parenteral & inhaled pharmacotherapy"},
+  s5:{u:"steroids",t:"Leukotriene modifiers in asthma"},
+  c1:{u:"calc",t:"Terms used to describe medication solutions"},
+  c2:{u:"calc",t:"Strength of solutions in percentage form"},
+  c3:{u:"calc",t:"Drug dosage calculations"}
+};
+
+/* Questions: c[0] is always the correct answer (choices are shuffled on screen). */
+const Q = [
+/* ---------- MUCUS ---------- */
+{id:"m01",u:"mucus",o:"m1",q:"Normal mucus is composed of approximately what percentage of water?",c:["95%","50%","75%","99.9%"],e:"The mucus molecule is very large and complex, yet it is about 95% water. Its volume, consistency and structure can change in disease states.",s:"Mucus slide 3"},
+{id:"m02",u:"mucus",o:"m1",q:"Which statement best defines a mucolytic agent?",c:["A drug that directly alters the structure of the mucus molecule, liquefying it to aid expectoration","A solution that increases the depth of the sol layer by adding water","A drug that improves ciliary beat activity","An agent that suppresses the cough reflex"],e:"Mucolytics control mucus by directly altering the structure of the mucus molecule — they break down the complex molecular strands to thin and liquefy it.",s:"Mucus slide 19"},
+{id:"m03",u:"mucus",o:"m1",q:"Which group of agents primarily increases the depth of the sol layer?",c:["Water or saline solutions and expectorants","Mucolytics such as acetylcysteine","Sympathomimetic bronchodilators","Corticosteroids"],e:"Three approaches: mucolytics alter the consistency of the gel layer; water/saline and expectorants increase the depth of the sol layer; sympathomimetic bronchodilators and corticosteroids improve ciliary activity.",s:"Mucus slide 5"},
+{id:"m04",u:"mucus",o:"m2",q:"Which drug groups are listed as improving ciliary activity?",c:["Sympathomimetic bronchodilators and corticosteroids","Hypertonic saline and sterile water","Dornase alfa and acetylcysteine","CFTR correctors and potentiators"],e:"Improving ciliary activity is the third pharmacologic approach to secretion management, achieved with sympathomimetic bronchodilators and corticosteroids.",s:"Mucus slide 5"},
+{id:"m05",u:"mucus",o:"m2",q:"How do bland aerosols differ from mucolytics in their effect on mucus?",c:["Bland aerosols do not act on the mucus molecule directly and may only dilute it; mucolytics break down the molecule’s structure","Bland aerosols break disulfide bonds; mucolytics only add water","Both digest extracellular DNA","Bland aerosols open CFTR chloride channels; mucolytics do not"],e:"Bland aerosols do not affect the mucus molecule directly — they MAY dilute mucus by altering its water content, and their irritation can increase production of thinner mucus. Mucolytics directly break the molecular strands.",s:"Mucus slides 9 & 19"},
+{id:"m06",u:"mucus",o:"m2",q:"N-acetyl-L-cysteine (NAC) thins mucus by:",c:["Substituting free thiol groups for the disulfide bonds that connect mucin proteins","Digesting extracellular DNA","Increasing chloride transport through CFTR","Stimulating β2 receptors to increase ciliary beat"],e:"NAC disrupts the mucus polymer by substituting free thiol (sulfhydryl) groups for the disulfide bonds linking mucin proteins, reducing viscosity immediately.",s:"Mucus slide 21"},
+{id:"m07",u:"mucus",o:"m2",q:"Dornase alfa (Pulmozyme) decreases mucus viscosity by:",c:["Digesting extracellular DNA in the secretions","Breaking disulfide bonds in mucin with thiol groups","Osmotically hydrating the sol layer","Correcting misfolded CFTR protein"],e:"Dornase alfa is a peptide mucolytic — a recombinant form of human DNase I — that digests extracellular DNA, decreasing viscosity and restoring the mucus’s ability to flow.",s:"Mucus slide 23"},
+{id:"m08",u:"mucus",o:"m3",q:"Dornase alfa is indicated as:",c:["Maintenance therapy for the viscous pulmonary secretions of cystic fibrosis","Rescue therapy for acute bronchospasm","An antidote for acetaminophen overdose","A sputum-induction agent"],e:"Dornase alfa is indicated as maintenance therapy in managing the viscous pulmonary secretions seen in cystic fibrosis.",s:"Mucus slide 22"},
+{id:"m09",u:"mucus",o:"m3",q:"Besides its use as a mucolytic, acetylcysteine is used as:",c:["An antioxidant antidote to reduce liver injury from acetaminophen overdose","An anticoagulant","A long-acting bronchodilator","An antifungal for oral candidiasis"],e:"A second use of NAC is as an antioxidant antidote to reduce hepatic injury with acetaminophen overdose.",s:"Mucus slide 20"},
+{id:"m10",u:"mucus",o:"m3",q:"Which statement about aerosolized NAC is supported by the lecture?",c:["Despite in-vitro mucolytic activity and long use, there are no data showing it is effective therapy for any lung disease","It is first-line maintenance therapy for COPD","It is the preferred agent for sputum induction","It works mainly by improving ciliary activity"],e:"Despite in-vitro mucolytic activity and a long history of use, there are no data showing aerosolized NAC is effective therapy for any lung disease.",s:"Mucus slide 20"},
+{id:"m11",u:"mucus",o:"m1",q:"What is the difference between sterile and distilled water?",c:["Sterile water is free of microorganisms (may contain bacteriostatic additives); distilled water is both sterile and pure, with all other constituents removed","Distilled water may contain bacteria; sterile water cannot","They are identical terms","Sterile water is hypertonic; distilled water is hypotonic"],e:"Sterile = free of microorganisms (may have bacteriostatic additives). Distilled = sterile AND pure, with no additives and all other constituents removed.",s:"Mucus slide 10"},
+{id:"m12",u:"mucus",o:"m3",q:"Any solution intended for inhalation must be:",c:["Sterile — it does not need to be distilled","Distilled — it does not need to be sterile","Both sterile and hypertonic","Bacteriostatic and isotonic"],e:"Any solution intended for inhalation must be sterile; water does not need to be distilled.",s:"Mucus slide 10"},
+{id:"m13",u:"mucus",o:"m2",q:"Why may sterile water thin mucus more effectively than normal saline?",c:["It is hypotonic and more readily absorbed by mucus","It is hypertonic and draws water into the airway","It breaks disulfide bonds","It is isotonic and non-irritating"],e:"Sterile water is hypotonic, so it is more readily absorbed by mucus and may thin it more effectively than saline.",s:"Mucus slide 11"},
+{id:"m14",u:"mucus",o:"m3",q:"Which bland aerosol is MOST likely to cause bronchospasm?",c:["Hypertonic saline (1.8%–10%)","Normal saline (0.9%)","Hypotonic saline (0.45%)","Bacteriostatic normal saline"],e:"Hypertonic saline is more likely to cause bronchospasm than any of the other bland aerosols.",s:"Mucus slide 14"},
+{id:"m15",u:"mucus",o:"m3",q:"Which bland aerosol is commonly used to induce a cough and obtain a sputum sample?",c:["Hypertonic saline","Hypotonic saline 0.45%","Normal saline 0.9%","Distilled water as a croup-tent mist"],e:"Hypertonic saline (1.8%–10%) is commonly used to induce a cough and sputum sample. The irritation and cough from dense aerosols make them useful for sputum induction.",s:"Mucus slides 11 & 14"},
+{id:"m16",u:"mucus",o:"m3",q:"Hypertonic saline is beneficial in which population, but may decrease lung function in which population?",c:["Beneficial in cystic fibrosis; may decrease lung function in COPD","Beneficial in COPD; harmful in cystic fibrosis","Beneficial in asthma; harmful in croup","Beneficial in croup; harmful in CF"],e:"Hypertonic saline may cause a decrease in lung function in COPD, but is beneficial in CF, where it improves mucus clearance and subsequently lung function.",s:"Mucus slide 14"},
+{id:"m17",u:"mucus",o:"m3",q:"Which solution is described as less irritating than both sterile water and hypertonic saline and is used with ultrasonic and large-volume nebulizers?",c:["0.45% (hypotonic) saline","3% saline","7% saline","Undiluted 20% acetylcysteine"],e:"0.45% saline is less irritating than sterile water or hypertonic saline and is used with ultrasonic nebulizers, any large-volume nebulizer, or as a diluent.",s:"Mucus slide 12"},
+{id:"m18",u:"mucus",o:"m3",q:"Why is 0.9% saline well tolerated and frequently used as a diluent?",c:["It is isotonic to the body, less irritating, and less likely to cause bronchospasm","It is hypotonic and readily absorbed into mucus","It contains a mucolytic additive","It is hypertonic and induces cough"],e:"Normal saline is isotonic to the body, so it is well tolerated, less irritating, less likely to cause bronchospasm, and frequently used as a diluent.",s:"Mucus slide 13"},
+{id:"m19",u:"mucus",o:"m3",q:"A drawback of large-volume and ultrasonic nebulizers delivering bland aerosol is that they:",c:["Can produce runny, watery secretions that impair the mucociliary system","Cannot deliver significant volumes of aerosol","Cause adrenal suppression","Only work with distilled water"],e:"Large-volume and ultrasonic nebulizers deliver significant volumes of aerosol and have been shown to cause runny, watery secretions — and thin secretions impair mucociliary function.",s:"Mucus slide 6"},
+{id:"m20",u:"mucus",o:"m3",q:"Which patient is MOST likely to benefit from mucoactive drug therapy?",c:["A patient with an impaired cough and reduced expiratory airflow","A patient with a strong cough and normal airflow","A patient with seasonal rhinitis and no sputum","Every patient with any amount of sputum"],e:"Not all patients with retained mucus benefit. Those with impaired cough clearance and reduced expiratory airflow benefit most; a strong cough with preserved airflow usually clears secretions without drugs.",s:"Mucus slide 17"},
+{id:"m21",u:"mucus",o:"m4",q:"When should mucoactive drugs be given relative to airway clearance techniques?",c:["Before airway clearance, to decrease viscosity and enhance clearance","After airway clearance, to soothe the airway","Only on days airway clearance is skipped","Timing does not matter"],e:"Mucoactive therapy should be given BEFORE physical airway clearance to decrease viscosity, enhance clearance, and reduce infection/inflammation risk.",s:"Mucus slide 17"},
+{id:"m22",u:"mucus",o:"m3",q:"Which is NOT one of the listed goals of mucus-controlling therapy?",c:["Directly relaxing airway smooth muscle","Improving pulmonary function","Improving gas exchange","Preventing repeated infection and airway damage"],e:"The clinical indication is to reduce accumulated secretions with improvement in pulmonary function and gas exchange, and to prevent repeated infection and airway damage.",s:"Mucus slide 16"},
+{id:"m23",u:"mucus",o:"m1",q:"Direct instillation of a drug into the respiratory tract is performed through all of the following EXCEPT:",c:["A simple oxygen mask","An artificial airway","Bronchoscopy","A transtracheal catheter"],e:"Direct instillation is performed in patients with artificial airways, during bronchoscopy, or through a transtracheal catheter.",s:"Mucus slide 7"},
+{id:"m24",u:"mucus",o:"m5",q:"The CFTR protein normally functions as:",c:["A cell-surface channel controlling movement of chloride and water","An enzyme that digests extracellular DNA","A β2 receptor on airway smooth muscle","A mucin protein linked by disulfide bonds"],e:"CFTR acts as a channel on the cell surface controlling chloride and water movement — essential for thin, slippery mucus. Defective or absent CFTR causes thick, sticky mucus.",s:"Mucus slide 25"},
+{id:"m25",u:"mucus",o:"m5",q:"Which CFTR modulator is a potentiator?",c:["Ivacaftor","Elexacaftor","Tezacaftor","Dornase alfa"],e:"Potentiators (ivacaftor) act on CFTR channels already at the cell surface and help open the gate. Correctors (elexacaftor, tezacaftor) help misfolded protein fold and reach the surface.",s:"Mucus slide 26"},
+{id:"m26",u:"mucus",o:"m5",q:"What does a CFTR corrector such as elexacaftor or tezacaftor do?",c:["Helps misfolded CFTR protein form its correct 3-D shape and move to the cell surface","Holds open the gate of channels already at the surface","Breaks DNA strands in mucus","Blocks leukotriene receptors"],e:"Correctors fix folding and trafficking so more CFTR reaches the cell surface; the potentiator then boosts the function of those channels.",s:"Mucus slides 26–27"},
+{id:"m27",u:"mucus",o:"m5",q:"Trikafta is indicated for which patients?",c:["Age 2 years and older with at least one F508del mutation or another responsive CFTR mutation","Any age with two copies of any CFTR mutation","Adults only, with any CF diagnosis","Age 12 and older with COPD"],e:"Trikafta (elexacaftor/tezacaftor/ivacaftor) is indicated for individuals aged 2 years and older with at least one copy of F508del or another responsive mutation.",s:"Mucus slide 28"},
+{id:"m28",u:"mucus",o:"m5",q:"Which patient is NOT a candidate for Trikafta based on lecture criteria?",c:["An 18-month-old with two F508del copies","A 3-year-old with one F508del copy","A 25-year-old homozygous for F508del","A 10-year-old with one F508del copy and one other mutation"],e:"The 18-month-old has the mutation but does not meet the age criterion (2 years and older).",s:"Mucus slide 28"},
+{id:"m29",u:"mucus",o:"m4",q:"A 15-year-old with CF (one F508del copy) starts Trikafta. What is the correct regimen?",c:["AM: two orange tablets (elexacaftor 100/tezacaftor 50/ivacaftor 75 mg); PM: one light blue tablet (ivacaftor 150 mg)","AM: one orange tablet; PM: one orange tablet","AM: two light orange tablets (50/25/37.5 mg); PM: ivacaftor 75 mg","AM: one packet of granules; PM: one packet of granules"],e:"Adults and children 12+: two orange tablets in the morning and one light blue ivacaftor 150 mg tablet in the evening.",s:"Mucus slide 30"},
+{id:"m30",u:"mucus",o:"m4",q:"An 8-year-old weighing 25 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: two light orange tablets (elexacaftor 50/tezacaftor 25/ivacaftor 37.5 mg); PM: one light blue tablet (ivacaftor 75 mg)","AM: two orange tablets (100/50/75 mg); PM: ivacaftor 150 mg","AM: one packet granules (80/40/60 mg); PM: ivacaftor 59.5 mg","AM: one orange tablet only"],e:"Age 6 to <12 years and <30 kg: two light orange tablets AM, one light blue ivacaftor 75 mg tablet PM. (≥30 kg uses the adult dose.)",s:"Mucus slide 30"},
+{id:"m31",u:"mucus",o:"m4",q:"A 4-year-old weighing 12 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: one packet of granules (elexacaftor 80/tezacaftor 40/ivacaftor 60 mg); PM: one packet ivacaftor 59.5 mg","AM: one packet (100/50/75 mg); PM: one packet ivacaftor 75 mg","AM: two light orange tablets; PM: ivacaftor 75 mg tablet","Not eligible until age 6"],e:"Age 2 to <6 years and <14 kg: AM granules 80/40/60 mg; PM granules ivacaftor 59.5 mg.",s:"Mucus slide 30"},
+{id:"m32",u:"mucus",o:"m4",q:"A 5-year-old weighing 16 kg is prescribed Trikafta. Which regimen is correct?",c:["AM: one packet of granules (elexacaftor 100/tezacaftor 50/ivacaftor 75 mg); PM: one packet ivacaftor 75 mg","AM: one packet (80/40/60 mg); PM: one packet ivacaftor 59.5 mg","AM: two orange tablets; PM: ivacaftor 150 mg","AM: two light orange tablets; PM: none"],e:"Age 2 to <6 years and ≥14 kg: AM granules 100/50/75 mg; PM granules ivacaftor 75 mg.",s:"Mucus slide 30"},
+{id:"m33",u:"mucus",o:"m4",q:"How is Trikafta taken?",c:["Orally with fat-containing food, usually twice daily about 12 hours apart","By nebulizer twice daily","Orally on an empty stomach once daily","IV once weekly"],e:"Trikafta is oral, taken with fatty foods, usually twice a day about 12 hours apart.",s:"Mucus slide 29"},
+{id:"m34",u:"mucus",o:"m5",q:"Which serious adverse effects of Trikafta were highlighted?",c:["Life-threatening liver damage and vision problems such as cataracts in children","Oral candidiasis and dysphonia","Adrenal crisis on abrupt withdrawal","Bronchospasm and hypernatremia"],e:"Potential serious side effects: life-threatening liver damage and vision problems such as cataracts in children. It also has drug interactions.",s:"Mucus slide 29"},
+{id:"m35",u:"mucus",o:"m5",q:"A teen on Trikafta feels much better and wants to stop dornase alfa and airway clearance. Best response?",c:["Continue all previous therapies unless the prescriber advises otherwise","Stop all inhaled therapies since Trikafta replaces them","Stop airway clearance but keep dornase alfa","Double the Trikafta dose instead"],e:"Compliance and education are key — the patient should continue all previous therapies unless advised otherwise.",s:"Mucus slide 29"},
+{id:"m36",u:"mucus",o:"m5",q:"Which is NOT an FDA-approved CFTR modulator product?",c:["Pulmozyme","Trikafta","Symdeko","Kalydeco"],e:"FDA-approved CFTR modulators: Trikafta, Symdeko, Orkambi, Kalydeco. Pulmozyme is dornase alfa, a peptide mucolytic.",s:"Mucus slide 27"},
+
+/* ---------- STEROIDS ---------- */
+{id:"s01",u:"steroids",o:"s1",q:"Corticosteroids are classified into which two groups?",c:["Mineralocorticoids and glucocorticoids","Agonists and antagonists","Correctors and potentiators","Leukotrienes and prostaglandins"],e:"Corticosteroids are classified into mineralocorticoids and glucocorticoids; synthetic versions were developed to optimize anti-inflammatory activity.",s:"Steroids slide 3"},
+{id:"s02",u:"steroids",o:"s1",q:"Why are corticosteroids the backbone of treatment for allergic asthma?",c:["They block the initial immune response and the subsequent inflammatory process","They relax bronchial smooth muscle within minutes","They break down mucus","They block muscarinic receptors"],e:"Corticosteroids can block both the initial immune response and the subsequent inflammatory process.",s:"Steroids slide 3"},
+{id:"s03",u:"steroids",o:"s1",q:"The HPA axis consists of which three glands?",c:["Hypothalamus, pituitary, adrenal glands","Hypothalamus, pancreas, adrenal glands","Pituitary, thyroid, adrenal glands","Hypothalamus, pituitary, thyroid"],e:"The hypothalamic–pituitary–adrenal axis is a hormonal cascade and feedback loop that controls corticosteroid release.",s:"Steroids slide 4"},
+{id:"s04",u:"steroids",o:"s1",q:"The HPA axis is responsible for which normal pattern of steroid levels?",c:["Diurnal (daily) variation in blood steroid levels","Constant levels around the clock","A monthly cycle","Seasonal variation only"],e:"The HPA axis controls corticosteroid release and is responsible for the normal diurnal variation in steroid blood levels.",s:"Steroids slide 4"},
+{id:"s05",u:"steroids",o:"s1",q:"Why does long-term exogenous corticosteroid therapy cause HPA suppression?",c:["The body cannot distinguish exogenous glucocorticoids from its own, so production shuts down and the adrenals atrophy","The drug destroys the pituitary gland","Exogenous steroids are pure mineralocorticoids","The liver stops metabolizing cortisol"],e:"Because the body cannot tell endogenous from exogenous glucocorticoids, it suppresses the HPA axis and the adrenal glands atrophy.",s:"Steroids slide 5"},
+{id:"s06",u:"steroids",o:"s3",q:"A patient on prednisone for a year stops it abruptly. What is the major risk?",c:["Acute adrenal crisis","Oral candidiasis","Cataracts","Paradoxical bronchospasm"],e:"Atrophied adrenal glands cannot immediately manufacture cortisol when steroids are stopped suddenly, leading to an acute adrenal crisis.",s:"Steroids slide 6"},
+{id:"s07",u:"steroids",o:"s2",q:"How should prolonged systemic corticosteroid therapy be discontinued?",c:["Gradually tapered over weeks or months","Stopped abruptly once symptoms resolve","Switched immediately to a leukotriene modifier","Stopped and restarted only during flares"],e:"Tapering protocols: gradually taper exogenous steroids over weeks or months.",s:"Steroids slide 6"},
+{id:"s08",u:"steroids",o:"s1",q:"Corticosteroids reduce inflammation by all of the following EXCEPT:",c:["Increasing circulating eosinophils and basophils","Blocking arachidonic acid metabolites (leukotrienes and prostaglandins)","Decreasing lymphocytes and macrophages","Inhibiting late-phase inflammation"],e:"Corticosteroids DECREASE monocytes, eosinophils, basophils, lymphocytes and macrophages, block arachidonic acid metabolites, and inhibit late-phase inflammation.",s:"Steroids slide 8"},
+{id:"s09",u:"steroids",o:"s4",q:"What is the rationale for an IV corticosteroid bolus in status asthmaticus?",c:["Glucocorticoids increase the number and availability of β receptors within 2–4 hours, restoring responsiveness to β-agonists","IV steroids cause immediate bronchodilation within 5 minutes","IV steroids prevent oral thrush","IV steroids replace the need for oxygen"],e:"Within 2–4 hours after IV administration, glucocorticoids increase the number and availability of β receptors — the rationale for a bolus in status asthmaticus.",s:"Steroids slide 9"},
+{id:"s10",u:"steroids",o:"s4",q:"Seasonal bronchial hyperresponsiveness requires how much steroid therapy to reverse?",c:["At least one week","2–4 hours","24 hours","One year"],e:"Seasonal BHR requires at least a week of therapy to reverse.",s:"Steroids slide 9"},
+{id:"s11",u:"steroids",o:"s4",q:"Sensitivity to exercise-induced bronchospasm (EIB) decreases after about how long of corticosteroid therapy?",c:["4 weeks","2–4 hours","3 days","6 months"],e:"EIB sensitivity decreases after about 4 weeks of therapy.",s:"Steroids slide 9"},
+{id:"s12",u:"steroids",o:"s2",q:"A patient started on an ICS 5 days ago says it “isn’t working.” Best response?",c:["Improvement typically begins in 1–2 weeks with maximum benefit at 4–8 weeks, so keep using it daily","Stop the ICS and use it only during attacks","Double the dose immediately","Switch to an oral steroid for maintenance"],e:"ICS produce symptom improvement in the first 1–2 weeks, with maximum improvement at 4–8 weeks.",s:"Steroids slide 16"},
+{id:"s13",u:"steroids",o:"s4",q:"When do FEV1 and PEF typically reach maximum improvement on inhaled corticosteroids?",c:["3–6 weeks","24–48 hours","4–6 hours","1–2 days"],e:"FEV1 and PEF may take 3–6 weeks for maximum improvement.",s:"Steroids slide 16"},
+{id:"s14",u:"steroids",o:"s4",q:"Improvement in bronchial hyperresponsiveness on ICS:",c:["Can take 1–3 months and may continue over a year","Is complete within 24 hours","Occurs only with oral steroids","Never occurs"],e:"BHR improvement can take one to three months and continue over a year.",s:"Steroids slide 16"},
+{id:"s15",u:"steroids",o:"s4",q:"Initial onset and peak effect of oral corticosteroids:",c:["Onset 4–6 hours; peak 24–48 hours","Onset 1–2 weeks; peak 4–8 weeks","Onset 5 minutes; peak 1 hour","Onset 2 days; peak 2 weeks"],e:"OCS: initial onset 4–6 hours, peak effect 24–48 hours. ICS: initial improvement 1–2 weeks, full effect 4–8 weeks.",s:"Steroids slide 17"},
+{id:"s16",u:"steroids",o:"s4",q:"Which statement correctly compares oral and inhaled corticosteroids?",c:["OCS: acute flare-ups, systemic, high side-effect risk; ICS: long-term maintenance, localized, very low risk at therapeutic doses","OCS: maintenance, localized; ICS: acute flare-ups, systemic","Both have identical onset and side-effect risk","ICS are preferred for severe acute exacerbations"],e:"OCS are for acute flare-ups/severe exacerbations, act systemically and carry high systemic side-effect risk. ICS are for daily maintenance/prevention, act locally, and have very low systemic risk at therapeutic doses.",s:"Steroids slide 17"},
+{id:"s17",u:"steroids",o:"s3",q:"Which finding is NOT a feature of iatrogenic Cushing syndrome?",c:["Muscle hypertrophy of the extremities","Moon face","Buffalo hump","Abdominal striae and poor wound healing"],e:"Cushingoid features include moon face, buffalo hump, osteoporosis, muscle WASTING in the extremities, skin ulcers/poor wound healing, abdominal striae, obesity, and cardiac hypertrophy (plus dark facial hair and amenorrhea in women).",s:"Steroids slide 11"},
+{id:"s18",u:"steroids",o:"s3",q:"Which organisms are associated with oropharyngeal infections from ICS use?",c:["Candida albicans and Aspergillus niger","Pseudomonas aeruginosa and Staph aureus","Mycobacterium tuberculosis","Influenza A and RSV"],e:"Infections with Candida albicans or Aspergillus niger may occur in the mouth, pharynx and larynx.",s:"Steroids slide 12"},
+{id:"s19",u:"steroids",o:"s3",q:"The occurrence and severity of oropharyngeal fungal infection with ICS is:",c:["Dose-related, and more likely if the patient also takes oral steroids","Unrelated to dose","Only seen with leukotriene modifiers","Prevented by inhaling without a spacer"],e:"Fungal infection is dose-related and more likely in patients who are also taking oral steroids.",s:"Steroids slide 14"},
+{id:"s20",u:"steroids",o:"s2",q:"Which two measures reduce oropharyngeal deposition of an ICS?",c:["Using a spacer and gargling/rinsing after each treatment","Taking it at bedtime without rinsing","Using it only during acute attacks","Taking two puffs back-to-back as fast as possible"],e:"Use of a spacer device and gargling after treatment reduce oropharyngeal deposition, lowering the risk of thrush.",s:"Steroids slide 14"},
+{id:"s21",u:"steroids",o:"s3",q:"Which statement about corticosteroids and airway remodeling is correct?",c:["They can prevent or reduce remodeling but cannot completely reverse established smooth muscle hyperplasia or fibrosis","They completely reverse all fibrotic airway changes","They cause airway remodeling","They have no effect on airway inflammation"],e:"By suppressing inflammation, steroids reduce BHR and help prevent/reduce remodeling, but cannot completely reverse established smooth muscle hyperplasia or fibrotic tissue.",s:"Steroids slide 15"},
+{id:"s22",u:"steroids",o:"s5",q:"Leukotrienes cause all of the following EXCEPT:",c:["Increased mucociliary clearance","Airway smooth muscle contraction","Increased vascular permeability","Increased mucus secretion"],e:"Leukotrienes cause smooth muscle contraction, vasodilation, increased vascular permeability, increased mucus secretion and DECREASED mucociliary clearance.",s:"Steroids slide 19"},
+{id:"s23",u:"steroids",o:"s5",q:"Leukotriene modifiers are considered:",c:["Alternatives to low-dose inhaled corticosteroids in mild persistent asthma, for long-term control","First-line rescue drugs for acute attacks","Replacements for IV steroids in status asthmaticus","Mucolytics"],e:"Leukotriene modifiers block leukotriene action and are alternatives to low-dose ICS in mild persistent asthma — for long-term control, not acute treatment.",s:"Steroids slide 20"},
+{id:"s24",u:"steroids",o:"s5",q:"A patient wants to take their leukotriene modifier tablet to stop an asthma attack. Best response?",c:["Leukotriene modifiers are for long-term control, not acute treatment — use the prescribed rescue inhaler","Take two tablets for faster effect","Yes, it works within seconds","Take it with an ICS to turn it into a rescue drug"],e:"Leukotriene modifiers are used for long-term control, not acute treatment.",s:"Steroids slide 20"},
+{id:"s25",u:"steroids",o:"s1",q:"Synthetic corticosteroids were developed to:",c:["Optimize anti-inflammatory activity","Maximize salt-retaining (mineralocorticoid) activity","Act as direct bronchodilators","Stimulate the adrenal glands"],e:"Synthetic corticosteroids have been developed to optimize anti-inflammatory activity.",s:"Steroids slide 3"},
+{id:"s26",u:"steroids",o:"s4",q:"Clinically, corticosteroids do all of the following EXCEPT:",c:["Provide immediate rescue bronchodilation","Reduce airway inflammation","Improve oxygenation","Increase the response to β-agonists"],e:"Clinically, steroids reduce inflammation and obstruction, improve oxygenation and increase β-agonist response — but they are not immediate rescue bronchodilators.",s:"Steroids slide 8"},
+{id:"s27",u:"steroids",o:"s2",q:"A patient asks why their ICS is safer long-term than daily oral prednisone. Best explanation?",c:["Inhaled delivery is localized to the airway, so systemic side-effect risk is very low at therapeutic doses","Inhaled steroids are not actually corticosteroids","Inhaled steroids work faster","Inhaled steroids cannot cause any side effects"],e:"ICS act locally, giving very low systemic risk at therapeutic doses — though local effects like thrush can still occur.",s:"Steroids slides 14 & 17"},
+
+/* ---------- CALC ---------- */
+{id:"c01",u:"calc",o:"c1",q:"In drug calculations, “percentage” refers to:",c:["Parts of active ingredient in a solution containing 100 parts","Milligrams per liter","The patient’s dose per kilogram","The ratio of diluent to drug"],e:"Percentage = the part of the active ingredient in a solution containing 100 parts.",s:"Calc slide 2"},
+{id:"c02",u:"calc",o:"c1",q:"A drug’s “schedule” is:",c:["The amount of drug needed based on the patient’s weight","The drug’s expiration date","The strength in percent","The volume of diluent added"],e:"Schedule = the amount of drug needed based on a patient’s weight (e.g., mg/kg).",s:"Calc slide 2"},
+{id:"c03",u:"calc",o:"c1",q:"The “strength” of a solution refers to:",c:["The amount of solute in a solution, usually expressed as a percentage","The volume of diluent added","The patient’s weight-based dose","The pH of the solution"],e:"Strength = amount of solute in a solution, usually as a percentage.",s:"Calc slide 2"},
+{id:"c04",u:"calc",o:"c1",q:"The substance that is dissolved is the ___; the substance that dissolves it is the ___.",c:["Solute; solvent","Solvent; solute","Diluent; solute","Solution; solvent"],e:"Solute = active ingredient that is dissolved (liquid or solid). Solvent = substance that dissolves the solute.",s:"Calc slide 3"},
+{id:"c05",u:"calc",o:"c1",q:"A solution is best defined as:",c:["A physically homogeneous mixture of two or more substances","Any liquid medication","The active ingredient only","A suspension of particles that settles out"],e:"A solution is a physically homogeneous mixture of two or more substances.",s:"Calc slide 3"},
+{id:"c06",u:"calc",o:"c2",q:"A 2% solution contains:",c:["20 mg/ml","2 mg/ml","200 mg/ml","0.2 mg/ml"],e:"% → mg/ml: move the decimal one place right. 2% = 20 mg/ml.",s:"Calc slide 5"},
+{id:"c07",u:"calc",o:"c2",q:"Albuterol 0.5% solution contains:",c:["5 mg/ml","0.5 mg/ml","50 mg/ml","0.05 mg/ml"],e:"0.5% → move decimal one place right → 5 mg/ml.",s:"Calc slide 5"},
+{id:"c08",u:"calc",o:"c2",q:"75 mg/ml expressed as a percentage is:",c:["7.5%","75%","0.75%","750%"],e:"mg/ml → %: move the decimal one place left. 75 mg/ml = 7.5%.",s:"Calc slide 5"},
+{id:"c09",u:"calc",o:"c2",q:"Acetylcysteine 20% contains:",c:["200 mg/ml","20 mg/ml","2 mg/ml","2,000 mg/ml"],e:"20% → 200 mg/ml (decimal one place right).",s:"Calc slide 6"},
+{id:"c10",u:"calc",o:"c2",q:"10 mg/ml expressed as a percentage is:",c:["1%","10%","0.1%","100%"],e:"10 mg/ml → move decimal one place left → 1%.",s:"Calc slide 5"},
+{id:"c11",u:"calc",o:"c3",q:"Albuterol 5 mg per aerosol dose is ordered. You have a 0.5% solution. How many ml?",c:["1 ml","0.5 ml","10 ml","0.1 ml"],e:"0.5% = 5 mg/ml. 5 mg / 1 ml = 5 mg / x ml → x = 1 ml.",s:"Calc slide 9"},
+{id:"c12",u:"calc",o:"c3",q:"Albuterol 2.5 mg per aerosol dose is ordered. You have a 0.5% solution. How many ml?",c:["0.5 ml","1 ml","5 ml","0.25 ml"],e:"0.5% = 5 mg/ml. 2.5 mg ÷ 5 mg/ml = 0.5 ml.",s:"Calc slide 10"},
+{id:"c13",u:"calc",o:"c3",q:"Acetylcysteine 500 mg per aerosol dose is ordered. You have a 20% solution. How many ml?",c:["2.5 ml","25 ml","5 ml","0.4 ml"],e:"20% = 200 mg/ml. 500 mg ÷ 200 mg/ml = 2.5 ml.",s:"Calc slide 11"},
+{id:"c14",u:"calc",o:"c3",q:"Acetylcysteine 800 mg per aerosol dose is ordered. You have a 10% solution. How many ml?",c:["8 ml","4 ml","0.8 ml","80 ml"],e:"10% = 100 mg/ml. 800 mg ÷ 100 mg/ml = 8 ml.",s:"Calc slide 12"},
+{id:"c15",u:"calc",o:"c3",q:"0.5 ml of a 1% drug is diluted with 2 ml of saline in one nebulizer and 10 ml in another. Which contains more active drug?",c:["Neither — both contain 5 mg of active ingredient","The 2 ml dilution","The 10 ml dilution","Cannot be determined"],e:"Diluent does not “weaken” the dose. 1% = 10 mg/ml × 0.5 ml = 5 mg, regardless of diluent volume.",s:"Calc slide 15"},
+{id:"c16",u:"calc",o:"c1",q:"Per lecture, the medication left in the nebulizer at the end of treatment is:",c:["Only diluent","Concentrated drug that should be re-dosed","Half of the original dose","Pure solute"],e:"The misconception slide notes that medication left in the nebulizer is only diluent.",s:"Calc slide 15"},
+{id:"c17",u:"calc",o:"c3",q:"A drug is ordered at 0.1 mg/kg. The child weighs 25 kg and you have a 0.5% solution. How many ml?",c:["0.5 ml","2.5 ml","5 ml","0.25 ml"],e:"Dose = 0.1 mg/kg × 25 kg = 2.5 mg. 0.5% = 5 mg/ml → 2.5 ÷ 5 = 0.5 ml.",s:"Calc slide 14"},
+{id:"c18",u:"calc",o:"c3",q:"A child weighs 44 lb. What is the weight in kg?",c:["20 kg","96.8 kg","22 kg","40 kg"],e:"44 lb ÷ 2.2 lb/kg = 20 kg. Always convert to kg before applying an mg/kg schedule.",s:"Calc slide 14"},
+{id:"c19",u:"calc",o:"c3",q:"Ipratropium 0.02% contains 0.2 mg/ml. How many ml provide 0.5 mg?",c:["2.5 ml","0.25 ml","25 ml","1 ml"],e:"0.5 mg ÷ 0.2 mg/ml = 2.5 ml.",s:"Calc slide 8"},
+{id:"c20",u:"calc",o:"c3",q:"The first step of the proportion method is to:",c:["Convert all quantities to consistent units of measure","Add the diluent","Multiply by body weight","Divide the percent by 100"],e:"Convert to consistent units, then set up Original dose/Per amount = Desired dose/Per amount.",s:"Calc slide 8"},
+{id:"c21",u:"calc",o:"c3",q:"How is a weight-based dose calculated?",c:["After obtaining body weight: mg/kg × weight (kg), then use the proportion formula for volume","Use an average adult weight","Only for adults","Only if the drug is a tablet"],e:"Dose must be calculated after body weight is obtained: schedule (mg/kg) × kg, then follow the proportion formula.",s:"Calc slide 14"},
+{id:"c22",u:"calc",o:"c2",q:"How many mg of active drug are in 3 ml of a 1% solution?",c:["30 mg","3 mg","300 mg","0.3 mg"],e:"1% = 10 mg/ml × 3 ml = 30 mg.",s:"Calc slide 5"}
+];
+
+const CASES = [
+/* ---------- MUCUS CASES ---------- */
+{id:"cm1",u:"mucus",title:"Maya — CF clinic visit",who:"Maya, 9-year-old girl, 27 kg",text:"Maya has cystic fibrosis and is homozygous for the F508del mutation. She uses dornase alfa daily and a high-frequency chest wall oscillation vest twice daily, but has had three exacerbations this year and thick, tenacious sputum. Her pulmonologist is considering Trikafta.",steps:[
+ {q:"Is Maya an appropriate candidate for Trikafta?",c:["Yes — she is 2 years or older and has at least one F508del mutation","No — she must be 12 or older","No — she needs two different mutations","No — Trikafta is only for adults with COPD"],e:"Criteria: age ≥2 and at least one F508del (or other responsive) mutation. Maya meets both."},
+ {q:"Which Trikafta regimen is correct for Maya (age 9, 27 kg)?",c:["AM: two light orange tablets (50/25/37.5 mg); PM: one light blue ivacaftor 75 mg tablet","AM: two orange tablets (100/50/75 mg); PM: ivacaftor 150 mg","AM: one packet granules (100/50/75 mg); PM: granules ivacaftor 75 mg","AM: one packet granules (80/40/60 mg); PM: granules ivacaftor 59.5 mg"],e:"Age 6 to <12 and <30 kg → two light orange tablets AM, one light blue ivacaftor 75 mg PM."},
+ {q:"Maya’s mother asks how to give the medication.",c:["By mouth with fat-containing food, about 12 hours apart","On an empty stomach first thing in the morning","Crushed into her nebulizer","Once daily at bedtime with water only"],e:"Trikafta is taken orally with fatty foods, usually twice a day 12 hours apart."},
+ {q:"Which explanation of how Trikafta works is most accurate?",c:["Correctors (elexacaftor, tezacaftor) get more CFTR protein to the cell surface; the potentiator (ivacaftor) helps the channel open","It digests the DNA in her mucus","It hydrates the sol layer like hypertonic saline","It blocks leukotrienes to reduce inflammation"],e:"The combination first increases the number of CFTR proteins at the surface and then boosts their function → thinner mucus."},
+ {info:"Two months later Maya feels great. Her mother asks if she can stop the Pulmozyme and the vest.",q:"Best response?",c:["Continue all previous therapies unless her prescriber advises otherwise","Yes — Trikafta replaces all other CF therapies","Stop Pulmozyme but keep the vest","Stop the vest but double the Pulmozyme"],e:"Patients should continue all previous therapies unless advised otherwise — compliance and education are key."},
+ {q:"When should Maya take her dornase alfa relative to her vest treatment?",c:["Before airway clearance","After airway clearance","At the same time as Trikafta only","Timing does not matter"],e:"Mucoactive drugs are given before physical airway clearance to decrease viscosity and enhance clearance."},
+ {q:"Given Trikafta’s serious adverse effects, which monitoring makes the most sense?",c:["Liver function and eye exams (cataract screening)","Serum cortisol for adrenal suppression","Oral exam for thrush only","No monitoring is needed"],e:"Serious side effects include life-threatening liver damage and vision problems such as cataracts in children."}
+]},
+{id:"cm2",u:"mucus",title:"Mr. Delgado — sputum induction",who:"Mr. Delgado, 68-year-old man with COPD",text:"Mr. Delgado has a chronic cough, low-grade fevers and an abnormal chest X-ray. The physician needs a sputum sample, but he cannot produce one on his own. A sputum induction is ordered.",steps:[
+ {q:"Which bland aerosol is most commonly used for sputum induction?",c:["Hypertonic saline","0.45% saline","0.9% saline","Bacteriostatic water"],e:"Hypertonic saline (1.8%–10%) is commonly used to induce a cough and sputum sample."},
+ {q:"Why do these aerosols help produce a sample?",c:["They irritate the airway, causing cough and increasing production of thinner mucus","They break disulfide bonds in mucin","They open CFTR chloride channels","They increase β-receptor numbers"],e:"Bland aerosols are somewhat irritating; the irritation and cough from dense aerosols are what make them useful for sputum induction."},
+ {q:"What is the main concern for THIS patient?",c:["Bronchospasm and a possible decrease in lung function because he has COPD","Adrenal crisis","Liver damage","Hyponatremia from absorbed water"],e:"Hypertonic saline is the bland aerosol most likely to cause bronchospasm and may decrease lung function in COPD."},
+ {info:"Five minutes in, Mr. Delgado develops audible wheezing and increased work of breathing.",q:"Most appropriate action?",c:["Stop the treatment, assess him, and notify the provider/give a bronchodilator per protocol","Increase the nebulizer output to finish faster","Switch to sterile water and continue","Continue — wheezing means it is working"],e:"Bronchospasm is the key risk; stop the irritant, assess, and treat per protocol."},
+ {info:"After the sample is collected, an albuterol treatment is ordered.",q:"Which solution is best as the well-tolerated diluent?",c:["0.9% normal saline","7% hypertonic saline","Distilled water in a large-volume nebulizer","20% acetylcysteine"],e:"Normal saline is isotonic, less irritating, less likely to cause bronchospasm, and frequently used as a diluent."}
+]},
+{id:"cm3",u:"mucus",title:"ICU — thick secretions on the ventilator",who:"Ms. Okafor, 45-year-old intubated patient",text:"Ms. Okafor is intubated after abdominal surgery. Suctioning returns small amounts of very thick, tenacious secretions. The physician orders acetylcysteine 400 mg by direct instillation; you have a 20% solution.",steps:[
+ {q:"How many ml of 20% acetylcysteine do you instill?",c:["2 ml","4 ml","0.5 ml","20 ml"],e:"20% = 200 mg/ml. 400 mg ÷ 200 mg/ml = 2 ml."},
+ {q:"Direct instillation is an accepted route for Ms. Okafor because she has:",c:["An artificial airway","A strong spontaneous cough","A nasal cannula","A peripheral IV"],e:"Direct instillation is performed on patients with artificial airways, during bronchoscopy, or via a transtracheal catheter."},
+ {q:"How does acetylcysteine thin her secretions?",c:["Free thiol groups replace the disulfide bonds linking mucin proteins","It digests extracellular DNA","It simply adds water to the sol layer","It increases ciliary beat frequency"],e:"NAC substitutes free thiol groups for disulfide bonds, reducing viscosity immediately."},
+ {q:"What should the RT recognize about the evidence for aerosolized NAC?",c:["No data show aerosolized NAC is effective therapy for any lung disease","It is proven to cure COPD","It is the standard maintenance therapy for CF","It is more effective than dornase alfa in CF"],e:"Despite in-vitro activity and long use, there are no data showing aerosolized NAC is effective for any lung disease."},
+ {info:"A colleague suggests running continuous heated aerosol from a large-volume nebulizer at high output to “really soak” her secretions.",q:"What is the concern with this plan?",c:["Large volumes can produce runny, watery secretions that impair mucociliary function","It will cause adrenal suppression","Large-volume nebulizers cannot deliver significant aerosol","It will make secretions thicker"],e:"Large-volume/ultrasonic nebulizers can cause runny, watery secretions — thin secretions impair mucociliary function."},
+ {info:"In the next bed, a patient with a strong cough and normal expiratory flows asks for “something to break up mucus.”",q:"Is mucoactive therapy likely to benefit him?",c:["Probably not — a strong cough with preserved airflow usually clears secretions without drugs","Yes — everyone with mucus benefits","Yes — give hypertonic saline routinely","Only if given after airway clearance"],e:"Patients with impaired cough and reduced expiratory airflow benefit most; those with preserved airflow and a strong cough usually don’t need it."}
+]},
+/* ---------- STEROID CASES ---------- */
+{id:"cs1",u:"steroids",title:"Jordan — starting an inhaled corticosteroid",who:"Jordan, 14-year-old with mild persistent asthma",text:"Jordan is prescribed an inhaled corticosteroid MDI twice daily for maintenance plus albuterol as needed. You are doing his inhaler teaching.",steps:[
+ {q:"Which instruction best reduces his risk of oral thrush?",c:["Use a spacer and rinse/gargle after each dose","Take the ICS right before bed and don’t rinse","Use the ICS only when wheezing","Hold the MDI at arm’s length"],e:"A spacer and gargling after treatment reduce oropharyngeal deposition."},
+ {q:"Jordan asks how soon he will feel better.",c:["Initial improvement in 1–2 weeks; maximum benefit at 4–8 weeks","Within 5 minutes, like albuterol","Within 4–6 hours","Only after a year"],e:"ICS: symptoms improve in the first 1–2 weeks with maximum improvement at 4–8 weeks."},
+ {info:"At follow-up, Jordan admits he only uses the ICS “when I’m wheezy.”",q:"What should you reinforce?",c:["The ICS is a daily maintenance/prevention drug, not a rescue inhaler — use albuterol for acute symptoms","That’s correct use","Switch the ICS to an oral steroid","Use the ICS four times in a row during attacks"],e:"ICS are for long-term daily maintenance and prevention; they have a slow onset."},
+ {info:"Three weeks later he has white patches on his tongue and a sore mouth.",q:"What is the most likely cause?",c:["Oropharyngeal candidiasis (Candida albicans) from ICS deposition","Iatrogenic Cushing syndrome","Adrenal crisis","A leukotriene reaction"],e:"Candida albicans (or Aspergillus niger) infection of the mouth, pharynx or larynx can occur; risk is dose-related."},
+ {q:"His parents ask about a tablet instead of an inhaled steroid. Which option fits mild persistent asthma?",c:["A leukotriene modifier as an alternative to low-dose ICS for long-term control","An oral steroid daily","Acetylcysteine tablets","No controller is needed"],e:"Leukotriene modifiers are considered alternatives to low-dose ICS in mild persistent asthma, for long-term control."},
+ {q:"Jordan plays soccer and gets exercise-induced bronchospasm. When might the ICS reduce EIB sensitivity?",c:["After about 4 weeks of therapy","Within 2–4 hours","After the first dose","Never"],e:"EIB sensitivity decreases after about 4 weeks of corticosteroid therapy."}
+]},
+{id:"cs2",u:"steroids",title:"ED — status asthmaticus",who:"Mr. Reyes, 32-year-old in severe exacerbation",text:"Mr. Reyes arrives with a severe asthma exacerbation. He is tachypneic, using accessory muscles, and responding poorly to repeated albuterol. The physician orders IV methylprednisolone.",steps:[
+ {q:"What is the main rationale for an IV steroid bolus here?",c:["Glucocorticoids restore β-agonist responsiveness by increasing the number and availability of β receptors","IV steroids are immediate bronchodilators","It prevents oral thrush","It replaces the need for albuterol"],e:"Restoring responsiveness to β-adrenergic stimulation is a key effect — the rationale for a bolus in status asthmaticus."},
+ {q:"When would you expect the increase in β-receptor availability?",c:["Within 2–4 hours after IV administration","Within 5 minutes","After 1–2 weeks","After 4–8 weeks"],e:"β receptors increase within 2–4 hours after IV glucocorticoids."},
+ {q:"A student suggests giving his inhaled corticosteroid as the main acute treatment. Why is that inappropriate?",c:["ICS take 1–2 weeks for initial improvement; systemic steroids are used for acute exacerbations","ICS are more dangerous than IV steroids","ICS have no anti-inflammatory effect","ICS cause adrenal crisis"],e:"ICS are for long-term maintenance; OCS/IV steroids are used for acute flare-ups and severe exacerbations."},
+ {info:"He improves and is discharged on a short oral prednisone burst.",q:"Expected onset and peak effect of the oral steroid?",c:["Onset 4–6 hours; peak 24–48 hours","Onset 1–2 weeks; peak 4–8 weeks","Onset 5 minutes; peak 30 minutes","Onset 3 days; peak 3 weeks"],e:"OCS onset 4–6 hours, peak effect 24–48 hours."},
+ {q:"Which effect on inflammatory cells do corticosteroids produce?",c:["Decrease eosinophils, basophils, monocytes, lymphocytes and macrophages","Increase eosinophils","Increase lymphocytes","Increase leukotriene production"],e:"Corticosteroids decrease these cells and block arachidonic acid metabolites (leukotrienes and prostaglandins)."},
+ {q:"What is the best long-term controller plan after discharge?",c:["Daily inhaled corticosteroid maintenance","Daily oral prednisone indefinitely","Albuterol only","IV steroids weekly"],e:"ICS are the long-term maintenance/prevention therapy with very low systemic risk at therapeutic doses."}
+]},
+{id:"cs3",u:"steroids",title:"Mrs. Patel — long-term oral steroids",who:"Mrs. Patel, 61-year-old with severe asthma",text:"Mrs. Patel has taken daily oral prednisone for two years. She has a rounded face, a fat pad between her shoulders, purple abdominal striae, a slow-healing leg ulcer, thin arms and legs, and a recent vertebral compression fracture.",steps:[
+ {q:"These findings are most consistent with:",c:["Iatrogenic Cushing (cushingoid) syndrome","Adrenal crisis","Oropharyngeal candidiasis","Leukotriene excess"],e:"Moon face, buffalo hump, striae, poor wound healing, muscle wasting and osteoporosis are cushingoid features."},
+ {q:"Her vertebral fracture is best explained by:",c:["Steroid-induced osteoporosis","Cardiac hypertrophy","Oral thrush","Hypertonic saline use"],e:"Osteoporosis is among the systemic effects of long-term corticosteroids."},
+ {info:"Upset about her appearance, Mrs. Patel says she will stop the prednisone today.",q:"What is the major danger of stopping abruptly?",c:["Acute adrenal crisis","Immediate cataracts","Thrush","Bronchospasm from the tablet"],e:"Atrophied adrenals cannot immediately make cortisol after sudden withdrawal → acute adrenal crisis."},
+ {q:"Why are her adrenal glands unable to respond?",c:["Exogenous steroids suppressed the HPA axis; the body cannot tell drug from its own cortisol, so the adrenals atrophied","The prednisone destroyed her thyroid","Her liver stopped producing cortisol","Leukotrienes blocked the pituitary"],e:"HPA suppression → adrenal atrophy, because the body cannot distinguish endogenous from exogenous glucocorticoids."},
+ {q:"Best plan to discuss with the team?",c:["Gradually taper the oral steroid over weeks–months while optimizing inhaled (localized) corticosteroid therapy","Stop prednisone today and start nothing","Double the prednisone to fix the symptoms","Switch to acetylcysteine"],e:"Taper over weeks or months; ICS act locally with very low systemic risk at therapeutic doses."},
+ {q:"She asks whether steroids will reverse the long-standing scarring in her airways.",c:["Steroids can prevent or reduce remodeling but cannot completely reverse established smooth muscle hyperplasia or fibrosis","Yes, completely, within 4 weeks","Yes, but only with IV steroids","Steroids cause the scarring"],e:"Corticosteroids alone cannot completely reverse established remodeling."}
+]},
+/* ---------- CALC CASES ---------- */
+{id:"cc1",u:"calc",title:"Pediatric floor — weight-based dose",who:"Liam, 3-year-old, 33 lb",text:"Liam has wheezing. The order is albuterol 0.15 mg/kg by small-volume nebulizer. You have albuterol 0.5% solution and unit-dose normal saline.",steps:[
+ {q:"What is Liam’s weight in kg?",c:["15 kg","72.6 kg","16.5 kg","30 kg"],e:"33 lb ÷ 2.2 = 15 kg. Weight must be obtained (in kg) before calculating the dose."},
+ {q:"What dose (mg) is ordered?",c:["2.25 mg","0.15 mg","4.95 mg","22.5 mg"],e:"0.15 mg/kg × 15 kg = 2.25 mg."},
+ {q:"What is the concentration of 0.5% albuterol?",c:["5 mg/ml","0.5 mg/ml","50 mg/ml","0.05 mg/ml"],e:"Move the decimal one place right: 0.5% = 5 mg/ml."},
+ {q:"How many ml of 0.5% albuterol do you draw up?",c:["0.45 ml","2.25 ml","4.5 ml","0.225 ml"],e:"2.25 mg ÷ 5 mg/ml = 0.45 ml."},
+ {q:"You add 3 ml of normal saline. How much albuterol is now in the nebulizer?",c:["Still 2.25 mg","Less than 2.25 mg — the saline weakened it","More than 2.25 mg","0.45 mg"],e:"Diluent doesn’t change the amount of active drug — it is still 2.25 mg."}
+]},
+{id:"cc2",u:"calc",title:"Mucolytic orders",who:"Respiratory therapy department",text:"An order reads: acetylcysteine 600 mg via SVN. Your stock is the 20% vial.",steps:[
+ {q:"20% acetylcysteine contains:",c:["200 mg/ml","20 mg/ml","2 mg/ml","2,000 mg/ml"],e:"20% → 200 mg/ml."},
+ {q:"How many ml of 20% solution deliver 600 mg?",c:["3 ml","30 ml","1.2 ml","6 ml"],e:"600 mg ÷ 200 mg/ml = 3 ml."},
+ {info:"Pharmacy is out of the 20% vial and sends the 10% vial instead.",q:"How many ml of 10% solution deliver 600 mg?",c:["6 ml","3 ml","60 ml","0.6 ml"],e:"10% = 100 mg/ml → 600 ÷ 100 = 6 ml. Half the concentration means double the volume."},
+ {q:"In this solution, acetylcysteine is the:",c:["Solute","Solvent","Diluent","Schedule"],e:"The solute is the active ingredient dissolved in the solution."},
+ {q:"A 10% vial label could also be written as:",c:["100 mg/ml","10 mg/ml","1 mg/ml","1,000 mg/ml"],e:"10% → move decimal one place right → 100 mg/ml."}
+]},
+{id:"cc3",u:"calc",title:"Double-checking a colleague",who:"Adult patient, albuterol 2.5 mg ordered",text:"A colleague has drawn up 5 ml of albuterol 0.5% for an order of albuterol 2.5 mg and asks you to double-check before giving it.",steps:[
+ {q:"How many mg are in what your colleague drew up?",c:["25 mg","2.5 mg","5 mg","0.25 mg"],e:"0.5% = 5 mg/ml × 5 ml = 25 mg — ten times the ordered dose."},
+ {q:"What is the correct volume for 2.5 mg?",c:["0.5 ml","5 ml","2.5 ml","1 ml"],e:"2.5 mg ÷ 5 mg/ml = 0.5 ml."},
+ {q:"What likely caused the error?",c:["Confusing the dose volume with the diluent volume / skipping the % → mg/ml conversion","Using the wrong patient weight","Using a solvent instead of solute","Dornase interaction"],e:"Always convert % to mg/ml, then set up the proportion. Diluent volume is separate from drug volume."},
+ {q:"Albuterol 0.083% unit dose contains about how many mg/ml?",c:["0.83 mg/ml","8.3 mg/ml","0.083 mg/ml","83 mg/ml"],e:"0.083% → move decimal one place right → 0.83 mg/ml (a 3 ml unit dose ≈ 2.5 mg)."}
+]}
+];
+
+const TERMS = [
+ {u:"mucus",t:"Mucus",d:"Large, complex glycoprotein secretion that is about 95% water; its volume, consistency and structure change in disease."},
+ {u:"mucus",t:"Gel layer",d:"The viscous upper layer of airway mucus that traps particles. Mucolytics alter its consistency."},
+ {u:"mucus",t:"Sol layer",d:"The thin, watery periciliary layer in which cilia beat. Water/saline and expectorants increase its depth."},
+ {u:"mucus",t:"Mucokinetic / mucoactive agent",d:"Any drug that improves the ability to clear secretions — by changing mucus consistency, hydrating the sol layer, or improving ciliary activity."},
+ {u:"mucus",t:"Mucolytic",d:"Drug that directly alters the structure of the mucus molecule, breaking molecular strands to liquefy mucus (e.g., acetylcysteine, dornase alfa)."},
+ {u:"mucus",t:"Expectorant",d:"Agent that increases the depth of the sol layer to help secretions be coughed up."},
+ {u:"mucus",t:"Bland aerosol",d:"Water or saline aerosol (sterile water, 0.45%, 0.9%, hypertonic saline). Does not act on the mucus molecule directly; may dilute it; somewhat irritating."},
+ {u:"mucus",t:"Sterile water",d:"Free of microorganisms; may contain bacteriostatic additives. Hypotonic, so readily absorbed by mucus. Solutions for inhalation must be sterile."},
+ {u:"mucus",t:"Distilled water",d:"Both sterile and pure — no additives, all other constituents removed. Not required for inhalation solutions."},
+ {u:"mucus",t:"Hypotonic saline (0.45%)",d:"Less irritating than sterile water or hypertonic saline; used in ultrasonic and large-volume nebulizers and as a diluent."},
+ {u:"mucus",t:"Normal saline (0.9%)",d:"Isotonic to the body; well tolerated, less irritating, less likely to cause bronchospasm; common diluent."},
+ {u:"mucus",t:"Hypertonic saline (1.8%–10%)",d:"Used for sputum induction; most likely bland aerosol to cause bronchospasm; may decrease lung function in COPD; beneficial in CF."},
+ {u:"mucus",t:"Sputum induction",d:"Using an irritating dense aerosol (usually hypertonic saline) to provoke cough and obtain a sputum sample."},
+ {u:"mucus",t:"Direct instillation",d:"Placing drug directly into the respiratory tract via artificial airway, bronchoscopy or transtracheal catheter."},
+ {u:"mucus",t:"N-acetyl-L-cysteine (NAC)",d:"Thiol mucolytic: free thiol groups replace disulfide bonds between mucin proteins, reducing viscosity immediately. Also an acetaminophen-overdose antidote."},
+ {u:"mucus",t:"Dornase alfa (Pulmozyme)",d:"Peptide mucolytic; recombinant human DNase I that digests extracellular DNA. Maintenance therapy for viscous CF secretions."},
+ {u:"mucus",t:"CFTR",d:"Cystic Fibrosis Transmembrane Conductance Regulator — cell-surface channel moving chloride and water to keep mucus thin."},
+ {u:"mucus",t:"CFTR corrector",d:"Helps misfolded CFTR protein fold correctly and reach the cell surface (elexacaftor, tezacaftor)."},
+ {u:"mucus",t:"CFTR potentiator",d:"Helps open the gate of CFTR channels already at the cell surface (ivacaftor)."},
+ {u:"mucus",t:"Trikafta",d:"Elexacaftor + tezacaftor + ivacaftor. Age ≥2 with at least one F508del or responsive mutation. Oral with fatty food, ~12 h apart. Watch liver and eyes (cataracts)."},
+ {u:"mucus",t:"F508del",d:"The CFTR mutation named in Trikafta’s indication — at least one copy is required (or another responsive mutation)."},
+ {u:"steroids",t:"Glucocorticoid",d:"Corticosteroid class with anti-inflammatory/immunosuppressive effects; synthetic forms optimize this activity."},
+ {u:"steroids",t:"Mineralocorticoid",d:"Corticosteroid class that regulates salt and water balance."},
+ {u:"steroids",t:"HPA axis",d:"Hypothalamus–pituitary–adrenal feedback loop controlling corticosteroid release and the normal diurnal variation in steroid levels."},
+ {u:"steroids",t:"HPA / adrenal suppression",d:"Exogenous steroids suppress the HPA axis because the body can’t distinguish them from its own cortisol; adrenals atrophy."},
+ {u:"steroids",t:"Acute adrenal crisis",d:"Result of abruptly stopping prolonged steroids — atrophied adrenals can’t make cortisol fast enough."},
+ {u:"steroids",t:"Tapering",d:"Gradually reducing exogenous steroids over weeks or months to let the HPA axis recover."},
+ {u:"steroids",t:"Iatrogenic Cushing syndrome",d:"Cushingoid effects of steroid therapy: moon face, buffalo hump, osteoporosis, muscle wasting, poor wound healing, striae, obesity."},
+ {u:"steroids",t:"Oropharyngeal candidiasis",d:"Fungal infection (Candida albicans, Aspergillus niger) of mouth/pharynx/larynx from ICS; dose-related; reduce with spacer + gargling."},
+ {u:"steroids",t:"Airway remodeling",d:"Structural change in the airway wall; steroids can prevent/reduce it but cannot fully reverse established hyperplasia or fibrosis."},
+ {u:"steroids",t:"Bronchial hyperresponsiveness (BHR)",d:"Exaggerated airway narrowing to stimuli. Seasonal BHR needs ≥1 week of steroids; on ICS it improves over 1–3 months and beyond."},
+ {u:"steroids",t:"Exercise-induced bronchospasm (EIB)",d:"Bronchospasm with exercise; sensitivity decreases after ~4 weeks of steroid therapy."},
+ {u:"steroids",t:"Oral vs inhaled corticosteroids",d:"OCS: acute flares, onset 4–6 h, peak 24–48 h, systemic, high risk. ICS: maintenance, 1–2 wk onset, 4–8 wk peak, localized, very low risk."},
+ {u:"steroids",t:"Leukotrienes",d:"Mediators causing smooth muscle contraction, vasodilation, vascular permeability, ↑ mucus secretion and ↓ mucociliary clearance."},
+ {u:"steroids",t:"Leukotriene modifier",d:"Blocks leukotriene action; alternative to low-dose ICS in mild persistent asthma; long-term control only, not rescue."},
+ {u:"calc",t:"Percentage",d:"Parts of active ingredient in a solution containing 100 parts."},
+ {u:"calc",t:"Strength",d:"Amount of solute in a solution, usually expressed as a percentage."},
+ {u:"calc",t:"Schedule",d:"Amount of drug needed based on the patient’s weight (e.g., mg/kg)."},
+ {u:"calc",t:"Solute",d:"Substance or active ingredient dissolved in a solution; may be liquid or solid."},
+ {u:"calc",t:"Solvent",d:"Substance used to make a solution; dissolves the solute."},
+ {u:"calc",t:"Solution",d:"Physically homogeneous mixture of two or more substances."},
+ {u:"calc",t:"Diluent",d:"Liquid (usually normal saline) added to a nebulized drug; it does not change the amount of active drug delivered."},
+ {u:"calc",t:"% → mg/ml",d:"Move the decimal one place to the right (2% = 20 mg/ml). mg/ml → %: move it one place left."},
+ {u:"calc",t:"Proportion formula",d:"Convert to consistent units, then Original dose / Per amount = Desired dose / Per amount."}
+];
+
+/* ======================= HELPERS ======================= */
+const $ = (s, el=document) => el.querySelector(s);
+const app = $("#app");
+const LETTERS = "ABCDEFG";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const fmt = n => String(Math.round(n*1000)/1000);
+const KEY = "rcpharm-prep-v1";
+function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){} }
+let saved = Object.assign({missed:[], cases:{}, quizzes:0}, load());
+function markMissed(id, wrong){
+  const s = new Set(saved.missed); wrong ? s.add(id) : s.delete(id); saved.missed = [...s]; save();
+}
+const unitTag = u => `<span class="tag">${UNITS[u].short}</span>`;
+
+/* ======================= STATE ======================= */
+const state = { tab:"quiz", unit:"all", obj:"all", len:10, mode:"practice", missedOnly:false,
+  quiz:null, caseId:null, caseStep:0, caseAns:[], calcType:"mixed", calc:null, calcStats:{c:0,t:0,streak:0} };
+
+/* ======================= QUIZ ======================= */
+function pool(){
+  return Q.filter(q => (state.unit==="all"||q.u===state.unit) && (state.obj==="all"||q.o===state.obj) && (!state.missedOnly||saved.missed.includes(q.id)));
+}
+function chips(k, opts, cur){
+  return `<div class="chips">${opts.map(([v,l]) => `<button class="chip${String(v)===String(cur)?" on":""}" data-act="set" data-k="${k}" data-v="${v}">${l}</button>`).join("")}</div>`;
+}
+const unitOpts = () => [["all","All"], ...Object.entries(UNITS).map(([k,v]) => [k, v.short])];
+
+function renderQuizSetup(){
+  const p = pool();
+  const n = state.len==="all" ? p.length : Math.min(state.len, p.length);
+  const objs = Object.entries(OBJ).filter(([k,v]) => state.unit==="all" || v.u===state.unit);
+  const counts = u => Q.filter(q=>q.u===u).length;
+  app.innerHTML = `
+  <section class="card">
+    <h2>Practice quiz</h2>
+    <p class="muted small">${Q.length} questions · Mucus ${counts("mucus")} · Steroids ${counts("steroids")} · Calc ${counts("calc")}</p>
+    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
+    <span class="label">Learning objective</span>
+    <select data-act="obj">
+      <option value="all">All objectives</option>
+      ${objs.map(([k,v]) => `<option value="${k}" ${state.obj===k?"selected":""}>${esc(v.t)}</option>`).join("")}
+    </select>
+    <span class="label">Length</span>${chips("len", [[10,"10"],[20,"20"],["all","All"]], state.len)}
+    <span class="label">Mode</span>${chips("mode", [["practice","Practice · instant feedback"],["exam","Exam · score at end"]], state.mode)}
+    <label class="toggle"><input type="checkbox" data-act="missed" ${state.missedOnly?"checked":""}> Only questions I’ve missed (${saved.missed.length})</label>
+    <button class="btn primary block" data-act="start" ${n?"":"disabled"}>${n ? `Start · ${n} question${n>1?"s":""}` : "No questions match"}</button>
+  </section>
+  <section class="card">
+    <h3>Learning objectives</h3>
+    ${Object.keys(UNITS).filter(u => state.unit==="all"||state.unit===u).map(u => `
+      <p class="small muted" style="margin:12px 0 4px"><b>${UNITS[u].name}</b></p>
+      <ul class="obj-list">${Object.entries(OBJ).filter(([k,v])=>v.u===u).map(([k,v]) =>
+        `<li><button data-act="quizObj" data-k="${k}">${esc(v.t)}</button> <span class="muted small">(${Q.filter(q=>q.o===k).length})</span></li>`).join("")}</ul>`).join("")}
+  </section>`;
+}
+
+function startQuiz(items){
+  state.quiz = { items: items.map(q => ({q, order: shuffle(q.c.map((_,i)=>i)), pick:null})), i:0, mode:state.mode, done:false };
+  saved.quizzes++; save(); render(); window.scrollTo(0,0);
+}
+const isRight = it => it.pick!==null && it.order[it.pick]===0;
+
+function renderQuestion(){
+  const z = state.quiz, it = z.items[z.i], q = it.q;
+  const reveal = z.mode==="practice" && it.pick!==null;
+  const score = z.items.filter(isRight).length, answered = z.items.filter(x=>x.pick!==null).length;
+  const last = z.i === z.items.length-1;
+  app.innerHTML = `
+  <section class="card">
+    <div class="row between small muted">
+      <span>Question ${z.i+1} of ${z.items.length}</span>
+      <span>${z.mode==="practice" ? `Score ${score}/${answered}` : "Exam mode"}</span>
+    </div>
+    <div class="progress"><i style="width:${(z.i+1)/z.items.length*100}%"></i></div>
+    <div>${unitTag(q.u)}<span class="tag gold">${esc(OBJ[q.o].t)}</span></div>
+    <h2 style="margin-top:10px">${esc(q.q)}</h2>
+    <div class="choices">
+      ${it.order.map((oi,di) => {
+        let cls = "choice";
+        if (reveal){ if (oi===0) cls+=" correct"; else if (di===it.pick) cls+=" wrong"; else cls+=" dim"; }
+        else if (di===it.pick) cls+=" sel";
+        return `<button class="${cls}" data-act="pick" data-i="${di}" ${reveal?"disabled":""}><span class="letter">${LETTERS[di]}</span><span>${esc(q.c[oi])}</span></button>`;
+      }).join("")}
+    </div>
+    ${reveal ? `<div class="feedback ${isRight(it)?"":"bad"}"><b>${isRight(it)?"Correct":"Not quite — answer: "+esc(q.c[0])}</b>${esc(q.e)}<span class="src">${esc(q.s)}</span></div>` : ""}
+    <div class="row between nav">
+      <div class="row">
+        <button class="btn" data-act="quit">Quit</button>
+        ${z.mode==="exam" && z.i>0 ? `<button class="btn" data-act="prev">Back</button>` : ""}
+      </div>
+      <button class="btn primary" data-act="${last?"finish":"next"}" ${z.mode==="practice" && it.pick===null ? "disabled" : ""}>${last?"Finish":"Next"}</button>
+    </div>
+  </section>`;
+}
+
+function renderResults(){
+  const z = state.quiz, n = z.items.length, c = z.items.filter(isRight).length, pct = Math.round(c/n*100);
+  const by = {};
+  z.items.forEach(it => { const o = it.q.o; by[o] = by[o] || {c:0,t:0}; by[o].t++; if (isRight(it)) by[o].c++; });
+  const wrong = z.items.filter(it => !isRight(it));
+  const msg = pct>=90 ? "Exam-ready on this set." : pct>=75 ? "Solid — review the misses below." : pct>=60 ? "Getting there. Drill your weakest objective next." : "Worth another pass through the slides for these objectives.";
+  app.innerHTML = `
+  <section class="card">
+    <p class="label" style="margin-top:0">Results</p>
+    <div class="score-big">${pct}%</div>
+    <p style="margin:6px 0 0"><b>${c} of ${n}</b> correct. <span class="muted">${msg}</span></p>
+    <span class="label">By learning objective</span>
+    ${Object.entries(by).map(([o,v]) => `<div class="bar"><span class="small">${esc(OBJ[o].t)}</span><span class="small muted">${v.c}/${v.t}</span><div class="track"><i style="width:${v.c/v.t*100}%"></i></div></div>`).join("")}
+    <div class="row" style="margin-top:16px">
+      ${wrong.length ? `<button class="btn primary" data-act="retryWrong">Retry ${wrong.length} missed</button>` : ""}
+      <button class="btn" data-act="quit">New quiz</button>
+    </div>
+  </section>
+  ${wrong.length ? `<section class="card"><h3>Review</h3>${wrong.map(it => `
+    <div class="review">
+      <div>${unitTag(it.q.u)}</div>
+      <p><b>${esc(it.q.q)}</b></p>
+      <p class="small bad">Your answer: ${it.pick===null ? "skipped" : esc(it.q.c[it.order[it.pick]])}</p>
+      <p class="small ok">Correct: ${esc(it.q.c[0])}</p>
+      <p class="small muted">${esc(it.q.e)} <i>(${esc(it.q.s)})</i></p>
+    </div>`).join("")}</section>` : ""}`;
+}
+
+function renderQuiz(){
+  if (!state.quiz) return renderQuizSetup();
+  if (state.quiz.done) return renderResults();
+  renderQuestion();
+}
+
+/* ======================= CASES ======================= */
+function renderCaseList(){
+  const list = CASES.filter(c => state.unit==="all" || c.u===state.unit);
+  app.innerHTML = `
+  <section class="card">
+    <h2>Case studies</h2>
+    <p class="muted small">Work through each patient one decision at a time. Answers build on each other.</p>
+    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
+  </section>
+  ${list.map(c => { const s = saved.cases[c.id]; return `
+    <button class="card case-card" data-act="openCase" data-k="${c.id}">
+      <div class="row between"><div>${unitTag(c.u)}<span class="tag gold">${c.steps.length} questions</span></div>${s!=null?`<span class="small ok">Best ${s}/${c.steps.length}</span>`:""}</div>
+      <h3 style="margin:10px 0 2px">${esc(c.title)}</h3>
+      <p class="small muted" style="margin:0">${esc(c.who)}</p>
+    </button>`; }).join("")}`;
+}
+
+function openCase(id){
+  const c = CASES.find(x => x.id===id);
+  state.caseId = id; state.caseStep = 0;
+  state.caseAns = c.steps.map(s => ({order: shuffle(s.c.map((_,i)=>i)), pick:null}));
+  render(); window.scrollTo(0,0);
+}
+
+function renderCase(){
+  const c = CASES.find(x => x.id===state.caseId);
+  const done = state.caseAns.every(a => a.pick!==null);
+  const right = state.caseAns.filter(a => a.pick!==null && a.order[a.pick]===0).length;
+  let html = `
+  <section class="card">
+    <button class="btn" data-act="closeCase">← All cases</button>
+    <div style="margin-top:14px">${unitTag(c.u)}</div>
+    <h2 style="margin-top:8px">${esc(c.title)}</h2>
+    <div class="scenario"><div class="who">${esc(c.who)}</div>${esc(c.text)}</div>`;
+  for (let i=0; i<=state.caseStep; i++){
+    const s = c.steps[i], a = state.caseAns[i], ans = a.pick!==null, ok = ans && a.order[a.pick]===0;
+    html += `<div class="step" id="step${i}">
+      <div class="num">Question ${i+1} of ${c.steps.length}</div>
+      ${s.info ? `<div class="info">${esc(s.info)}</div>` : ""}
+      <p style="margin:6px 0 0;font-weight:600">${esc(s.q)}</p>
+      <div class="choices">${a.order.map((oi,di) => {
+        let cls = "choice";
+        if (ans){ if (oi===0) cls+=" correct"; else if (di===a.pick) cls+=" wrong"; else cls+=" dim"; }
+        return `<button class="${cls}" data-act="casePick" data-s="${i}" data-i="${di}" ${ans?"disabled":""}><span class="letter">${LETTERS[di]}</span><span>${esc(s.c[oi])}</span></button>`;
+      }).join("")}</div>
+      ${ans ? `<div class="feedback ${ok?"":"bad"}"><b>${ok?"Correct":"Answer: "+esc(s.c[0])}</b>${esc(s.e)}</div>` : ""}
+      ${ans && i===state.caseStep && i<c.steps.length-1 ? `<div class="row end nav"><button class="btn primary" data-act="caseNext">Next question</button></div>` : ""}
+    </div>`;
+  }
+  if (done){
+    html += `<div class="step"><p class="label" style="margin-top:0">Case complete</p><div class="score-big">${right}/${c.steps.length}</div>
+      <div class="row" style="margin-top:14px"><button class="btn primary" data-act="openCase" data-k="${c.id}">Try again</button><button class="btn" data-act="closeCase">All cases</button></div></div>`;
+  }
+  app.innerHTML = html + `</section>`;
+}
+
+function renderCases(){ state.caseId ? renderCase() : renderCaseList(); }
+
+/* ======================= CALC DRILL ======================= */
+const NEB = [
+  {d:"albuterol", p:0.5, doses:[1.25,2.5,5]},
+  {d:"acetylcysteine", p:10, doses:[300,400,500,600,800,1000]},
+  {d:"acetylcysteine", p:20, doses:[200,400,500,600,800,1000]},
+  {d:"ipratropium bromide", p:0.02, doses:[0.5]},
+  {d:"cromolyn sodium", p:1, doses:[20]}
+];
+const CALC_TYPES = [["mixed","Mixed"],["pct","% → mg/ml"],["mgml","mg/ml → %"],["vol","ml to give"],["wt","Weight-based"],["mgin","mg in volume"]];
+
+function genCalc(type){
+  const t = type==="mixed" ? pick(["pct","mgml","vol","vol","wt","wt","mgin"]) : type;
+  if (t==="pct"){
+    const p = pick([0.02,0.083,0.1,0.25,0.5,1,2,5,7.5,10,20]); const a = p*10;
+    return {t, prompt:`A solution is labeled <b>${fmt(p)}%</b>. How many mg/ml does it contain?`, ans:a, unit:"mg/ml",
+      steps:[`% → mg/ml: move the decimal point one place to the right.`, `${fmt(p)}% = ${fmt(a)} mg/ml`]};
+  }
+  if (t==="mgml"){
+    const m = pick([0.2,0.83,1,2.5,5,10,20,50,75,100,200]); const a = m/10;
+    return {t, prompt:`A solution contains <b>${fmt(m)} mg/ml</b>. What is its strength as a percentage?`, ans:a, unit:"%",
+      steps:[`mg/ml → %: move the decimal point one place to the left.`, `${fmt(m)} mg/ml = ${fmt(a)}%`]};
+  }
+  if (t==="vol"){
+    const n = pick(NEB), dose = pick(n.doses), conc = n.p*10, a = dose/conc;
+    return {t, prompt:`<b>${n.d[0].toUpperCase()+n.d.slice(1)} ${fmt(dose)} mg</b> is ordered per aerosol dose. You have a <b>${fmt(n.p)}%</b> solution. How many ml should you deliver?`, ans:a, unit:"ml",
+      steps:[`Convert % to mg/ml: ${fmt(n.p)}% = ${fmt(conc)} mg/ml`, `Proportion: ${fmt(conc)} mg / 1 ml = ${fmt(dose)} mg / x ml`, `x = ${fmt(dose)} ÷ ${fmt(conc)} = <b>${fmt(a)} ml</b>`]};
+  }
+  if (t==="wt"){
+    const mgkg = pick([0.05,0.1,0.15,0.2]), kg = pick([10,12,15,18,20,25,30]), lb = Math.random()<0.5;
+    const p = 0.5, conc = 5, dose = mgkg*kg, a = Math.round(dose/conc*100)/100;
+    const w = lb ? `${fmt(kg*2.2)} lb` : `${kg} kg`;
+    const st = [];
+    if (lb) st.push(`Convert to kg: ${fmt(kg*2.2)} lb ÷ 2.2 = ${kg} kg`);
+    st.push(`Dose = ${fmt(mgkg)} mg/kg × ${kg} kg = ${fmt(dose)} mg`, `Convert % to mg/ml: ${p}% = ${conc} mg/ml`, `Volume = ${fmt(dose)} mg ÷ ${conc} mg/ml = <b>${fmt(a)} ml</b>`);
+    return {t, prompt:`A drug is ordered at <b>${fmt(mgkg)} mg/kg</b>. The patient weighs <b>${w}</b>. You have a <b>${p}%</b> solution. How many ml should you deliver? <span class="muted small">(round to 2 decimals)</span>`, ans:a, unit:"ml", steps:st};
+  }
+  const v = pick([0.5,1,2,2.5,3,4]), p = pick([0.5,1,2,10,20]), a = v*p*10;
+  return {t:"mgin", prompt:`How many mg of active drug are in <b>${fmt(v)} ml</b> of a <b>${fmt(p)}%</b> solution? (Diluent added afterward doesn’t change this.)`, ans:a, unit:"mg",
+    steps:[`${fmt(p)}% = ${fmt(p*10)} mg/ml`, `${fmt(p*10)} mg/ml × ${fmt(v)} ml = <b>${fmt(a)} mg</b>`]};
+}
+
+function renderCalc(){
+  if (!state.calc) state.calc = {...genCalc(state.calcType), input:"", checked:false, ok:false};
+  const z = state.calc, s = state.calcStats;
+  app.innerHTML = `
+  <section class="card">
+    <h2>Dose-calculation drill</h2>
+    <p class="muted small">Unlimited randomized problems with worked solutions, using the methods from the Calculating Drug Doses slides.</p>
+    <span class="label">Problem type</span>${chips("calcType", CALC_TYPES, state.calcType)}
+    <div class="stats">
+      <div class="stat"><b>${s.c}/${s.t}</b><span>Correct</span></div>
+      <div class="stat"><b>${s.t ? Math.round(s.c/s.t*100) : 0}%</b><span>Accuracy</span></div>
+      <div class="stat"><b>${s.streak}</b><span>Streak</span></div>
+    </div>
+  </section>
+  <section class="card">
+    <p class="prompt">${z.prompt}</p>
+    <div class="answer-row">
+      <input type="text" inputmode="decimal" id="calcIn" placeholder="Your answer" value="${esc(z.input)}" ${z.checked?"disabled":""} autocomplete="off">
+      <span class="unit-suffix">${z.unit}</span>
+    </div>
+    ${z.checked ? `<div class="feedback ${z.ok?"":"bad"}"><b>${z.ok?"Correct":"Answer: "+fmt(z.ans)+" "+z.unit}</b><ol class="steps">${z.steps.map(x=>`<li>${x}</li>`).join("")}</ol></div>` : ""}
+    <div class="row end nav">
+      ${z.checked ? `<button class="btn primary" data-act="calcNext">Next problem</button>` :
+        `<button class="btn" data-act="calcSkip">Skip</button><button class="btn primary" data-act="calcCheck">Check</button>`}
+    </div>
+  </section>`;
+  const inp = $("#calcIn");
+  if (inp && !z.checked){
+    inp.addEventListener("input", e => { z.input = e.target.value; });
+    inp.addEventListener("keydown", e => { if (e.key==="Enter") checkCalc(); });
+  }
+}
+function checkCalc(){
+  const z = state.calc, v = parseFloat(String(z.input).replace(/,/g,""));
+  if (isNaN(v)) { const i=$("#calcIn"); if(i){ i.focus(); i.placeholder="Enter a number"; } return; }
+  z.ok = Math.abs(v - z.ans) <= Math.max(0.011, Math.abs(z.ans)*0.01);
+  z.checked = true;
+  const s = state.calcStats; s.t++; if (z.ok){ s.c++; s.streak++; } else s.streak = 0;
+  render();
+}
+
+/* ======================= TERMS ======================= */
+function renderTerms(){
+  const list = TERMS.filter(t => state.unit==="all" || t.u===state.unit);
+  app.innerHTML = `
+  <section class="card">
+    <h2>Key terms</h2>
+    <p class="muted small">Tap a term to reveal its definition. Try to say it out loud first.</p>
+    <span class="label">Topic</span>${chips("unit", unitOpts(), state.unit)}
+    <div class="row" style="margin-top:14px">
+      <input type="search" id="termQ" placeholder="Search terms" style="flex:1;min-width:0">
+      <button class="btn" data-act="expandAll">Show all</button>
+    </div>
+    <div class="terms">${list.map(t => `<button class="term" data-act="term" data-text="${esc((t.t+" "+t.d).toLowerCase())}"><span class="t">${esc(t.t)}</span><span class="d">${esc(t.d)}</span></button>`).join("")}</div>
+  </section>`;
+  $("#termQ").addEventListener("input", e => {
+    const q = e.target.value.trim().toLowerCase();
+    app.querySelectorAll(".term").forEach(el => { el.hidden = q && !el.dataset.text.includes(q); });
+  });
+}
+
+/* ======================= ROUTING & EVENTS ======================= */
+function render(){
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab===state.tab));
+  ({quiz:renderQuiz, cases:renderCases, calc:renderCalc, terms:renderTerms})[state.tab]();
+}
+
+document.querySelector("nav.tabs").addEventListener("click", e => {
+  const b = e.target.closest("button[data-tab]"); if (!b) return;
+  state.tab = b.dataset.tab; render(); window.scrollTo(0,0);
+});
+
+app.addEventListener("change", e => {
+  const act = e.target.dataset.act;
+  if (act==="obj"){ state.obj = e.target.value; render(); }
+  if (act==="missed"){ state.missedOnly = e.target.checked; render(); }
+});
+
+app.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b || b.disabled) return;
+  const act = b.dataset.act, z = state.quiz;
+  switch (act){
+    case "set": {
+      const k = b.dataset.k, v = b.dataset.v;
+      state[k] = (k==="len" && v!=="all") ? Number(v) : v;
+      if (k==="unit") state.obj = "all";
+      if (k==="calcType") state.calc = null;
+      render(); break;
+    }
+    case "quizObj": state.obj = b.dataset.k; state.unit = OBJ[b.dataset.k].u; render(); window.scrollTo(0,0); break;
+    case "start": {
+      const p = shuffle(pool().slice());
+      startQuiz(p.slice(0, state.len==="all" ? p.length : state.len)); break;
+    }
+    case "pick": {
+      const it = z.items[z.i];
+      if (z.mode==="practice" && it.pick!==null) return;
+      it.pick = Number(b.dataset.i);
+      if (z.mode==="practice") markMissed(it.q.id, !isRight(it));
+      render(); break;
+    }
+    case "next": z.i++; render(); window.scrollTo(0,0); break;
+    case "prev": z.i--; render(); window.scrollTo(0,0); break;
+    case "finish":
+      z.done = true;
+      if (z.mode==="exam") z.items.forEach(it => markMissed(it.q.id, !isRight(it)));
+      render(); window.scrollTo(0,0); break;
+    case "quit": state.quiz = null; render(); window.scrollTo(0,0); break;
+    case "retryWrong": startQuiz(shuffle(z.items.filter(it=>!isRight(it)).map(it=>it.q))); break;
+    case "openCase": openCase(b.dataset.k); break;
+    case "closeCase": state.caseId = null; render(); window.scrollTo(0,0); break;
+    case "casePick": {
+      const i = Number(b.dataset.s), a = state.caseAns[i];
+      if (a.pick!==null) return;
+      a.pick = Number(b.dataset.i);
+      if (state.caseAns.every(x => x.pick!==null)){
+        const r = state.caseAns.filter(x => x.order[x.pick]===0).length;
+        saved.cases[state.caseId] = Math.max(saved.cases[state.caseId] ?? 0, r); save();
+      }
+      render(); const el = $("#step"+i); if (el) el.scrollIntoView({block:"nearest"});
+      break;
+    }
+    case "caseNext": {
+      state.caseStep++; render();
+      const el = $("#step"+state.caseStep); if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      break;
+    }
+    case "calcCheck": checkCalc(); break;
+    case "calcSkip": state.calc = null; render(); break;
+    case "calcNext": state.calc = null; render(); setTimeout(()=>{ const i=$("#calcIn"); if(i) i.focus(); }, 0); break;
+    case "term": b.classList.toggle("open"); break;
+    case "expandAll": {
+      const all = [...app.querySelectorAll(".term")], open = all.some(t => !t.classList.contains("open"));
+      all.forEach(t => t.classList.toggle("open", open)); b.textContent = open ? "Hide all" : "Show all"; break;
+    }
+  }
+});
+
+/* Theme */
+const root = document.documentElement;
+try { const t = localStorage.getItem(KEY+"-theme"); if (t) root.dataset.theme = t; } catch(e){}
+$("#themeBtn").addEventListener("click", () => {
+  const dark = root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem(KEY+"-theme", root.dataset.theme); } catch(e){}
+});
+$("#resetBtn").addEventListener("click", () => {
+  if (!confirm("Clear missed questions and case scores saved in this browser?")) return;
+  saved = {missed:[], cases:{}, quizzes:0}; save(); state.quiz = null; state.calcStats = {c:0,t:0,streak:0}; render();
+});
+
+render();
+</script>
+</body>
+</html>
